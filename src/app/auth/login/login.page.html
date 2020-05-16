@@ -13,7 +13,7 @@
     <h1>Login to your account</h1>
   </ion-text>
 
-  <form #form="ngForm" (ngSubmit)="login(form)">
+  <form (ngSubmit)="login(form)">
     <ion-item>
       <ion-label color="primary" position="floating">Email</ion-label>
       <ion-input ngModel type="email" name="email"></ion-input>
@@ -25,7 +25,6 @@
     <ion-button
       type="submit"
       expand="full"
-      [disabled]="form.invalid"
       color="primary"
       >Login</ion-button
     >

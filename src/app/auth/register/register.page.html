@@ -13,7 +13,7 @@
     <h1>Create an Account</h1>
   </ion-text>
 
-  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+  <form  (ngSubmit)="register(form)" method="post">
     <ion-item>
       <ion-label color="primary" position="floating">First Name</ion-label>
       <ion-input ngModel name="fName"></ion-input>
