@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismissLogin()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-text text-center color="primary">
+    <h1>Login to your account</h1>
+  </ion-text>
 
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-item>
+      <ion-label color="primary" position="floating">Email</ion-label>
+      <ion-input ngModel type="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" position="floating">Password</ion-label>
+      <ion-input ngModel type="password" name="password"></ion-input>
+    </ion-item>
+    <ion-button
+      type="submit"
+      expand="full"
+      [disabled]="form.invalid"
+      color="primary"
+      >Login</ion-button
+    >
+  </form>
+  <br />
+  <ion-button expand="full" color="light" (click)="registerModal()">
+    <ion-text color="primary">Create Account</ion-text>
+  </ion-button>
 </ion-content>

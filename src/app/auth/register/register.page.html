@@ -1,9 +1,49 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismissRegister()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-text text-center color="primary">
+    <h1>Create an Account</h1>
+  </ion-text>
 
+  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+    <ion-item>
+      <ion-label color="primary" position="floating">First Name</ion-label>
+      <ion-input ngModel name="fName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Last Name</ion-label>
+      <ion-input ngModel name="lName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Email</ion-label>
+      <ion-input type="email" ngModel name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Password</ion-label>
+      <ion-input type="password" ngModel name="password"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="full" color="primary"
+      >Register now</ion-button
+    >
+  </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title text-center color="primary" (click)="loginModal()"
+      >Already have a account?</ion-title
+    >
+  </ion-toolbar>
+</ion-footer>
