@@ -1,11 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-icon slot="icon-only" color="primary" name="arrow-back" (click)="close()"></ion-icon>
+      <ion-icon
+        slot="icon-only"
+        color="primary"
+        name="arrow-back"
+        (click)="close()"
+      ></ion-icon>
     </ion-buttons>
+    <ion-title>ลงทะเบียน</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  
 </ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col padding="10">
+      <ion-button
+        size="medium"
+        expand="block"
+        (click)="register()"
+        >ยอมรับข้อตกลง</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-footer>

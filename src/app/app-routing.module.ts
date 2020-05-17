@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./auth/landing/landing.module').then( m => m.LandingPageModule)
+  },
+  {
+    path: 'policy',
+    loadChildren: () => import('./auth/policy/policy.module').then( m => m.PolicyPageModule)
   }
 ];
 @NgModule({

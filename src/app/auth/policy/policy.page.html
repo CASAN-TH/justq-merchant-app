@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        slot="icon-only"
+        color="primary"
+        name="arrow-back"
+        (click)="close()"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>ข้อตกลงการให้บริการ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [scrollEvents]="true"
+  (ionScrollStart)="logScrollStart()"
+  (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()"
+>
+  <ion-row>
+    <ion-col size="12">
+      <h4>ข้อตกลงการให้บริการ (terms of service)</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      &nbsp;&nbsp;ข้อกำหนดและเงื่อนไขการใช้บริการ
+      https://www.จัดคิว.com และ/หรือแอพลิเคชั่น จัดคิว
+      (“ซึ่งต่อไปนี้จะเรียกรวมว่า “เว็บไซต์”) ทำขึ้นระหว่างบริษัท จัดคิวออนไลน์
+      จำกัด (“บริษัท”) ฝ่ายหนึ่งกับผู้ใช้บริการเว็บไซต์ (“ผู้ใช้บริการ”)
+      อีกฝ่ายหนึ่ง ซึ่งรวมถึงผู้ใช้บริการที่ได้สมัครเป็นสมาชิกเว็บไซต์
+      และผู้ใช้บริการที่ไม่ได้สมัครเป็นสมาชิกเว็บไซต์
+      เว็บไซต์นี้ได้ให้บริการหลากหลายรูปแบบ เช่น บริการค้นหาและดูข้อมูลร้านอาหาร
+      ร้านเสริมสวย สปา สถานเสริมความงาม
+      บริการโพสต์รีวิวและรูปภาพของร้านเพื่อแบ่งปันให้ผู้ใช้บริการคนอื่นได้ดู
+      และแสดงความคิดเห็น บริการเชื่อมต่อกับ Facebook และ Twitter
+      เพื่อแชร์ข้อมูลที่น่าสนใจกับเพื่อนหรือบุคคลภายนอก เป็นต้น ทั้งนี้
+      การให้บริการต่าง ๆ ตามเว็บไซต์นี้ อยู่ภายใต้ข้อกำหนดและเงื่อนไขนี้
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      &nbsp;&nbsp;อย่างไรก็ดี เมื่อผู้ใช้บริการได้ใช้บริการเว็บไซต์นี้
+      ถือว่าผู้ใช้บริการได้อ่านและเข้าใจข้อกำหนดและเงื่อนไขการใช้บริการเว็บไซต์ของบริษัทเป็นอย่างดีแล้ว
+      การใช้บริการถือเป็นการแสดงเจตนาตกลงและยอมรับข้อกำหนดและเงื่อนไขการใช้บริการเว็บไซต์ของบริษัททุกประการ
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <h4>1. ทรัพย์สินทางปัญญา</h4>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <ion-item lines="none">
+    <ion-checkbox
+      [(ngModel)]="accepted"
+      [disabled]="!readed"
+      color="primary"
+    ></ion-checkbox>
+    <ion-label class="ion-text-wrap">
+      ข้าพเจ้ารับทราบ และยินยอมตามข้อตกลงและเงื่อนไขตามที่กำหนด</ion-label
+    >
+  </ion-item>
+  <ion-row>
+    <ion-col padding="10">
+      <ion-button
+        size="medium"
+        expand="block"
+        [disabled]="!accepted"
+        (click)="acceptTerm()"
+        >ยอมรับข้อตกลง</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-footer>

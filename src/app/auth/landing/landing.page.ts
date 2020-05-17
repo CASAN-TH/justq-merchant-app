@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { RegisterPage } from '../register/register.page';
+import { LoginPage } from '../login/login.page';
+import { PolicyPage } from '../policy/policy.page';
 
 @Component({
   selector: 'app-landing',
@@ -7,17 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController,) { }
 
   ngOnInit() {
   }
 
-  gotoRegister(){
-
+  async register() {
+    const policyModal = await this.modalController.create({
+      component: PolicyPage
+    });
+    return await policyModal.present();
   }
 
-  gotoLogin() {
-    
+  async login() {
+    const loginModal = await this.modalController.create({
+      component: LoginPage,
+    });
+    return await loginModal.present();
   }
 
 }
