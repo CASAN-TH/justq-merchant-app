@@ -1,7 +1,0 @@
-{
-  "name": "justq-merchant",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
