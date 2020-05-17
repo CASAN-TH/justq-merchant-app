@@ -20,19 +20,11 @@ export class RegisterPage implements OnInit {
   ) {}
 
   ngOnInit() {}
+  
   close() {
     // this._location.back();
     this.modalController.dismiss();
   }
 
-  logScrollStart() {}
-
-  logScrolling() {}
-  logScrollEnd() {
-    this.readed = true;
-  }
-
-  acceptTerm(){
-    
-  }
+  register() {}
 }

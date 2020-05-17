@@ -1,4 +1,28 @@
-.label-fixed{
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    --border-width: 0px !important;
+    border: 0 !important;
+    color: transparent !important;
+}
+
+ion-avatar {
+    margin: 10px auto;
+    width: 80% !important;
+    height: 80% !important;
+    max-width: 80px !important; //any size
+    max-height: 80px !important; //any size
+    // box-shadow: 2px 5px #f7ca04a9 !important;
+    border: 3px solid #e4b724c4 !important;
+    border-radius: 50px;
+}
+
+ion-content {
+    --background: linear-gradient(0deg,#ffff 70%, #f7ca04a9 99%);
+    --padding-top: -55px;
+}
+
+.label-fixed {
     -ms-flex: 0 0 10px;
     flex: 0 0 10px;
     width: 40px;
@@ -6,7 +30,7 @@
     font-weight: bold;
 }
 
-img{
+.social {
     width: 3rem;
     height: 3rem;
 }

@@ -60,14 +60,6 @@ export class LoginPage implements OnInit {
     return await forgotModal.present();
   }
 
-  async gotoRegister() {
-    // this.router.navigateByUrl("phoneno");
-    this.close();
-    const registerModal = await this.modalController.create({
-      component: RegisterPage,
-    });
-    return await registerModal.present();
-  }
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
