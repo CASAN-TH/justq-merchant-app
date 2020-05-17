@@ -27,60 +27,51 @@
   </ion-row>
 
   <form #form="ngForm" (ngSubmit)="login(form)">
-    <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <ion-row>
-            <ion-col size="12">
-              <ion-item>
-                <ion-input
-                  name="username"
-                  type="tel"
-                  placeholder="ระบุเบอร์โทรศัพท์"
-                  mask="(000) 000-0000"
-                  ngModel
-                  required
-                >
-                </ion-input>
-                <ion-icon name="call"></ion-icon>
-              </ion-item>
-              <ion-item>
-                <ion-input
-                  name="password"
-                  [type]="showPassword ? 'text' : 'password'"
-                  placeholder="ระบุรหัสผ่าน"
-                  ngModel
-                  required
-                ></ion-input>
-                <ion-icon
-                  [name]="showPassword ? 'eye'  : 'eye-off'"
-                  slot="end"
-                  (click)="togglePassword()"
-                ></ion-icon>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12">
-              <ion-button
-                size="medium"
-                type="submit"
-                [disabled]="form.invalid"
-                expand="block"
-                >ลงชื่อเข้าใช้</ion-button
-              >
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12" text-left>
-              <ion-button fill="clear" expand="block" (click)="gotoForgot()">
-                ลืมรหัสผ่าน คลิ๊กเลย
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-item>
+      <ion-label position="floating">เบอร์โทรศัพท์</ion-label>
+      <ion-input
+        name="username"
+        type="tel"
+        mask="(000) 000-0000"
+        ngModel
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">รหัสผ่าน</ion-label>
+      <ion-input
+        name="password"
+        [type]="showPassword ? 'text' : 'password'"
+        ngModel
+        required
+      ></ion-input>
+      <ion-icon
+      [name]="showPassword ? 'eye'  : 'eye-off'"
+      slot="end"
+      (click)="togglePassword()"
+      align-self-center
+    ></ion-icon>
+      
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          size="medium"
+          type="submit"
+          [disabled]="form.invalid"
+          expand="block"
+          >ลงชื่อเข้าใช้</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" text-left>
+        <ion-button fill="clear" expand="block" (click)="gotoForgot()">
+          ลืมรหัสผ่าน คลิ๊กเลย
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </form>
 
   <ion-row>
@@ -90,14 +81,16 @@
   </ion-row>
   <ion-row>
     <ion-col size="5" text-right>
-      <img class="social"
+      <img
+        class="social"
         src="../../../assets/icon/facebook-icon.png"
         (click)="onFacbookLoginClick()"
       />
     </ion-col>
     <ion-col size="2"> </ion-col>
     <ion-col size="5" text-left>
-      <img class="social"
+      <img
+        class="social"
         src="../../../assets/icon/line_icon.png"
         (click)="onLineLoginClick()"
       />

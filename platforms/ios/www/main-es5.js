@@ -470,31 +470,39 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     {
         path: '',
-        loadChildren: function () { return Promise.all(/*! import() | tabs-tabs-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(function (m) { return m.TabsPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(function (m) { return m.TabsPageModule; }); }
     },
     {
         path: 'login',
-        loadChildren: function () { return Promise.all(/*! import() | auth-login-login-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("auth-login-login-module")]).then(__webpack_require__.bind(null, /*! ./auth/login/login.module */ "./src/app/auth/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | auth-login-login-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-login-login-module"), __webpack_require__.e("auth-login-login-module")]).then(__webpack_require__.bind(null, /*! ./auth/login/login.module */ "./src/app/auth/login/login.module.ts")).then(function (m) { return m.LoginPageModule; }); }
     },
     {
         path: 'register',
-        loadChildren: function () { return Promise.all(/*! import() | auth-register-register-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("auth-register-register-module")]).then(__webpack_require__.bind(null, /*! ./auth/register/register.module */ "./src/app/auth/register/register.module.ts")).then(function (m) { return m.RegisterPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | auth-register-register-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./auth/register/register.module */ "./src/app/auth/register/register.module.ts")).then(function (m) { return m.RegisterPageModule; }); }
     },
     {
         path: 'forgot',
-        loadChildren: function () { return Promise.all(/*! import() | auth-forgot-forgot-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("auth-forgot-forgot-module")]).then(__webpack_require__.bind(null, /*! ./auth/forgot/forgot.module */ "./src/app/auth/forgot/forgot.module.ts")).then(function (m) { return m.ForgotPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | auth-forgot-forgot-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-forgot-forgot-module")]).then(__webpack_require__.bind(null, /*! ./auth/forgot/forgot.module */ "./src/app/auth/forgot/forgot.module.ts")).then(function (m) { return m.ForgotPageModule; }); }
     },
     {
         path: 'phoneno',
-        loadChildren: function () { return Promise.all(/*! import() | auth-phoneno-phoneno-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("auth-phoneno-phoneno-module")]).then(__webpack_require__.bind(null, /*! ./auth/phoneno/phoneno.module */ "./src/app/auth/phoneno/phoneno.module.ts")).then(function (m) { return m.PhonenoPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | auth-phoneno-phoneno-module */ "auth-phoneno-phoneno-module").then(__webpack_require__.bind(null, /*! ./auth/phoneno/phoneno.module */ "./src/app/auth/phoneno/phoneno.module.ts")).then(function (m) { return m.PhonenoPageModule; }); }
     },
     {
         path: 'otp',
-        loadChildren: function () { return Promise.all(/*! import() | auth-otp-otp-module */[__webpack_require__.e("default~auth-forgot-forgot-module~auth-login-login-module~auth-otp-otp-module~auth-phoneno-phoneno-m~e8d74317"), __webpack_require__.e("auth-otp-otp-module")]).then(__webpack_require__.bind(null, /*! ./auth/otp/otp.module */ "./src/app/auth/otp/otp.module.ts")).then(function (m) { return m.OtpPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | auth-otp-otp-module */ "auth-otp-otp-module").then(__webpack_require__.bind(null, /*! ./auth/otp/otp.module */ "./src/app/auth/otp/otp.module.ts")).then(function (m) { return m.OtpPageModule; }); }
     },
     {
         path: 'password',
         loadChildren: function () { return __webpack_require__.e(/*! import() | auth-password-password-module */ "auth-password-password-module").then(__webpack_require__.bind(null, /*! ./auth/password/password.module */ "./src/app/auth/password/password.module.ts")).then(function (m) { return m.PasswordPageModule; }); }
+    },
+    {
+        path: 'landing',
+        loadChildren: function () { return Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("default~auth-landing-landing-module~auth-login-login-module"), __webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(function (m) { return m.LandingPageModule; }); }
+    },
+    {
+        path: 'policy',
+        loadChildren: function () { return Promise.all(/*! import() | auth-policy-policy-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./auth/policy/policy.module */ "./src/app/auth/policy/policy.module.ts")).then(function (m) { return m.PolicyPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -602,6 +610,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/ngx/index.js");
+
+
 
 
 
@@ -620,10 +632,12 @@ var AppModule = /** @class */ (function () {
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
             entryComponents: [],
             imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["IonicStorageModule"].forRoot()
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
+                _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_11__["NativeStorage"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"] }
             ],

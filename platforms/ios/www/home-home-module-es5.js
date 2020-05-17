@@ -154,6 +154,120 @@ var HomePage = /** @class */ (function () {
 
 
 
+/***/ }),
+
+/***/ "./src/app/home/home.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/home/home.service.ts ***!
+  \**************************************/
+/*! exports provided: HomeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeService", function() { return HomeService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+var api_url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].apiUrl + '/api/homes/';
+var mockup = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].mockup;
+var HomeService = /** @class */ (function () {
+    function HomeService(http) {
+        this.http = http;
+        this.onHomeDataListChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.onHomeDataChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
+    }
+    HomeService.prototype.authorizationHeader = function () {
+        var token = window.localStorage.getItem("token@" + src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].appName);
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set('Authorization', 'Bearer ' + token);
+        return headers;
+    };
+    HomeService.prototype.resolve = function (route) {
+        this.routeParams = route.params;
+        console.log("resolve with params : " + JSON.stringify(this.routeParams));
+        if (this.routeParams.id) {
+            this.getHomeData(this.routeParams.id);
+        }
+        else {
+            this.getHomeDataList();
+        }
+        return;
+    };
+    HomeService.prototype.getHomeDataList = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            if (mockup) {
+                _this.http.get('../../assets/json/home/home.json').subscribe(function (res) {
+                    _this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+            else {
+                _this.http.get(api_url, { headers: _this.authorizationHeader() }).subscribe(function (res) {
+                    _this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+        });
+    };
+    HomeService.prototype.getHomeData = function (id) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            if (mockup) {
+                _this.http.get('../../assets/json/home/home-detail.json').subscribe(function (res) {
+                    _this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+            else {
+                _this.http.get(api_url + id, { headers: _this.authorizationHeader() }).subscribe(function (res) {
+                    _this.onHomeDataChanged.next(res.data);
+                }, reject);
+            }
+        });
+    };
+    HomeService.prototype.createHomeData = function (body) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(api_url, body, { headers: _this.authorizationHeader() }).subscribe(function (res) {
+                _this.getHomeDataList();
+            }, reject);
+        });
+    };
+    HomeService.prototype.updateHomeData = function (body) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.put(api_url + body._id, body, { headers: _this.authorizationHeader() }).subscribe(function (res) {
+                _this.getHomeDataList();
+            }, reject);
+        });
+    };
+    HomeService.prototype.deleteHomeData = function (body) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.delete(api_url + body._id, { headers: _this.authorizationHeader() }).subscribe(function (res) {
+                _this.getHomeDataList();
+            }, reject);
+        });
+    };
+    HomeService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+    ]; };
+    HomeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], HomeService);
+    return HomeService;
+}());
+
+
+
 /***/ })
 
 }]);

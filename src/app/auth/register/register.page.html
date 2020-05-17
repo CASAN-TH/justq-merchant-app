@@ -12,18 +12,100 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
-</ion-content>
-<ion-footer>
+<ion-content fullscreen="true">
   <ion-row>
-    <ion-col padding="10">
-      <ion-button
-        size="medium"
-        expand="block"
-        (click)="register()"
-        >ลงทะเบียน</ion-button
-      >
+    <ion-col size="12" text-center>
+      <ion-avatar>
+        <img src="../../../assets/icon/icon.png" />
+      </ion-avatar>
     </ion-col>
   </ion-row>
-</ion-footer>
+  <ion-row>
+    <ion-col size="12" text-center>
+      <h4>ลงทะเบียน จัดคิวออนไลน์</h4>
+    </ion-col>
+  </ion-row>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-item>
+      <ion-label position="floating">ชื่อ</ion-label>
+      <ion-input
+        name="firstname"
+        type="text"
+        ngModel
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">นามสกุล</ion-label>
+      <ion-input
+        name="lastname"
+        type="text"
+        ngModel
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">เบอร์โทรศัพท์</ion-label>
+      <ion-input
+        name="usrername"
+        type="text"
+        mask="(000) 000-0000"
+        ngModel
+        required
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">รหัสผ่าน</ion-label>
+      <ion-input
+        name="password"
+        [type]="showPassword ? 'text' : 'password'"
+        ngModel
+        required
+      ></ion-input>
+      <ion-icon
+      [name]="showPassword ? 'eye'  : 'eye-off'"
+      slot="end"
+      (click)="togglePassword()"
+      align-self-center
+    ></ion-icon>
+      
+    </ion-item>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          size="medium"
+          type="submit"
+          [disabled]="form.invalid"
+          expand="block"
+          >ลงทะเบียน</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-row>
+    <ion-col size="12" text-center>
+      <p>หรือ ลงทะเบียนผ่าน</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="5" text-right>
+      <img
+        class="social"
+        src="../../../assets/icon/facebook-icon.png"
+        (click)="onFacbookLoginClick()"
+      />
+    </ion-col>
+    <ion-col size="2"> </ion-col>
+    <ion-col size="5" text-left>
+      <img
+        class="social"
+        src="../../../assets/icon/line_icon.png"
+        (click)="onLineLoginClick()"
+      />
+    </ion-col>
+  </ion-row>
+</ion-content>

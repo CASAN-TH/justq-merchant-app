@@ -146,6 +146,114 @@ HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 
 
+/***/ }),
+
+/***/ "./src/app/home/home.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/home/home.service.ts ***!
+  \**************************************/
+/*! exports provided: HomeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeService", function() { return HomeService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+const api_url = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].apiUrl + '/api/homes/';
+const mockup = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].mockup;
+let HomeService = class HomeService {
+    constructor(http) {
+        this.http = http;
+        this.onHomeDataListChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.onHomeDataChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
+    }
+    authorizationHeader() {
+        const token = window.localStorage.getItem(`token@${src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].appName}`);
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set('Authorization', 'Bearer ' + token);
+        return headers;
+    }
+    resolve(route) {
+        this.routeParams = route.params;
+        console.log("resolve with params : " + JSON.stringify(this.routeParams));
+        if (this.routeParams.id) {
+            this.getHomeData(this.routeParams.id);
+        }
+        else {
+            this.getHomeDataList();
+        }
+        return;
+    }
+    getHomeDataList() {
+        return new Promise((resolve, reject) => {
+            if (mockup) {
+                this.http.get('../../assets/json/home/home.json').subscribe((res) => {
+                    this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+            else {
+                this.http.get(api_url, { headers: this.authorizationHeader() }).subscribe((res) => {
+                    this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+        });
+    }
+    getHomeData(id) {
+        return new Promise((resolve, reject) => {
+            if (mockup) {
+                this.http.get('../../assets/json/home/home-detail.json').subscribe((res) => {
+                    this.onHomeDataListChanged.next(res.data);
+                }, reject);
+            }
+            else {
+                this.http.get(api_url + id, { headers: this.authorizationHeader() }).subscribe((res) => {
+                    this.onHomeDataChanged.next(res.data);
+                }, reject);
+            }
+        });
+    }
+    createHomeData(body) {
+        return new Promise((resolve, reject) => {
+            this.http.post(api_url, body, { headers: this.authorizationHeader() }).subscribe((res) => {
+                this.getHomeDataList();
+            }, reject);
+        });
+    }
+    updateHomeData(body) {
+        return new Promise((resolve, reject) => {
+            this.http.put(api_url + body._id, body, { headers: this.authorizationHeader() }).subscribe((res) => {
+                this.getHomeDataList();
+            }, reject);
+        });
+    }
+    deleteHomeData(body) {
+        return new Promise((resolve, reject) => {
+            this.http.delete(api_url + body._id, { headers: this.authorizationHeader() }).subscribe((res) => {
+                this.getHomeDataList();
+            }, reject);
+        });
+    }
+};
+HomeService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+];
+HomeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+], HomeService);
+
+
+
 /***/ })
 
 }]);

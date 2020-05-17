@@ -18,8 +18,10 @@ ion-avatar {
 }
 
 ion-content {
-    --background: linear-gradient(0deg,#ffff 70%, #f7ca04a9 99%);
-    --padding-top: -55px;
+    // --background: linear-gradient(0deg,#ffff 80%, #fbb13bd5 99%);
+    
+    // --padding-top: -55px;
+    --background: url(../../../assets/queue.jpg) 0 0/100% 30% no-repeat;
 }
 
 .label-fixed {

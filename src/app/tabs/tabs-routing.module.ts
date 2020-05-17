@@ -16,7 +16,8 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../home/home.module').then(m => m.HomePageModule),
-            // resolve: [HomeService]
+            // resolve: [HomeService],
+            canActivate: [AuthGuard]
           }
         ]
       },
@@ -26,7 +27,8 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../notify/notify.module').then(m => m.NotifyPageModule)
+              import('../notify/notify.module').then(m => m.NotifyPageModule),
+              canActivate: [AuthGuard]
           }
         ]
       },

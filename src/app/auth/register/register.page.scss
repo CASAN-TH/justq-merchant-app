@@ -1,0 +1,27 @@
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    --border-width: 0px !important;
+    border: 0 !important;
+    color: transparent !important;
+}
+ion-content {
+    // --background: linear-gradient(0deg,#ffff 80%, #fbb13bd5 99%);
+    
+    // --padding-top: -55px;
+    --background: url(../../../assets/queue.jpg) 0 0/100% 30% no-repeat;
+}
+ion-avatar {
+    margin: 10px auto;
+    width: 80% !important;
+    height: 80% !important;
+    max-width: 80px !important; //any size
+    max-height: 80px !important; //any size
+    // box-shadow: 2px 5px #f7ca04a9 !important;
+    border: 3px solid #e4b724c4 !important;
+    border-radius: 50px;
+}
+.social {
+    width: 3rem;
+    height: 3rem;
+}
