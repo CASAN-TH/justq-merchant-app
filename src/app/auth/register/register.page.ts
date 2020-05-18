@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { Location } from "@angular/common";
 import { ModalController } from "@ionic/angular";
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: "app-register",
@@ -12,19 +13,38 @@ import { ModalController } from "@ionic/angular";
 export class RegisterPage implements OnInit {
   accepted: boolean = false;
   readed: boolean = false;
+  showPassword: boolean = false;
   constructor(
     private _location: Location,
     private auth: AuthService,
     private router: Router,
+    private alertService: AlertService,
     private modalController: ModalController
   ) {}
 
   ngOnInit() {}
-  
+
   close() {
     // this._location.back();
     this.modalController.dismiss();
   }
 
-  register() {}
+  register(form) {
+    this.auth.register(form.value).subscribe(
+      (data) => {
+        this.alertService.presentToast("Logged In");
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.close();
+        this.router.navigateByUrl("");
+      }
+    );
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 }

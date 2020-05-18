@@ -98,9 +98,9 @@ export class AuthService {
     );
   }
 
-  register(fName: String, lName: String, email: String, password: String) {
+  register(user : User) {
     return this.http.post(`${this.AUTH_SERVER_ADDRESS}/auth/register`,
-      {first_name: fName, last_name: lName, email: email, password: password}
+      user
     )
   }
 

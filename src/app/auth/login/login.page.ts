@@ -6,6 +6,7 @@ import MaskedInput from "@msafi/angular2-text-mask";
 import { ModalController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ForgotPage } from '../forgot/forgot.page';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: "app-login",
@@ -18,6 +19,7 @@ export class LoginPage implements OnInit {
     private _location: Location,
     private auth: AuthService,
     private router: Router, 
+    private alertService: AlertService,
     private modalController: ModalController
   ) {}
 
@@ -29,26 +31,18 @@ export class LoginPage implements OnInit {
   }
 
   login(form) {
-    // this.auth.login(form.value).then((user)=>{
-    //   if(this.auth.redirectUrl){
-    //     this.router.navigateByUrl(this.auth.redirectUrl);
-    //   }else{
-    //     this.router.navigateByUrl('');
-    //   }
-    // });
-    // this.auth.login(form.value).subscribe(
-    //   data => {
-    //     this.alertService.presentToast("Logged In");
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   },
-    //   () => {
-    //     this.dismissLogin();
-    //     this.menu.enable(true);
-    //     this.navCtrl.navigateRoot('/app');
-    //   }
-    // );
+    this.auth.login(form.value).subscribe(
+      data => {
+        this.alertService.presentToast("Logged In");
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        this.close();
+        this.router.navigateByUrl('');
+      }
+    );
   }
 
   async gotoForgot() {

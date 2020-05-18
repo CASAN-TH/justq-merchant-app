@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon
+        slot="icon-only"
+        color="primary"
+        name="arrow-back"
+        (click)="close()"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>ระบุประเภทกิจการ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="card-background-page">
+  <ion-card *ngFor="let item of shoptypes">
+    <img [src]="item.image" />
+    <div class="card-info">
+      <div class="card-title">
+        {{item.description}}
+      </div>
+      <div class="card-subtitle">{{item.total}} ร้าน</div>
+    </div>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col padding="10">
+      <ion-button size="medium" expand="block" (click)="register()"
+        >ถัดไป</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-footer>

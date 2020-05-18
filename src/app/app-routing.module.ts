@@ -7,36 +7,16 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then(m=> m.LoginPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./auth/register/register.module').then(m=> m.RegisterPageModule)
-  },
-  {
-    path: 'forgot',
-    loadChildren: () => import('./auth/forgot/forgot.module').then( m => m.ForgotPageModule)
-  },
-  {
-    path: 'phoneno',
-    loadChildren: () => import('./auth/phoneno/phoneno.module').then( m => m.PhonenoPageModule)
-  },
-  {
-    path: 'otp',
-    loadChildren: () => import('./auth/otp/otp.module').then( m => m.OtpPageModule)
-  },
-  {
-    path: 'password',
-    loadChildren: () => import('./auth/password/password.module').then( m => m.PasswordPageModule)
-  },
-  {
     path: 'landing',
     loadChildren: () => import('./auth/landing/landing.module').then( m => m.LandingPageModule)
   },
   {
-    path: 'policy',
-    loadChildren: () => import('./auth/policy/policy.module').then( m => m.PolicyPageModule)
+    path: 'shop',
+    loadChildren: () => import('./setting/shop/shop.module').then( m => m.ShopPageModule)
+  },
+  {
+    path: 'shoptype',
+    loadChildren: () => import('./setting/shoptype/shoptype.module').then( m => m.ShoptypePageModule)
   }
 ];
 @NgModule({
