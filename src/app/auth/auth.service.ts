@@ -72,7 +72,8 @@ export class AuthService {
     this.storage.remove("token");
     this.isLoggedIn = false;
     delete this.token;
-    // return new Promise<void>((resolve))
+    // // return new Promise<void>((resolve))
+    return Promise.resolve({status:200,Message:"loged out"});
   }
 
   user() {
