@@ -33,12 +33,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'account',
+        path: 'setting',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../account/account.module').then(m => m.AccountPageModule),
+              import('../setting/shop/shop.module').then(m => m.ShopPageModule),
               canActivate: [AuthGuard]
           }
         ]
