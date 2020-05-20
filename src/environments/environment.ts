@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   mockup:true,
   appName: "justq-merchant",
-  apiUrl: "https://auth-service-q2qr5uu5pq-de.a.run.app"
+  apiUrl: "https://justq-api-gateway-q2qr5uu5pq-de.a.run.app"
 };
 
 /*
