@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ShopService } from "../shop.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-shop-register",
@@ -89,7 +90,7 @@ export class ShopRegisterPage implements OnInit {
       },
     ],
   };
-  constructor(private shopService: ShopService) {}
+  constructor(private shopService: ShopService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -97,6 +98,7 @@ export class ShopRegisterPage implements OnInit {
     console.log(this.shop);
     this.shopService.createShop(this.shop).subscribe((res: any) => {
       console.log(res);
+      this.router.navigateByUrl('');
     });
   }
 }

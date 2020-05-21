@@ -40,7 +40,7 @@ export class RegisterPage implements OnInit {
       },
       () => {
         this.close();
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl("/shop-register");
       }
     );
   }

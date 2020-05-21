@@ -69,7 +69,9 @@ export class AuthService {
     //     return data;
     //   })
     // )
-    this.storage.remove("token");
+    // this.storage.remove("shop");
+    // this.storage.remove("token");
+    this.storage.clear();
     this.isLoggedIn = false;
     delete this.token;
     // // return new Promise<void>((resolve))
