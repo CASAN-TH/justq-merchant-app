@@ -464,39 +464,27 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        loadChildren: () => __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
-    },
-    {
-        path: 'login',
-        loadChildren: () => Promise.all(/*! import() | auth-login-login-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-login-login-module"), __webpack_require__.e("auth-login-login-module")]).then(__webpack_require__.bind(null, /*! ./auth/login/login.module */ "./src/app/auth/login/login.module.ts")).then(m => m.LoginPageModule)
-    },
-    {
-        path: 'register',
-        loadChildren: () => Promise.all(/*! import() | auth-register-register-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./auth/register/register.module */ "./src/app/auth/register/register.module.ts")).then(m => m.RegisterPageModule)
-    },
-    {
-        path: 'forgot',
-        loadChildren: () => Promise.all(/*! import() | auth-forgot-forgot-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-forgot-forgot-module")]).then(__webpack_require__.bind(null, /*! ./auth/forgot/forgot.module */ "./src/app/auth/forgot/forgot.module.ts")).then(m => m.ForgotPageModule)
-    },
-    {
-        path: 'phoneno',
-        loadChildren: () => __webpack_require__.e(/*! import() | auth-phoneno-phoneno-module */ "auth-phoneno-phoneno-module").then(__webpack_require__.bind(null, /*! ./auth/phoneno/phoneno.module */ "./src/app/auth/phoneno/phoneno.module.ts")).then(m => m.PhonenoPageModule)
-    },
-    {
-        path: 'otp',
-        loadChildren: () => __webpack_require__.e(/*! import() | auth-otp-otp-module */ "auth-otp-otp-module").then(__webpack_require__.bind(null, /*! ./auth/otp/otp.module */ "./src/app/auth/otp/otp.module.ts")).then(m => m.OtpPageModule)
-    },
-    {
-        path: 'password',
-        loadChildren: () => __webpack_require__.e(/*! import() | auth-password-password-module */ "auth-password-password-module").then(__webpack_require__.bind(null, /*! ./auth/password/password.module */ "./src/app/auth/password/password.module.ts")).then(m => m.PasswordPageModule)
+        loadChildren: () => Promise.all(/*! import() | tabs-tabs-module */[__webpack_require__.e("common"), __webpack_require__.e("tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
     },
     {
         path: 'landing',
-        loadChildren: () => Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("default~auth-landing-landing-module~auth-login-login-module"), __webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(m => m.LandingPageModule)
+        loadChildren: () => Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(m => m.LandingPageModule)
     },
     {
-        path: 'policy',
-        loadChildren: () => Promise.all(/*! import() | auth-policy-policy-module */[__webpack_require__.e("default~auth-landing-landing-module~auth-policy-policy-module~auth-register-register-module"), __webpack_require__.e("common")]).then(__webpack_require__.bind(null, /*! ./auth/policy/policy.module */ "./src/app/auth/policy/policy.module.ts")).then(m => m.PolicyPageModule)
+        path: 'shop',
+        loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule)
+    },
+    {
+        path: 'shoptype',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-shoptype-shoptype-module */ "setting-shoptype-shoptype-module").then(__webpack_require__.bind(null, /*! ./setting/shoptype/shoptype.module */ "./src/app/setting/shoptype/shoptype.module.ts")).then(m => m.ShoptypePageModule)
+    },
+    {
+        path: 'shop-register',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-register-shop-register-module */ "setting-shop-register-shop-register-module").then(__webpack_require__.bind(null, /*! ./setting/shop-register/shop-register.module */ "./src/app/setting/shop-register/shop-register.module.ts")).then(m => m.ShopRegisterPageModule)
+    },
+    {
+        path: 'set-location',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-set-location-set-location-module */ "setting-set-location-set-location-module").then(__webpack_require__.bind(null, /*! ./setting/set-location/set-location.module */ "./src/app/setting/set-location/set-location.module.ts")).then(m => m.SetLocationPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -654,7 +642,7 @@ const environment = {
     production: false,
     mockup: true,
     appName: "justq-merchant",
-    apiUrl: ""
+    apiUrl: "https://justq-api-gateway-q2qr5uu5pq-de.a.run.app"
 };
 /*
  * For easier debugging in development mode, you can import the following file
