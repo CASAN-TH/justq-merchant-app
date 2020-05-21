@@ -80,10 +80,10 @@ export class AuthService {
     console.log("GET User Data");
     const headers = new HttpHeaders({
       Authorization:
-        this.token["token_type"] + " " + this.token["access_token"],
+        "Bearer" + " " + this.token,
     });
     return this.http
-      .get<User>(`${this.AUTH_SERVER_ADDRESS}/user`, { headers: headers })
+      .get<User>(`${this.AUTH_SERVER_ADDRESS}/me`, { headers: headers })
       .pipe(
         tap((user) => {
           return user;

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../auth/auth.guard';
 import { HomeService } from '../home/home.service';
+import { ShopGuard } from '../setting/shop.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
             loadChildren: () =>
               import('../home/home.module').then(m => m.HomePageModule),
             // resolve: [HomeService],
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard, ShopGuard]
           }
         ]
       },
