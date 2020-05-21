@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'shop-register',
     loadChildren: () => import('./setting/shop-register/shop-register.module').then( m => m.ShopRegisterPageModule)
+  },
+  {
+    path: 'set-location',
+    loadChildren: () => import('./setting/set-location/set-location.module').then( m => m.SetLocationPageModule)
   }
 ];
 @NgModule({
