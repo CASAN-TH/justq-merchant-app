@@ -43,6 +43,19 @@
     <feature name="NativeStorage">
         <param name="ios-package" value="NativeStorage" />
     </feature>
+    <feature name="LineLogin">
+        <param name="ios-package" value="LineLogin" />
+    </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="ios-package" value="FacebookConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <name>just-q-merchant</name>
     <description>Social distancing app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">จัดคิว.com</author>

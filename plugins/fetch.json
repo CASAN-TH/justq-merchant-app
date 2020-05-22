@@ -62,5 +62,51 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-googlemaps": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
+    },
+    "is_top_level": true,
+    "variables": {
+      "API_KEY_FOR_ANDROID": "YOUR_ANDROID_API_KEY_IS_HERE",
+      "API_KEY_FOR_IOS": "YOUR_IOS_API_KEY_IS_HERE"
+    }
+  },
+  "cordova-line-login-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-line-login-plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-add-swift-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-add-swift-support@2.0.2"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-carthage-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-carthage-support"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-facebook4": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-facebook4"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_ID": "244176503342330",
+      "APP_NAME": "จัดคิว"
+    }
   }
 }

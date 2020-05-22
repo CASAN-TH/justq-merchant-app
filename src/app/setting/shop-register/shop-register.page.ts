@@ -98,7 +98,7 @@ export class ShopRegisterPage implements OnInit {
     console.log(this.shop);
     this.shopService.createShop(this.shop).subscribe((res: any) => {
       console.log(res);
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('/set-location');
     });
   }
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-line-login-plugin" version="1.2.6">
+  <name>Line Login</name>
+  <js-module src="www/lineLogin.js">
+    <clobbers target="lineLogin" />
+  </js-module>
+
+  <engines>
+    <engine name="cordova" version=">=7.1.0"/>
+    <engine name="cordova-android" version=">=8.0.0"/>
+    <engine name="cordova-ios" version=">=4.5.0"/>
+  </engines>
+
+  <!-- iOS -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="LineLogin">
+        <param name="ios-package" value="LineLogin" />
+      </feature>
+    </config-file>
+    <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+      <array>
+        <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>line3rdp.$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+          </array>
+        </dict>
+      </array>
+    </config-file>
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+      <array>
+        <string>lineauth2</string>
+      </array>
+    </config-file>
+
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    <dependency id="cordova-plugin-carthage-support" />
+    <source-file src="src/ios/AppDelegate+LineLogin.h" />
+    <source-file src="src/ios/AppDelegate+LineLogin.m" />
+    <source-file src="src/ios/LineLogin.swift" />
+    <header-file src="src/ios/LineSDK-Bridging-Header.h" />
+    <carthage>
+      <cartfile>github "line/line-sdk-ios-swift" ~> 5.0</cartfile>
+      <framework src="LineSDK.framework"/>
+      <framework src="LineSDKObjC.framework"/>
+    </carthage>
+
+  </platform>
+
+  <!-- Android -->
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="LineLogin">
+        <param name="android-package" value="plugin.line.LineLogin"/>
+      </feature>
+    </config-file>
+    <source-file src="src/android/LineLogin.java" target-dir="src/plugin/line" />
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.INTERNET" />
+    </config-file>
+
+    <framework src="src/android/line.gradle" custom="true" type="gradleReference" />
+    <hook type="after_prepare" src="src/scripts/after_prepare.js"/>
+    
+  </platform>
+
+</plugin>

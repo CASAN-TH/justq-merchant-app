@@ -1,0 +1,46 @@
+{
+  "_from": "cordova-line-login-plugin",
+  "_id": "cordova-line-login-plugin@1.2.6",
+  "_inBundle": false,
+  "_integrity": "sha512-2EyVt2qUsL1ySoU76OWPCsUGc9h15G0WV7KajPPkYbSchfGiUBjzROxBg9hplRVyT9CsxUNVKXSgXNpKe3VJFA==",
+  "_location": "/cordova-line-login-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-line-login-plugin",
+    "name": "cordova-line-login-plugin",
+    "escapedName": "cordova-line-login-plugin",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-line-login-plugin/-/cordova-line-login-plugin-1.2.6.tgz",
+  "_shasum": "e569b6d677ade6fcb72951fefad486425e738a9d",
+  "_spec": "cordova-line-login-plugin",
+  "_where": "/Users/theerasaktubrit/Desktop/just-q/justq-merchant",
+  "bugs": {
+    "url": "https://github.com/nrikiji/cordova-line-login-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-line-login-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "LineSDKを使用してLINEログインを簡単に実装するためのcordovaプラグイン。",
+  "homepage": "https://github.com/nrikiji/cordova-line-login-plugin#readme",
+  "name": "cordova-line-login-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrikiji/cordova-line-login-plugin.git"
+  },
+  "version": "1.2.6"
+}

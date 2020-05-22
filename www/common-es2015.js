@@ -724,6 +724,19 @@ let AuthService = class AuthService {
             return res.token;
         }));
     }
+    lineLogin(user) {
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/line`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
     register(user) {
         user.email = `${user.firstname}.${user.lastname}@จัดคิว.com`;
         return this.http

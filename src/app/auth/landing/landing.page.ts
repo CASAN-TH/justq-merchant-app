@@ -1,24 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
-import { LoginPage } from '../login/login.page';
-import { PolicyPage } from '../policy/policy.page';
+import { Component, OnInit } from "@angular/core";
+import { ModalController } from "@ionic/angular";
+import { RegisterPage } from "../register/register.page";
+import { LoginPage } from "../login/login.page";
+import { PolicyPage } from "../policy/policy.page";
+import { LineLogin } from "@ionic-native/line-login/ngx";
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.scss'],
+  selector: "app-landing",
+  templateUrl: "./landing.page.html",
+  styleUrls: ["./landing.page.scss"],
 })
 export class LandingPage implements OnInit {
+  constructor(
+    private router: Router, 
+    private modalController: ModalController,
+    private lineLogin: LineLogin,
+    private fb: Facebook,
+    private authService: AuthService, 
+    private alertService: AlertService
+  ) {}
 
-  constructor(private modalController: ModalController,) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async register() {
     const policyModal = await this.modalController.create({
-      component: PolicyPage
+      component: PolicyPage,
     });
     return await policyModal.present();
   }
@@ -30,4 +40,46 @@ export class LandingPage implements OnInit {
     return await loginModal.present();
   }
 
+  loginLine() {
+    this.lineLogin.initialize({ channel_id: "1654214807" });
+    // this.lineLogin
+    //   .login()
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log(error));
+    this.lineLogin.login()
+      .then(user => {
+        this.authService.lineLogin(user).subscribe(
+          data => {
+            this.alertService.presentToast("Logged In");
+          },
+          error => {
+            // console.log(error);
+            this.alertService.presentToast(error.error.message);
+          },
+          () => {
+            this.router.navigateByUrl('');
+          }
+        );
+      })
+      .catch(error => console.log(error))
+  }
+
+  loginFacebook() {
+    this.fb.login(['public_profile', 'email'])
+      .then((res: FacebookLoginResponse) => {
+        this.fb.api('/me?fields=id,first_name,last_name,picture.width(300).height(300)', []).then((user) => {
+          // this.auth.facebookLogin(user).then(() => {
+          //   if (this.auth.redirectUrl) {
+          //     this.router.navigateByUrl(this.auth.redirectUrl);
+          //   } else {
+          //     this.router.navigateByUrl('');
+          //   }
+          // }).catch(() => {
+          //   //this.router.navigateByUrl('phoneno');
+          //   this.nextStep("facebook", user);
+          // })
+        });
+      })
+      .catch(err => alert(JSON.stringify(err)));
+  }
 }

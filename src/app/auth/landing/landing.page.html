@@ -1,18 +1,17 @@
-<ion-content fullscreen="true">
-  <img src="../../../assets/lannding.png" />
-  <ion-avatar>
-    <img src="../../../assets/icon/icon.png" />
-  </ion-avatar>
-
-  <h2 text-center>ยินดีต้อนรับเข้าสู่ จัดคิวออนไลน์</h2>
+<ion-content  fullscreen="true">
+  <ion-img class="logo" [src]="'../../../assets/icon/icon.png'"></ion-img>
+  <ion-row>
+    <ion-col size="12" text-center>
+      <h3>เครื่องมือบริหารจัดการเวลาคุณภาพ</h3>
+    </ion-col>
+  </ion-row>
 </ion-content>
 <ion-footer>
+
   <ion-row>
-    <ion-col padding="10">
-      <ion-button size="medium" expand="block" (click)="register()">ลงทะเบียน</ion-button>
-      <ion-button fill="clear" expand="block" (click)="login()">
-        ลงชื่อเข้าใช้
-      </ion-button>
+    <ion-col padding="10" >
+      <ion-button size="large" expand="block" color="success" (click)="loginLine()"> <ion-icon slot="start" class="absolute-icon" src="assets/icon/line-logo.svg"></ion-icon> Line</ion-button>
+      <ion-button size="large" expand="block" color="secondary"  (click)="loginFacebook()"> <ion-icon src="assets/icon/facebook.svg" slot="start" class="absolute-icon"></ion-icon> Facebook</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>

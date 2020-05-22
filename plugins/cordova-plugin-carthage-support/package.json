@@ -1,0 +1,45 @@
+{
+  "_from": "cordova-plugin-carthage-support",
+  "_id": "cordova-plugin-carthage-support@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-vkOnXpjLy76hyZwX8xbXfH1Ks8D8bbQTR2K33i+Fbpf02VY6P7HCgQMncQoSOGvZK30UBNxcmkeYKKLJS5yU+w==",
+  "_location": "/cordova-plugin-carthage-support",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-carthage-support",
+    "name": "cordova-plugin-carthage-support",
+    "escapedName": "cordova-plugin-carthage-support",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-carthage-support/-/cordova-plugin-carthage-support-1.0.0.tgz",
+  "_shasum": "7ef8a730b62934571cb888c7dcb89d7c2725c848",
+  "_spec": "cordova-plugin-carthage-support",
+  "_where": "/Users/theerasaktubrit/Desktop/just-q/justq-merchant",
+  "bugs": {
+    "url": "https://github.com/nrikiji/cordova-plugin-carthage-support/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-carthage-support",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "本プラグインはCarthageで導入したライブラリを使用してCordovaプラグインを開発するためのプラグイン。   Xcodeの`Build Phases`へ`Run Script`の設定を行う。",
+  "homepage": "https://github.com/nrikiji/cordova-plugin-carthage-support#readme",
+  "name": "cordova-plugin-carthage-support",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrikiji/cordova-plugin-carthage-support.git"
+  },
+  "version": "1.0.0"
+}

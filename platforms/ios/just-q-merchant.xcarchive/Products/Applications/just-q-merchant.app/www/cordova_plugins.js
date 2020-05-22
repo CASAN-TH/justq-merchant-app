@@ -73,6 +73,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "id": "cordova-plugin-nativestorage.NativeStorageError",
       "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
       "pluginId": "cordova-plugin-nativestorage"
+    },
+    {
+      "id": "cordova-line-login-plugin.lineLogin",
+      "file": "plugins/cordova-line-login-plugin/www/lineLogin.js",
+      "pluginId": "cordova-line-login-plugin",
+      "clobbers": [
+        "lineLogin"
+      ]
+    },
+    {
+      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook4",
+      "clobbers": [
+        "facebookConnectPlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -83,6 +99,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-sqlite-storage": "5.0.0",
-    "cordova-plugin-nativestorage": "2.3.2"
+    "cordova-plugin-nativestorage": "2.3.2",
+    "cordova-plugin-add-swift-support": "2.0.2",
+    "cordova-plugin-carthage-support": "1.0.0",
+    "cordova-line-login-plugin": "1.2.6",
+    "cordova-plugin-facebook4": "6.4.0"
   };
 });

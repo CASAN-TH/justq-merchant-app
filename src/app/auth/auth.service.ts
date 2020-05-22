@@ -35,6 +35,25 @@ export class AuthService {
       );
   }
 
+  lineLogin(user: any){
+    return this.http
+      .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/line`, user)
+      .pipe(
+        tap((res: any) => {
+          //this.storage.setItem('token', token)
+          this.storage.set("token", res.token).then(
+            () => {
+              console.log("Token Stored");
+            },
+            (error) => console.error("Error storing item", error)
+          );
+          this.token = res.token;
+          this.isLoggedIn = true;
+          return res.token;
+        })
+      );
+  }
+
   register(user: User) {
     user.email = `${user.firstname}.${user.lastname}@จัดคิว.com`;
     return this.http

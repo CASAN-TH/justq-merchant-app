@@ -12,6 +12,9 @@ import { RegisterPageModule } from '../register/register.module';
 import { ForgotPageModule } from '../forgot/forgot.module';
 import { PolicyPageModule } from '../policy/policy.module';
 
+import { LineLogin } from '@ionic-native/line-login/ngx';
+import { Facebook } from '@ionic-native/facebook/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { PolicyPageModule } from '../policy/policy.module';
     ForgotPageModule,
     PolicyPageModule
   ],
-  declarations: [LandingPage]
+  declarations: [LandingPage],
+  providers: [LineLogin, Facebook]
 })
 export class LandingPageModule {}

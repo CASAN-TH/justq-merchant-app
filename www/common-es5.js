@@ -447,6 +447,20 @@ var AuthService = /** @class */ (function () {
             return res.token;
         }));
     };
+    AuthService.prototype.lineLogin = function (user) {
+        var _this = this;
+        return this.http
+            .post(this.AUTH_SERVER_ADDRESS + "/api/auth/line", user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("token", res.token).then(function () {
+                console.log("Token Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.token = res.token;
+            _this.isLoggedIn = true;
+            return res.token;
+        }));
+    };
     AuthService.prototype.register = function (user) {
         var _this = this;
         user.email = user.firstname + "." + user.lastname + "@\u0E08\u0E31\u0E14\u0E04\u0E34\u0E27.com";

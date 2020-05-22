@@ -6,6 +6,38 @@ ion-avatar {
     max-height: 80px !important; //any size
 }
 
+.logo{
+    margin: 10% auto;
+    width: 60% !important;
+    height: 60% !important;
+    
+}
+
 h2 {
     margin: 80px auto;
 }
+
+.absolute-icon {
+    position: absolute;
+    left: var(--padding-start);
+}
+
+.background-image{
+    // --background: url(../../../assets/splash.png) 0 0/100% 100% no-repeat;
+}
+
+ion-content{
+    --ion-background-color: #fdae40;
+}
+
+// ion-col{
+//     --ion-background-color: #FBB03B;
+// }
+
+.vertical-align-content > *
+{
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+

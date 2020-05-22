@@ -211,7 +211,7 @@ let ShopRegisterPage = class ShopRegisterPage {
         console.log(this.shop);
         this.shopService.createShop(this.shop).subscribe((res) => {
             console.log(res);
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('/set-location');
         });
     }
 };

@@ -218,7 +218,7 @@ var ShopRegisterPage = /** @class */ (function () {
         console.log(this.shop);
         this.shopService.createShop(this.shop).subscribe(function (res) {
             console.log(res);
-            _this.router.navigateByUrl('');
+            _this.router.navigateByUrl('/set-location');
         });
     };
     ShopRegisterPage.ctorParameters = function () { return [

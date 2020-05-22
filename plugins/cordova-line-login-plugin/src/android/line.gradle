@@ -1,0 +1,30 @@
+allprojects {
+  repositories {
+    flatDir {
+      dir 'libs'
+    }
+    maven {
+      url "https://maven.google.com"
+    }
+  }
+}
+
+android {
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+    implementation 'com.linecorp:linesdk:5.3.1'
+    implementation 'com.android.support:appcompat-v7:27.0.1'
+    implementation 'com.android.support:customtabs:27.0.1'
+    implementation('com.madgag.spongycastle:prov:1.58.0.0') {
+        exclude group: 'junit', module: 'junit'
+    }
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.5'
+    runtimeOnly ('io.jsonwebtoken:jjwt-orgjson:0.10.5') {
+        exclude group: 'org.json', module: 'json'
+    }
+}
