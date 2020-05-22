@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"star-half\"></ion-icon>\n      <ion-label>ริวิวร้าน</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"notify\">\n      <ion-icon name=\"alarm\"></ion-icon>\n      <ion-label>คิว</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"setting\">\n      <ion-icon name=\"settings\"></ion-icon>\n      <ion-label>ตั้งค่า</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n"
+module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"star-half\"></ion-icon>\n      <ion-label>ริวิวร้าน</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"queue\">\n      <ion-icon name=\"alarm\"></ion-icon>\n      <ion-label>คิว</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"setting\">\n      <ion-icon name=\"settings\"></ion-icon>\n      <ion-label>ตั้งค่า</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n"
 
 /***/ }),
 
@@ -98,18 +98,16 @@ var routes = [
                         loadChildren: function () {
                             return __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ../home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; });
                         },
-                        // resolve: [HomeService],
-                        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]
             },
             {
-                path: 'notify',
+                path: 'queue',
                 children: [
                     {
                         path: '',
                         loadChildren: function () {
-                            return __webpack_require__.e(/*! import() | notify-notify-module */ "notify-notify-module").then(__webpack_require__.bind(null, /*! ../notify/notify.module */ "./src/app/notify/notify.module.ts")).then(function (m) { return m.NotifyPageModule; });
+                            return Promise.all(/*! import() | queue-queue-module */[__webpack_require__.e("common"), __webpack_require__.e("queue-queue-module")]).then(__webpack_require__.bind(null, /*! ../queue/queue.module */ "./src/app/queue/queue.module.ts")).then(function (m) { return m.QueuePageModule; });
                         },
                         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
@@ -123,20 +121,19 @@ var routes = [
                         loadChildren: function () {
                             return Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; });
                         },
-                        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]
             },
             {
                 path: '',
-                redirectTo: '/tabs/home',
+                redirectTo: '/tabs/queue',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/queue',
         pathMatch: 'full'
     }
 ];

@@ -18,18 +18,18 @@ export class ShopGuard implements CanActivate {
       // this.router.navigate(['/shop-register']);
       // //this.router.navigate(['/shoptype']);
       // // this.router.navigate(['/shop']);
-      // return false;
-      return this.shopService.getShop().then(() => {
-        const haveShop = this.shopService.haveShop;
+      return false;
+      // return this.shopService.getShop().then(() => {
+      //   const haveShop = this.shopService.haveShop;
 
-          if (haveShop) {
-            // authorised so return true
-            return true;
-          }
+      //     if (haveShop) {
+      //       // authorised so return true
+      //       return true;
+      //     }
 
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/shop-register']);
-        return false;
-      });
+      //   // not logged in so redirect to login page with the return url
+      //   this.router.navigate(['/shop-register']);
+      //   return false;
+      // });
   }
 }

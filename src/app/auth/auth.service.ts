@@ -76,20 +76,6 @@ export class AuthService {
 
   logout() {
     console.log("Logout");
-    // const headers = new HttpHeaders({
-    //   'Authorization': this.token["token_type"] + " " + this.token["access_token"]
-    // });
-    // return this.http.get(`${this.AUTH_SERVER_ADDRESS}/auth/logout`, { headers: headers })
-    // .pipe(
-    //   tap(data => {
-    //     this.storage.remove("token");
-    //     this.isLoggedIn = false;
-    //     delete this.token;
-    //     return data;
-    //   })
-    // )
-    // this.storage.remove("shop");
-    // this.storage.remove("token");
     this.storage.clear();
     this.isLoggedIn = false;
     delete this.token;
@@ -104,7 +90,7 @@ export class AuthService {
         "Bearer" + " " + this.token,
     });
     return this.http
-      .get<User>(`${this.AUTH_SERVER_ADDRESS}/me`, { headers: headers })
+      .get(`${this.AUTH_SERVER_ADDRESS}/api/me`, { headers: headers })
       .pipe(
         tap((user) => {
           return user;

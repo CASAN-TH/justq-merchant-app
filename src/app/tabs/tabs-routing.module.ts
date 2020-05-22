@@ -11,24 +11,24 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'review',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../home/home.module').then(m => m.HomePageModule),
+              import('../review/review.module').then(m => m.ReviewPageModule),
             // resolve: [HomeService],
             canActivate: [AuthGuard]
           }
         ]
       },
       {
-        path: 'notify',
+        path: 'queue',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../notify/notify.module').then(m => m.NotifyPageModule),
+              import('../queue/queue.module').then(m => m.QueuePageModule),
               canActivate: [AuthGuard]
           }
         ]
@@ -46,14 +46,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/queue',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/queue',
     pathMatch: 'full'
   }
 ];

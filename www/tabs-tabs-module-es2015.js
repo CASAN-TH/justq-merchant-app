@@ -7,59 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"star-half\"></ion-icon>\n      <ion-label>ริวิวร้าน</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"notify\">\n      <ion-icon name=\"alarm\"></ion-icon>\n      <ion-label>คิว</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"setting\">\n      <ion-icon name=\"settings\"></ion-icon>\n      <ion-label>ตั้งค่า</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n"
-
-/***/ }),
-
-/***/ "./src/app/auth/auth.guard.ts":
-/*!************************************!*\
-  !*** ./src/app/auth/auth.guard.ts ***!
-  \************************************/
-/*! exports provided: AuthGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth/auth.service.ts");
-
-
-
-
-let AuthGuard = class AuthGuard {
-    constructor(router, authService) {
-        this.router = router;
-        this.authService = authService;
-    }
-    canActivate(next, state) {
-        return this.authService.getToken().then(() => {
-            const currentUser = this.authService.isLoggedIn;
-            if (currentUser) {
-                // authorised so return true
-                return true;
-            }
-            // not logged in so redirect to login page with the return url
-            this.router.navigate(['/landing']);
-            return false;
-        });
-    }
-};
-AuthGuard.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
-];
-AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-        _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
-], AuthGuard);
-
-
+module.exports = "<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"star-half\"></ion-icon>\n      <ion-label>ริวิวร้าน</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"queue\">\n      <ion-icon name=\"alarm\"></ion-icon>\n      <ion-label>คิว</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"setting\">\n      <ion-icon name=\"settings\"></ion-icon>\n      <ion-label>ตั้งค่า</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n"
 
 /***/ }),
 
@@ -77,8 +25,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _tabs_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs.page */ "./src/app/tabs/tabs.page.ts");
-/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../auth/auth.guard */ "./src/app/auth/auth.guard.ts");
-
 
 
 
@@ -94,18 +40,15 @@ const routes = [
                     {
                         path: '',
                         loadChildren: () => __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ../home/home.module */ "./src/app/home/home.module.ts")).then(m => m.HomePageModule),
-                        // resolve: [HomeService],
-                        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]
             },
             {
-                path: 'notify',
+                path: 'queue',
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() | notify-notify-module */ "notify-notify-module").then(__webpack_require__.bind(null, /*! ../notify/notify.module */ "./src/app/notify/notify.module.ts")).then(m => m.NotifyPageModule),
-                        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
+                        loadChildren: () => Promise.all(/*! import() | queue-queue-module */[__webpack_require__.e("common"), __webpack_require__.e("queue-queue-module")]).then(__webpack_require__.bind(null, /*! ../queue/queue.module */ "./src/app/queue/queue.module.ts")).then(m => m.QueuePageModule),
                     }
                 ]
             },
@@ -115,20 +58,19 @@ const routes = [
                     {
                         path: '',
                         loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule),
-                        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]
             },
             {
                 path: '',
-                redirectTo: '/tabs/home',
+                redirectTo: '/tabs/queue',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/queue',
         pathMatch: 'full'
     }
 ];

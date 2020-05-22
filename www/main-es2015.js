@@ -464,27 +464,11 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        loadChildren: () => Promise.all(/*! import() | tabs-tabs-module */[__webpack_require__.e("common"), __webpack_require__.e("tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
     },
     {
         path: 'landing',
         loadChildren: () => Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(m => m.LandingPageModule)
-    },
-    {
-        path: 'shop',
-        loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule)
-    },
-    {
-        path: 'shoptype',
-        loadChildren: () => __webpack_require__.e(/*! import() | setting-shoptype-shoptype-module */ "setting-shoptype-shoptype-module").then(__webpack_require__.bind(null, /*! ./setting/shoptype/shoptype.module */ "./src/app/setting/shoptype/shoptype.module.ts")).then(m => m.ShoptypePageModule)
-    },
-    {
-        path: 'shop-register',
-        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-register-shop-register-module */ "setting-shop-register-shop-register-module").then(__webpack_require__.bind(null, /*! ./setting/shop-register/shop-register.module */ "./src/app/setting/shop-register/shop-register.module.ts")).then(m => m.ShopRegisterPageModule)
-    },
-    {
-        path: 'set-location',
-        loadChildren: () => __webpack_require__.e(/*! import() | setting-set-location-set-location-module */ "setting-set-location-set-location-module").then(__webpack_require__.bind(null, /*! ./setting/set-location/set-location.module */ "./src/app/setting/set-location/set-location.module.ts")).then(m => m.SetLocationPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

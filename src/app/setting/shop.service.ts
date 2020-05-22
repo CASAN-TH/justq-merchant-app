@@ -15,24 +15,28 @@ export class ShopService {
     this.getToken();
   }
 
-  getShop() {
-    return this.storage.get("shop").then(
-      (data) => {
-        if (data != null) {
-          this.haveShop = true;
-        } else {
-          this.haveShop = false;
-        }
-      },
-      (error) => {
-        this.haveShop = false;
-      }
-    );
-  }
+  // getShop() {
+  //   return this.storage.get("shop").then(
+  //     (data) => {
+  //       if (data != null) {
+  //         this.haveShop = true;
+  //       } else {
+  //         this.haveShop = false;
+  //       }
+  //     },
+  //     (error) => {
+  //       this.haveShop = false;
+  //     }
+  //   );
+  // }
 
   async getToken() {
     this.token = await this.storage.get("token");
     console.log(this.token);
+  }
+
+  getMyShop(){
+    
   }
 
 

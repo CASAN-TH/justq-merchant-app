@@ -9,22 +9,6 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./auth/landing/landing.module').then( m => m.LandingPageModule)
-  },
-  {
-    path: 'shop',
-    loadChildren: () => import('./setting/shop/shop.module').then( m => m.ShopPageModule)
-  },
-  {
-    path: 'shoptype',
-    loadChildren: () => import('./setting/shoptype/shoptype.module').then( m => m.ShoptypePageModule)
-  },
-  {
-    path: 'shop-register',
-    loadChildren: () => import('./setting/shop-register/shop-register.module').then( m => m.ShopRegisterPageModule)
-  },
-  {
-    path: 'set-location',
-    loadChildren: () => import('./setting/set-location/set-location.module').then( m => m.SetLocationPageModule)
   }
 ];
 @NgModule({
