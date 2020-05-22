@@ -105,7 +105,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-facebook4" spec="~6.2.0">
-        <variable name="APP_ID" value="1076923909182982" />
-        <variable name="APP_NAME" value="Furnover" />
+        <variable name="APP_ID" value="244176503342330" />
+        <variable name="APP_NAME" value="จัดคิว" />
     </plugin>
 </widget>
