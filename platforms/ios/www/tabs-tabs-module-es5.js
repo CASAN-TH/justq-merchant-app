@@ -136,7 +136,7 @@ var routes = [
     },
     {
         path: '',
-        redirectTo: '/tabs/queue',
+        redirectTo: '/app/tabs/queue',
         pathMatch: 'full'
     }
 ];

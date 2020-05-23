@@ -478,7 +478,8 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.logout = function () {
         console.log("Logout");
-        this.storage.clear();
+        // this.storage.clear();
+        this.storage.remove("token");
         this.isLoggedIn = false;
         delete this.token;
         // // return new Promise<void>((resolve))
@@ -577,6 +578,116 @@ var AlertService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
     ], AlertService);
     return AlertService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/setting/shop.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/setting/shop.service.ts ***!
+  \*****************************************/
+/*! exports provided: ShopService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopService", function() { return ShopService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
+
+
+
+
+
+var ShopService = /** @class */ (function () {
+    function ShopService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.haveShop = false;
+        this.SHOP_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl; // Your Node Address
+        // this.getToken();
+        // this.getMyShop();
+    }
+    // getShop() {
+    //   return this.storage.get("shop").then(
+    //     (data) => {
+    //       if (data != null) {
+    //         this.haveShop = true;
+    //       } else {
+    //         this.haveShop = false;
+    //       }
+    //     },
+    //     (error) => {
+    //       this.haveShop = false;
+    //     }
+    //   );
+    // }
+    ShopService.prototype.getToken = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.storage.get("token")];
+                    case 1:
+                        _a.token = _b.sent();
+                        console.log(this.token);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ShopService.prototype.getMyShop = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.storage.get("shop")];
+                    case 1:
+                        _a.shop = _b.sent();
+                        return [2 /*return*/, this.shop];
+                }
+            });
+        });
+    };
+    ShopService.prototype.createShop = function (shop) {
+        var _this = this;
+        // this.getToken();
+        // const headers = new HttpHeaders({
+        //   Authorization: "Bearer" + " " + this.token,
+        // });
+        return this.http
+            .post(this.SHOP_SERVER_ADDRESS + "/api/shops", shop)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("shop", res.data).then(function () {
+                console.log("shop Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.haveShop = true;
+            return res.data;
+        }));
+    };
+    ShopService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
+    ]; };
+    ShopService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root",
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
+    ], ShopService);
+    return ShopService;
 }());
 
 

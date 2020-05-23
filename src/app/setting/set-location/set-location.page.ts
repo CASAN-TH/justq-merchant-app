@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-set-location',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetLocationPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
+  }
+
+  close() {
+    // this._location.back();
+    this.modalController.dismiss({latitude:"", longitude:""});
   }
 
 }

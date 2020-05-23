@@ -61,7 +61,7 @@ export class ShopPage implements OnInit {
     this.authService.logout().then((res: any) => {
       console.log(res);
       this.alertService.presentToast("Logged Out");
-      this.router.navigateByUrl("");
+      this.router.navigateByUrl("/app");
     });
   }
 }

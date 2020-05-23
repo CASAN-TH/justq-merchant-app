@@ -8,6 +8,7 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
+import { ShopService } from 'src/app/setting/shop.service';
 
 @Component({
   selector: "app-landing",
@@ -15,16 +16,22 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ["./landing.page.scss"],
 })
 export class LandingPage implements OnInit {
+  myShop: any;
   constructor(
     private router: Router, 
     private modalController: ModalController,
     private lineLogin: LineLogin,
     private fb: Facebook,
     private authService: AuthService, 
-    private alertService: AlertService
+    private alertService: AlertService,
+    private shopService: ShopService
   ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.myShop = await this.shopService.getMyShop();
+
+    console.log(this.myShop);
+  }
 
   async register() {
     const policyModal = await this.modalController.create({
@@ -47,7 +54,8 @@ export class LandingPage implements OnInit {
     //   .then((result) => console.log(result))
     //   .catch((error) => console.log(error));
     this.lineLogin.login()
-      .then(user => {
+      .then((user:any) => {
+        user.shop_id = this.myShop._id;
         this.authService.lineLogin(user).subscribe(
           data => {
             this.alertService.presentToast("Logged In");
@@ -57,7 +65,7 @@ export class LandingPage implements OnInit {
             this.alertService.presentToast(error.error.message);
           },
           () => {
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('/app');
           }
         );
       })

@@ -10,9 +10,11 @@ import { Storage } from "@ionic/storage";
 export class ShopService {
   haveShop = false;
   token: any;
+  shop: any;
   SHOP_SERVER_ADDRESS: string = environment.apiUrl; // Your Node Address
   constructor(private http: HttpClient, private storage: Storage) {
-    this.getToken();
+    // this.getToken();
+    // this.getMyShop();
   }
 
   // getShop() {
@@ -35,18 +37,19 @@ export class ShopService {
     console.log(this.token);
   }
 
-  getMyShop(){
-    
+  async getMyShop(){
+    this.shop = await this.storage.get("shop");
+    return this.shop;
   }
 
 
   createShop(shop: any) {
-    this.getToken();
-    const headers = new HttpHeaders({
-      Authorization: "Bearer" + " " + this.token,
-    });
+    // this.getToken();
+    // const headers = new HttpHeaders({
+    //   Authorization: "Bearer" + " " + this.token,
+    // });
     return this.http
-      .post(`${this.SHOP_SERVER_ADDRESS}/api/shops`, shop, { headers: headers })
+      .post(`${this.SHOP_SERVER_ADDRESS}/api/shops`, shop)
       .pipe(
         tap((res: any) => {
           //this.storage.setItem('token', token)

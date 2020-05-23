@@ -1,0 +1,66 @@
+<ion-content>
+  <ion-slides pager="true">
+
+    <ion-slide>
+      <div class="slide">
+        <img src="./../../assets/slide-1.png"/>
+        <h2>Welcome</h2>
+        <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="./../../assets/slide-2.png"/>
+      <h2>What is Ionic?</h2>
+      <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="./../../assets/slide-3.png"/>
+      <h2>What is Ionic Appflow?</h2>
+      <p><b>Ionic Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="./../../assets/slide-4.png"/>
+      <h2>Ready to Play?</h2>
+      <form #form="ngForm" (ngSubmit)="registerShop(form)">
+        <ion-item>
+          <ion-label position="floating">ชื่อร้านค้า</ion-label>
+          <ion-input
+            name="name"
+            type="text"
+            ngModel
+            required
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">ประเภทกิจการ</ion-label>
+          <ion-select name="shoptype" ngModel required>
+            <ion-select-option value="1">ร้านเสริมสวย</ion-select-option>
+            <ion-select-option value="2">ร้านกาแฟ</ion-select-option>
+            <ion-select-option value="3">ฟิตเนส</ion-select-option>
+            <ion-select-option value="4">สนามกอล์ฟ</ion-select-option>
+            <ion-select-option value="5">ร้านสัตว์เลี้ยง</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button
+              size="medium"
+              type="submit"
+              [disabled]="form.invalid"
+              expand="block"
+              > <ion-icon name="navigate" slot="start"></ion-icon>ระบุพิกัดร้าน</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

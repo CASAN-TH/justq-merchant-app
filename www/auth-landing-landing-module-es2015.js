@@ -146,7 +146,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content  fullscreen=\"true\">\n  <ion-img class=\"logo\" [src]=\"'../../../assets/icon/icon.png'\"></ion-img>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h3>เครื่องมือบริหารจัดการเวลาคุณภาพ</h3>\n    </ion-col>\n  </ion-row>\n</ion-content>\n<ion-footer>\n\n  <ion-row>\n    <ion-col padding=\"10\" >\n      <ion-button size=\"large\" expand=\"block\" color=\"success\" (click)=\"loginLine()\"> <ion-icon slot=\"start\" class=\"absolute-icon\" src=\"assets/icon/line-logo.svg\"></ion-icon> Line</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"secondary\"  (click)=\"loginFacebook()\"> <ion-icon src=\"assets/icon/facebook.svg\" slot=\"start\" class=\"absolute-icon\"></ion-icon> Facebook</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"tertiary\" (click)=\"login()\">  Login</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"dark\"  (click)=\"register()\">  register</ion-button>\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
+module.exports = "<ion-content  fullscreen=\"true\">\n  <ion-img class=\"logo\" [src]=\"'../../../assets/icon/icon.png'\"></ion-img>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h3>เครื่องมือบริหารจัดการเวลาคุณภาพ</h3>\n    </ion-col>\n  </ion-row>\n</ion-content>\n<ion-footer>\n\n  <ion-row>\n    <ion-col padding=\"10\" >\n      <ion-button size=\"large\" expand=\"block\" color=\"success\" (click)=\"loginLine()\"> <ion-icon slot=\"start\" class=\"absolute-icon\" src=\"assets/icon/line-logo.svg\"></ion-icon> Line</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"secondary\"  (click)=\"loginFacebook()\"> <ion-icon src=\"assets/icon/facebook.svg\" slot=\"start\" class=\"absolute-icon\"></ion-icon> Facebook</ion-button>\n      <!-- <ion-button size=\"large\" expand=\"block\" color=\"tertiary\" (click)=\"login()\">  Login</ion-button> -->\n      <!-- <ion-button size=\"large\" expand=\"block\" color=\"dark\"  (click)=\"register()\">  register</ion-button> -->\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -457,6 +457,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+
 
 
 
@@ -468,15 +470,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LandingPage = class LandingPage {
-    constructor(router, modalController, lineLogin, fb, authService, alertService) {
+    constructor(router, modalController, lineLogin, fb, authService, alertService, shopService) {
         this.router = router;
         this.modalController = modalController;
         this.lineLogin = lineLogin;
         this.fb = fb;
         this.authService = authService;
         this.alertService = alertService;
+        this.shopService = shopService;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.myShop = yield this.shopService.getMyShop();
+            console.log(this.myShop);
+        });
+    }
     register() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const policyModal = yield this.modalController.create({
@@ -500,14 +508,15 @@ let LandingPage = class LandingPage {
         //   .then((result) => console.log(result))
         //   .catch((error) => console.log(error));
         this.lineLogin.login()
-            .then(user => {
+            .then((user) => {
+            user.shop_id = this.myShop._id;
             this.authService.lineLogin(user).subscribe(data => {
                 this.alertService.presentToast("Logged In");
             }, error => {
                 // console.log(error);
                 this.alertService.presentToast(error.error.message);
             }, () => {
-                this.router.navigateByUrl('');
+                this.router.navigateByUrl('/app');
             });
         })
             .catch(error => console.log(error));
@@ -537,7 +546,8 @@ LandingPage.ctorParameters = () => [
     { type: _ionic_native_line_login_ngx__WEBPACK_IMPORTED_MODULE_5__["LineLogin"] },
     { type: _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_6__["Facebook"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
-    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] }
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] },
+    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"] }
 ];
 LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -550,7 +560,8 @@ LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_line_login_ngx__WEBPACK_IMPORTED_MODULE_5__["LineLogin"],
         _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_6__["Facebook"],
         _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
-        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"]])
+        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"],
+        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"]])
 ], LandingPage);
 
 
@@ -635,6 +646,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _forgot_forgot_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../forgot/forgot.page */ "./src/app/auth/forgot/forgot.page.ts");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+
 
 
 
@@ -644,20 +657,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(_location, auth, router, alertService, modalController) {
+    constructor(_location, auth, router, alertService, shopService, modalController) {
         this._location = _location;
         this.auth = auth;
         this.router = router;
         this.alertService = alertService;
+        this.shopService = shopService;
         this.modalController = modalController;
         this.showPassword = false;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.myShop = yield this.shopService.getMyShop();
+            console.log(this.myShop);
+        });
+    }
     close() {
         // this._location.back();
         this.modalController.dismiss();
     }
     login(form) {
+        form.value.ref1 = this.myShop._id;
         this.auth.login(form.value).subscribe(data => {
             this.alertService.presentToast("Logged In");
         }, error => {
@@ -665,7 +685,7 @@ let LoginPage = class LoginPage {
             this.alertService.presentToast(error.error.message);
         }, () => {
             this.close();
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('/app');
         });
     }
     gotoForgot() {
@@ -687,6 +707,7 @@ LoginPage.ctorParameters = () => [
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] },
+    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__["ShopService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] }
 ];
 LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -699,6 +720,7 @@ LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
         src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"],
+        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__["ShopService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"]])
 ], LoginPage);
 
@@ -942,6 +964,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+
 
 
 
@@ -950,22 +974,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegisterPage = class RegisterPage {
-    constructor(_location, auth, router, alertService, modalController) {
+    constructor(_location, auth, router, alertService, shopService, modalController) {
         this._location = _location;
         this.auth = auth;
         this.router = router;
         this.alertService = alertService;
+        this.shopService = shopService;
         this.modalController = modalController;
         this.accepted = false;
         this.readed = false;
         this.showPassword = false;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.myShop = yield this.shopService.getMyShop();
+            console.log(this.myShop);
+        });
+    }
     close() {
         // this._location.back();
         this.modalController.dismiss();
     }
     register(form) {
+        form.value.ref1 = this.myShop._id;
         this.auth.register(form.value).subscribe((data) => {
             this.alertService.presentToast("Logged In");
         }, (error) => {
@@ -973,7 +1004,7 @@ let RegisterPage = class RegisterPage {
             this.alertService.presentToast(error.error.message);
         }, () => {
             this.close();
-            this.router.navigateByUrl("/shop-register");
+            this.router.navigateByUrl("/app");
         });
     }
     togglePassword() {
@@ -985,6 +1016,7 @@ RegisterPage.ctorParameters = () => [
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"] },
+    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__["ShopService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] }
 ];
 RegisterPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -997,6 +1029,7 @@ RegisterPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
         src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"],
+        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__["ShopService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"]])
 ], RegisterPage);
 

@@ -35,7 +35,7 @@ export class AuthService {
       );
   }
 
-  lineLogin(user: any){
+  lineLogin(user: any) {
     return this.http
       .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/line`, user)
       .pipe(
@@ -57,37 +57,37 @@ export class AuthService {
   register(user: User) {
     user.email = `${user.firstname}.${user.lastname}@จัดคิว.com`;
     return this.http
-    .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signup`, user)
-    .pipe(
-      tap((res: any) => {
-        //this.storage.setItem('token', token)
-        this.storage.set("token", res.token).then(
-          () => {
-            console.log("Token Stored");
-          },
-          (error) => console.error("Error storing item", error)
-        );
-        this.token = res.token;
-        this.isLoggedIn = true;
-        return res.token;
-      })
-    );
+      .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signup`, user)
+      .pipe(
+        tap((res: any) => {
+          //this.storage.setItem('token', token)
+          this.storage.set("token", res.token).then(
+            () => {
+              console.log("Token Stored");
+            },
+            (error) => console.error("Error storing item", error)
+          );
+          this.token = res.token;
+          this.isLoggedIn = true;
+          return res.token;
+        })
+      );
   }
 
   logout() {
     console.log("Logout");
-    this.storage.clear();
+    // this.storage.clear();
+    this.storage.remove("token");
     this.isLoggedIn = false;
     delete this.token;
     // // return new Promise<void>((resolve))
-    return Promise.resolve({status:200,Message:"loged out"});
+    return Promise.resolve({ status: 200, Message: "loged out" });
   }
 
   user() {
     console.log("GET User Data");
     const headers = new HttpHeaders({
-      Authorization:
-        "Bearer" + " " + this.token,
+      Authorization: "Bearer" + " " + this.token,
     });
     return this.http
       .get(`${this.AUTH_SERVER_ADDRESS}/api/me`, { headers: headers })

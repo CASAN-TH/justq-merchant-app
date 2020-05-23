@@ -463,12 +463,16 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: '',
+        path: 'app',
         loadChildren: () => Promise.all(/*! import() | tabs-tabs-module */[__webpack_require__.e("common"), __webpack_require__.e("tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(m => m.TabsPageModule)
     },
     {
         path: 'landing',
         loadChildren: () => Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(m => m.LandingPageModule)
+    },
+    {
+        path: '',
+        loadChildren: () => Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("common"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(m => m.BoardingPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

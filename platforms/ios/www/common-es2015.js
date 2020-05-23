@@ -753,7 +753,8 @@ let AuthService = class AuthService {
     }
     logout() {
         console.log("Logout");
-        this.storage.clear();
+        // this.storage.clear();
+        this.storage.remove("token");
         this.isLoggedIn = false;
         delete this.token;
         // // return new Promise<void>((resolve))
@@ -842,6 +843,95 @@ AlertService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
 ], AlertService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/setting/shop.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/setting/shop.service.ts ***!
+  \*****************************************/
+/*! exports provided: ShopService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopService", function() { return ShopService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+
+
+
+
+
+let ShopService = class ShopService {
+    constructor(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.haveShop = false;
+        this.SHOP_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl; // Your Node Address
+        // this.getToken();
+        // this.getMyShop();
+    }
+    // getShop() {
+    //   return this.storage.get("shop").then(
+    //     (data) => {
+    //       if (data != null) {
+    //         this.haveShop = true;
+    //       } else {
+    //         this.haveShop = false;
+    //       }
+    //     },
+    //     (error) => {
+    //       this.haveShop = false;
+    //     }
+    //   );
+    // }
+    getToken() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.token = yield this.storage.get("token");
+            console.log(this.token);
+        });
+    }
+    getMyShop() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.shop = yield this.storage.get("shop");
+            return this.shop;
+        });
+    }
+    createShop(shop) {
+        // this.getToken();
+        // const headers = new HttpHeaders({
+        //   Authorization: "Bearer" + " " + this.token,
+        // });
+        return this.http
+            .post(`${this.SHOP_SERVER_ADDRESS}/api/shops`, shop)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("shop", res.data).then(() => {
+                console.log("shop Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.haveShop = true;
+            return res.data;
+        }));
+    }
+};
+ShopService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
+];
+ShopService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root",
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
+], ShopService);
 
 
 
