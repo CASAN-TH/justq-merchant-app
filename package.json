@@ -40,6 +40,8 @@
     "cordova-sqlite-storage": "^5.0.0",
     "core-js": "^2.5.4",
     "ionic-input-mask": "^1.0.1",
+    "ionic4-rating": "^1.0.9",
+    "ionic4-star-rating": "^1.1.1",
     "ngx-mask": "^9.0.2",
     "ngx-mask-ionic": "^1.1.2",
     "rxjs": "~6.5.1",

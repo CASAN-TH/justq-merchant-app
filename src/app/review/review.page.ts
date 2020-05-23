@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review.page.scss'],
 })
 export class ReviewPage implements OnInit {
-
+  rate:Number=1
+  
   constructor() { }
 
   ngOnInit() {
+    // console.log(rate);
   }
-
+  
+  logRatingChange(rating){
+    console.log("changed rating: ",rating);
+    // do your stuff
+  }
 }
