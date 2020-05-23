@@ -8,6 +8,9 @@ import { SetLocationPageRoutingModule } from './set-location-routing.module';
 
 import { SetLocationPage } from './set-location.page';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { GoogleMaps } from '@ionic-native/google-maps/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { SetLocationPage } from './set-location.page';
     IonicModule,
     SetLocationPageRoutingModule
   ],
-  declarations: [SetLocationPage]
+  declarations: [SetLocationPage],
+  providers: [Geolocation, GoogleMaps]
 })
 export class SetLocationPageModule {}

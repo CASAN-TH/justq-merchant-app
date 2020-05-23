@@ -66,13 +66,10 @@
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
+      "id": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps"
     },
     "is_top_level": true,
-    "variables": {
-      "API_KEY_FOR_ANDROID": "YOUR_ANDROID_API_KEY_IS_HERE",
-      "API_KEY_FOR_IOS": "YOUR_IOS_API_KEY_IS_HERE"
-    }
+    "variables": {}
   },
   "cordova-line-login-plugin": {
     "source": {
@@ -108,5 +105,21 @@
       "APP_ID": "244176503342330",
       "APP_NAME": "จัดคิว"
     }
+  },
+  "com.googlemaps.ios": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@4.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

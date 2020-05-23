@@ -1,47 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>shop</ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+  <ion-toolbar color="primary"> </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list no-border>
-    <ion-list-header>
-      Classes
-    </ion-list-header>
+  <ion-row class="row-header">
+    <ion-col size="12">
+      <h1 *ngIf="myShop">{{myShop.name}}</h1>
+    </ion-col>
+  </ion-row>
 
-    <ion-item>
-      <ion-icon name="planet" slot="start"></ion-icon>
-      Astronomy
-      <ion-note slot="end">
-        To the moon
-      </ion-note>
+ 
+  <ion-card *ngIf="user">
+    <ion-item button (click)="openHours()" lines="none">
+       {{user.displayname}}
+      <ion-avatar slot="start">
+        <img [src]="user.profileImageURL" />
+      </ion-avatar>
     </ion-item>
-
-    <ion-item>
-      <ion-toggle checked="false" slot="end"></ion-toggle>
-      <ion-label>
-        Muggle Studies
-      </ion-label>
-      <ion-icon name="body" slot="start"></ion-icon>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="leaf" slot="start"></ion-icon>
-      Herbology
-      <ion-icon name="rose" slot="end" color="secondary"></ion-icon>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="flask" slot="start"></ion-icon>
-      Potions
-      <ion-note slot="end">
-        Poisonous
-      </ion-note>
-    </ion-item>
-  </ion-list>
+  </ion-card>
 
   
+  <ion-card>
+    <ion-list lines="none">
+      <ion-item button (click)="openHours()">
+        ข้อมูลทั่วไป
+      </ion-item>
+      <ion-item button (click)="openHours()">
+        เวลาเปิด-ปิด
+      </ion-item>
+      <ion-item button (click)="gotoLocation()">
+        พิกัดร้าน
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
 <ion-footer>
   <ion-row>

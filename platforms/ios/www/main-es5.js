@@ -477,8 +477,12 @@ var routes = [
         loadChildren: function () { return Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(function (m) { return m.LandingPageModule; }); }
     },
     {
+        path: 'set-location',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | setting-set-location-set-location-module */ "default~boarding-boarding-module~setting-set-location-set-location-module").then(__webpack_require__.bind(null, /*! ./setting/set-location/set-location.module */ "./src/app/setting/set-location/set-location.module.ts")).then(function (m) { return m.SetLocationPageModule; }); }
+    },
+    {
         path: '',
-        loadChildren: function () { return Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("common"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(function (m) { return m.BoardingPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("default~boarding-boarding-module~setting-set-location-set-location-module"), __webpack_require__.e("common"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(function (m) { return m.BoardingPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

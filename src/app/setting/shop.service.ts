@@ -44,10 +44,6 @@ export class ShopService {
 
 
   createShop(shop: any) {
-    // this.getToken();
-    // const headers = new HttpHeaders({
-    //   Authorization: "Bearer" + " " + this.token,
-    // });
     return this.http
       .post(`${this.SHOP_SERVER_ADDRESS}/api/shops`, shop)
       .pipe(
@@ -64,4 +60,24 @@ export class ShopService {
         })
       );
   }
+
+  updateShop(shop: any) {
+    return this.http
+      .put(`${this.SHOP_SERVER_ADDRESS}/api/shops/${shop._id}`, shop)
+      .pipe(
+        tap((res: any) => {
+          //this.storage.setItem('token', token)
+          this.storage.set("shop", res.data).then(
+            () => {
+              console.log("shop Stored");
+            },
+            (error) => console.error("Error storing item", error)
+          );
+          this.haveShop = true;
+          return res.data;
+        })
+      );
+  }
+
+
 }

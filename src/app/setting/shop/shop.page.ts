@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/auth/auth.service";
-import { Router } from '@angular/router';
-import { AlertService } from 'src/app/services/alert.service';
+import { Router } from "@angular/router";
+import { AlertService } from "src/app/services/alert.service";
+import { ShopService } from "../shop.service";
 
 @Component({
   selector: "app-shop",
@@ -9,53 +10,33 @@ import { AlertService } from 'src/app/services/alert.service';
   styleUrls: ["./shop.page.scss"],
 })
 export class ShopPage implements OnInit {
-  shop: any = {
-    name: "",
-    hours: [
-      {
-        seq: 1,
-        dayofweek: "Monday",
-        times: [],
-      },
-      {
-        seq: 2,
-        dayofweek: "Tueday",
-        times: [],
-      },
-      {
-        seq: 3,
-        dayofweek: "Monday",
-        times: [],
-      },
-      {
-        seq: 4,
-        dayofweek: "Monday",
-        times: [],
-      },
-      {
-        seq: 5,
-        dayofweek: "Monday",
-        times: [],
-      },
-      {
-        seq: 6,
-        dayofweek: "Monday",
-        times: [],
-      },
-      {
-        seq: 7,
-        dayofweek: "Monday",
-        times: [],
-      },
-    ],
-  };
+  myShop: any;
+  user: any;
   constructor(
     private authService: AuthService,
+    private shopService: ShopService,
     private router: Router,
     private alertService: AlertService
-  ) {}
+  ) {
+    this.authService.getToken().then(() => {
+      this.authService.user().subscribe(
+        (res: any) => {
+          console.log(res);
+          this.user = res.data;
+        },
+        (error) => {
+          // console.log(error);
+          this.alertService.presentToast(error.error.message);
+        },
+        () => {}
+      );
+    });
+  }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.myShop = await this.shopService.getMyShop();
+    
+  }
 
   logout() {
     this.authService.logout().then((res: any) => {
@@ -63,5 +44,13 @@ export class ShopPage implements OnInit {
       this.alertService.presentToast("Logged Out");
       this.router.navigateByUrl("/app");
     });
+  }
+
+  openHours() {
+    console.log("openHours");
+  }
+
+  gotoLocation() {
+    this.router.navigateByUrl("/set-location");
   }
 }

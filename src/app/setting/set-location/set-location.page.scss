@@ -1,0 +1,15 @@
+#map_canvas {
+    height: 100%;
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 51px;
+        margin: auto;
+        width: 45px !important; // image width
+        height: 40px !important; // image height
+        z-index: 1;
+    }
+}
+

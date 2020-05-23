@@ -4,6 +4,7 @@ import { PolicyPage } from "../auth/policy/policy.page";
 import { SetLocationPage } from "../setting/set-location/set-location.page";
 import { ShopService } from "../setting/shop.service";
 import { Router } from "@angular/router";
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: "app-boarding",
@@ -15,7 +16,8 @@ export class BoardingPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private shopService: ShopService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) {}
 
   async ngOnInit() {
@@ -26,23 +28,13 @@ export class BoardingPage implements OnInit {
   }
 
   async registerShop(form) {
-    const setLocationModal = await this.modalController.create({
-      component: SetLocationPage,
-    });
-    setLocationModal.onDidDismiss().then((location) => {
-      console.log(location);
-      if (location.data) {
-        form.value.location = location.data;
-        console.log(form.value);
-        this.shopService.createShop(form.value).subscribe(
-          (res) => {
-            this.router.navigateByUrl("/app");
-          },
-          (err) => {},
-          () => {}
-        );
+    this.shopService.createShop(form.value).subscribe(
+      (res) => {
+        this.router.navigateByUrl("/set-location");
+      },
+      (err) => {
+        this.alertService.presentToast(err.error.message);
       }
-    });
-    return await setLocationModal.present();
+    );
   }
 }

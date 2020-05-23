@@ -85,6 +85,16 @@
 				<string>fb244176503342330</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
@@ -93,6 +103,8 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
 	</array>
 	<key>FacebookAppID</key>
 	<string>244176503342330</string>
@@ -100,5 +112,9 @@
 	<string>จัดคิว</string>
 	<key>FacebookHybridAppEvents</key>
 	<string>false</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app wants to get your location while this app runs only.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app wants to get your location always, even this app runs in background.</string>
 </dict>
 </plist>
