@@ -2043,6 +2043,61 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 
 /***/ }),
 
+/***/ "./src/app/services/alert.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/alert.service.ts ***!
+  \*******************************************/
+/*! exports provided: AlertService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertService", function() { return AlertService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+var AlertService = /** @class */ (function () {
+    function AlertService(toastController) {
+        this.toastController = toastController;
+    }
+    AlertService.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: message,
+                            duration: 2000,
+                            position: "top",
+                            color: "dark",
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AlertService.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] }
+    ]; };
+    AlertService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root",
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]])
+    ], AlertService);
+    return AlertService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/setting/set-location/set-location-routing.module.ts":
 /*!*********************************************************************!*\
   !*** ./src/app/setting/set-location/set-location-routing.module.ts ***!
@@ -2160,6 +2215,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/google-maps/ngx */ "./node_modules/@ionic-native/google-maps/ngx/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shop_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shop.service */ "./src/app/setting/shop.service.ts");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+
+
 
 
 
@@ -2167,81 +2226,98 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SetLocationPage = /** @class */ (function () {
-    function SetLocationPage(geolocation, _location, router) {
+    function SetLocationPage(geolocation, _location, router, shopService, alertService) {
         this.geolocation = geolocation;
         this._location = _location;
         this.router = router;
+        this.shopService = shopService;
+        this.alertService = alertService;
         // ngOnInit() {
         //   this.loadMap();
         // }
         this.ionViewLoaded = false;
     }
     SetLocationPage.prototype.ionViewDidEnter = function () {
-        if (!this.ionViewLoaded) {
-            this.ionViewLoaded = true;
-            this.ionViewDidLoad();
-        }
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a, currPos;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.shopService.getMyShop()];
+                    case 1:
+                        _a.myShop = _b.sent();
+                        return [4 /*yield*/, this.geolocation.getCurrentPosition()];
+                    case 2:
+                        currPos = _b.sent();
+                        if (this.myShop && this.myShop.location) {
+                            this.initialPos = this.myShop.location;
+                        }
+                        else {
+                            this.initialPos = {
+                                lat: currPos.coords.latitude,
+                                lng: currPos.coords.longitude,
+                            };
+                        }
+                        if (!this.ionViewLoaded) {
+                            this.ionViewLoaded = true;
+                            this.ionViewDidLoad();
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     SetLocationPage.prototype.ionViewDidLoad = function () {
+        console.log(this.initialPos);
         this.loadMap();
     };
     SetLocationPage.prototype.loadMap = function () {
-        // console.log(data);
         var _this = this;
-        // let initialPos = { lat: data.coords.latitude, lng: data.coords.longitude };
-        this.geolocation
-            .getCurrentPosition()
-            .then(function (resp) {
-            // resp.coords.latitude
-            // resp.coords.longitude
-            _this.initialPos = {
-                lat: resp.coords.latitude,
-                lng: resp.coords.longitude,
-            };
-            console.log(_this.initialPos);
-            var mapOptions = {
-                camera: {
-                    target: _this.initialPos,
-                    zoom: 14,
-                    tilt: 30,
-                },
-            };
-            _this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMaps"].create("map_canvas", mapOptions);
-            // let marker: Marker = this.map.addMarkerSync({
-            //   title: "Me",
-            //   icon: "blue",
-            //   // animation: "DROP",
-            //   position: this.initialPos,
-            // });
-            _this.map
-                .on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsEvent"].CAMERA_MOVE_END)
-                .subscribe(function (params) {
-                var cameraPosition = params[0];
-                console.log(cameraPosition);
-                _this.initialPos = cameraPosition.target;
-            });
-        })
-            .catch(function (error) {
-            console.log("Error getting location", error);
+        var mapOptions = {
+            camera: {
+                target: this.initialPos,
+                zoom: 14,
+                tilt: 30,
+            },
+        };
+        this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMaps"].create("map_canvas", mapOptions);
+        // let marker: Marker = this.map.addMarkerSync({
+        //   title: "Me",
+        //   icon: "blue",
+        //   // animation: "DROP",
+        //   position: this.initialPos,
+        // });
+        this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsEvent"].CAMERA_MOVE_END).subscribe(function (params) {
+            var cameraPosition = params[0];
+            console.log(cameraPosition);
+            _this.initialPos = cameraPosition.target;
         });
-        //  let watch = this.geolocation.watchPosition();
-        //  watch.subscribe((data) => {
-        //   // data can be a set of coordinates, or an error (if an error occurred).
-        //   // data.coords.latitude
-        //   // data.coords.longitude
-        //  });
     };
     SetLocationPage.prototype.close = function () {
         this._location.back();
     };
     SetLocationPage.prototype.updateLocation = function () {
+        var _this = this;
         console.log(this.initialPos);
-        this.router.navigateByUrl("/app");
+        this.myShop.location = this.initialPos;
+        this.shopService.updateShop(this.myShop).subscribe(function (res) {
+            _this.router.navigateByUrl("/app");
+        }, function (err) {
+            _this.alertService.presentToast(err.error.message);
+        });
+    };
+    SetLocationPage.prototype.ionViewWillLeave = function () {
+        // unset div & visibility on exit
+        this.map.setVisible(false);
+        this.map.setDiv(null);
     };
     SetLocationPage.ctorParameters = function () { return [
         { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_2__["Geolocation"] },
         { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+        { type: _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"] },
+        { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] }
     ]; };
     SetLocationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2251,9 +2327,130 @@ var SetLocationPage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_2__["Geolocation"],
             _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"],
+            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"]])
     ], SetLocationPage);
     return SetLocationPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/setting/shop.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/setting/shop.service.ts ***!
+  \*****************************************/
+/*! exports provided: ShopService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShopService", function() { return ShopService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
+
+
+
+
+
+var ShopService = /** @class */ (function () {
+    function ShopService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.haveShop = false;
+        this.SHOP_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl; // Your Node Address
+        // this.getToken();
+        // this.getMyShop();
+    }
+    // getShop() {
+    //   return this.storage.get("shop").then(
+    //     (data) => {
+    //       if (data != null) {
+    //         this.haveShop = true;
+    //       } else {
+    //         this.haveShop = false;
+    //       }
+    //     },
+    //     (error) => {
+    //       this.haveShop = false;
+    //     }
+    //   );
+    // }
+    ShopService.prototype.getToken = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.storage.get("token")];
+                    case 1:
+                        _a.token = _b.sent();
+                        console.log(this.token);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ShopService.prototype.getMyShop = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.storage.get("shop")];
+                    case 1:
+                        _a.shop = _b.sent();
+                        return [2 /*return*/, this.shop];
+                }
+            });
+        });
+    };
+    ShopService.prototype.createShop = function (shop) {
+        var _this = this;
+        return this.http
+            .post(this.SHOP_SERVER_ADDRESS + "/api/shops", shop)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("shop", res.data).then(function () {
+                console.log("shop Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.haveShop = true;
+            return res.data;
+        }));
+    };
+    ShopService.prototype.updateShop = function (shop) {
+        var _this = this;
+        return this.http
+            .put(this.SHOP_SERVER_ADDRESS + "/api/shops/" + shop._id, shop)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("shop", res.data).then(function () {
+                console.log("shop Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.haveShop = true;
+            return res.data;
+        }));
+    };
+    ShopService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
+    ]; };
+    ShopService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root",
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
+    ], ShopService);
+    return ShopService;
 }());
 
 

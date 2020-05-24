@@ -105,4 +105,10 @@ export class SetLocationPage {
     );
     
   }
+
+  ionViewWillLeave() {
+    // unset div & visibility on exit
+    this.map.setVisible(false);
+    this.map.setDiv(null);
+  }
 }

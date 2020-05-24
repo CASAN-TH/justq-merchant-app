@@ -109,7 +109,7 @@ var routes = [
                     {
                         path: '',
                         loadChildren: function () {
-                            return Promise.all(/*! import() | queue-queue-module */[__webpack_require__.e("common"), __webpack_require__.e("queue-queue-module")]).then(__webpack_require__.bind(null, /*! ../queue/queue.module */ "./src/app/queue/queue.module.ts")).then(function (m) { return m.QueuePageModule; });
+                            return __webpack_require__.e(/*! import() | queue-queue-module */ "queue-queue-module").then(__webpack_require__.bind(null, /*! ../queue/queue.module */ "./src/app/queue/queue.module.ts")).then(function (m) { return m.QueuePageModule; });
                         },
                         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
@@ -121,7 +121,7 @@ var routes = [
                     {
                         path: '',
                         loadChildren: function () {
-                            return Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; });
+                            return __webpack_require__.e(/*! import() | setting-shop-shop-module */ "setting-shop-shop-module").then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; });
                         },
                         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }

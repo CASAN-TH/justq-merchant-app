@@ -482,7 +482,7 @@ var routes = [
     },
     {
         path: '',
-        loadChildren: function () { return Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("default~boarding-boarding-module~setting-set-location-set-location-module"), __webpack_require__.e("common"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(function (m) { return m.BoardingPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("default~boarding-boarding-module~setting-set-location-set-location-module"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(function (m) { return m.BoardingPageModule; }); }
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
