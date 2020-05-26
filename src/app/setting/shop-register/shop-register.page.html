@@ -10,21 +10,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-row>
-    <ion-col size="12">
-      <h4>ชื่อร้านค้า</h4>
-    </ion-col>
-  </ion-row>
-  <ion-item>
-    <ion-label position="floating">ชื่อร้านค้า</ion-label>
-    <ion-input name="name" type="text" [(ngModel)]="shop.name" required>
-    </ion-input>
-  </ion-item> -->
-  <!-- <ion-row>
-    <ion-col size="12">
-      <h4>ข้อมูล วัน-เวลา เปิดให้บริการ</h4>
-    </ion-col>
-  </ion-row> -->
   <ion-row *ngFor="let hour of shop.openhours">
     <ion-col size="12">
       <ion-row>
