@@ -7,4 +7,5 @@ target 'just-q-merchant' do
 	pod 'FBSDKCoreKit', '5.15.0'
 	pod 'FBSDKLoginKit', '5.15.0'
 	pod 'FBSDKShareKit', '5.15.0'
+	pod 'OneSignal', '2.13.1'
 end

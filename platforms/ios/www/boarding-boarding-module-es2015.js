@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content>\n  <ion-slides pager=\"true\">\n\n    <ion-slide>\n      <div class=\"slide\">\n        <img src=\"./../../assets/slide-1.png\"/>\n        <h2>ลงทะเบียนร้านค้า</h2>\n        <p>ลงทะเบียนร้านค้าผ่านแอปพลิเคชัน <b>จัดคิว</b> ด้วย ชื่อร้าน และ พิกัดร้าน</p>\n      </div>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-2.png\"/>\n      <h2>ลูกค้าจองคิวร้านของคุณ</h2>\n      <p>แอปพลิเคชัน <b>จัดคิว</b> จะทำให้ลูกค้ามากมาย รู้จักร้านของคุณ และจองคิวมาที่ร้านคุณได้อย่างสะดวก</p>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-1.png\"/>\n      <h2>จัดการเวลาได้อย่างเป็นระบบ</h2>\n      <p>แอปพลิเคชัน <b>จัดคิว</b> จะทำให้ร้านของคุณบริหารเวลาได้อย่างคุ้มค่า และ รวดเร็ว</p>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-4.png\"/>\n      <h2>เริ่มเลยวันนี้</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"registerShop(form)\">\n        <ion-item>\n          <ion-label position=\"floating\">ชื่อร้านค้า</ion-label>\n          <ion-input\n            name=\"name\"\n            type=\"text\"\n            ngModel\n            required\n          >\n          </ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label position=\"floating\">ประเภทกิจการ</ion-label>\n          <ion-select name=\"shoptype\" ngModel required>\n            <ion-select-option value=\"1\">ร้านเสริมสวย</ion-select-option>\n            <ion-select-option value=\"2\">ร้านกาแฟ</ion-select-option>\n            <ion-select-option value=\"3\">ฟิตเนส</ion-select-option>\n            <ion-select-option value=\"4\">สนามกอล์ฟ</ion-select-option>\n            <ion-select-option value=\"5\">ร้านสัตว์เลี้ยง</ion-select-option>\n          </ion-select>\n        </ion-item>\n        <ion-row>\n          <ion-col size=\"12\"></ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col size=\"12\">\n            <ion-button\n              size=\"medium\"\n              type=\"submit\"\n              [disabled]=\"form.invalid\"\n              expand=\"block\"\n              > <ion-icon name=\"navigate\" slot=\"start\"></ion-icon>ระบุพิกัดร้าน</ion-button\n            >\n          </ion-col>\n        </ion-row>\n      </form>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n"
+module.exports = "<ion-content>\n  <ion-slides pager=\"true\">\n\n    <ion-slide>\n      <div class=\"slide\">\n        <img src=\"./../../assets/slide-1.png\"/>\n        <h2>ลงทะเบียนร้านค้า</h2>\n        <p>ลงทะเบียนร้านค้าผ่านแอปพลิเคชัน <b>จัดคิว</b> ด้วย ชื่อร้าน และ พิกัดร้าน</p>\n      </div>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-2.png\"/>\n      <h2>ลูกค้าจองคิวร้านของคุณ</h2>\n      <p>แอปพลิเคชัน <b>จัดคิว</b> จะทำให้ลูกค้ามากมาย รู้จักร้านของคุณ และจองคิวมาที่ร้านคุณได้อย่างสะดวก</p>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-3.png\"/>\n      <h2>จัดการเวลาได้อย่างเป็นระบบ</h2>\n      <p>แอปพลิเคชัน <b>จัดคิว</b> จะทำให้ร้านของคุณบริหารเวลาได้อย่างคุ้มค่า และ รวดเร็ว</p>\n    </ion-slide>\n\n    <ion-slide>\n      <img src=\"./../../assets/slide-4.png\"/>\n      <h2>เริ่มเลยวันนี้</h2>\n      <form #form=\"ngForm\" (ngSubmit)=\"registerShop(form)\">\n        <ion-item>\n          <ion-label position=\"floating\">ชื่อร้านค้า</ion-label>\n          <ion-input\n            name=\"name\"\n            type=\"text\"\n            ngModel\n            required\n          >\n          </ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label position=\"floating\">ประเภทกิจการ</ion-label>\n          <ion-select name=\"shoptype\" ngModel required>\n            <ion-select-option value=\"1\">ร้านเสริมสวย</ion-select-option>\n            <ion-select-option value=\"2\">ร้านกาแฟ</ion-select-option>\n            <ion-select-option value=\"3\">ฟิตเนส</ion-select-option>\n            <ion-select-option value=\"4\">สนามกอล์ฟ</ion-select-option>\n            <ion-select-option value=\"5\">ร้านสัตว์เลี้ยง</ion-select-option>\n          </ion-select>\n        </ion-item>\n        <ion-row>\n          <ion-col size=\"12\"></ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col size=\"12\">\n            <ion-button\n              size=\"medium\"\n              type=\"submit\"\n              [disabled]=\"form.invalid\"\n              expand=\"block\"\n              > <ion-icon name=\"navigate\" slot=\"start\"></ion-icon>ระบุพิกัดร้าน</ion-button\n            >\n          </ion-col>\n        </ion-row>\n      </form>\n    </ion-slide>\n\n  </ion-slides>\n</ion-content>\n"
 
 /***/ }),
 
@@ -126,12 +126,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let BoardingPage = class BoardingPage {
-    constructor(modalController, shopService, router, alertService) {
+    constructor(modalController, shopService, router, alertService, loadingController) {
         this.modalController = modalController;
         this.shopService = shopService;
         this.router = router;
         this.alertService = alertService;
+        this.loadingController = loadingController;
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -143,9 +145,13 @@ let BoardingPage = class BoardingPage {
     }
     registerShop(form) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const loading = yield this.loadingController.create();
+            yield loading.present();
             this.shopService.createShop(form.value).subscribe((res) => {
+                loading.dismiss();
                 this.router.navigateByUrl("/set-location");
             }, (err) => {
+                loading.dismiss();
                 this.alertService.presentToast(err.error.message);
             });
         });
@@ -155,7 +161,8 @@ BoardingPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
     { type: _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
+    { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
 BoardingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -166,7 +173,8 @@ BoardingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
         _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-        _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"]])
+        _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
 ], BoardingPage);
 
 

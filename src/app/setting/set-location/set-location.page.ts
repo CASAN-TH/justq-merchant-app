@@ -18,6 +18,8 @@ import {
 import { Router } from "@angular/router";
 import { ShopService } from "../shop.service";
 import { AlertService } from 'src/app/services/alert.service';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: "app-set-location",
@@ -33,7 +35,8 @@ export class SetLocationPage {
     private _location: Location,
     private router: Router,
     private shopService: ShopService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private loadingController: LoadingController
   ) {}
 
   // ngOnInit() {
@@ -58,9 +61,12 @@ export class SetLocationPage {
     }
   }
 
-  ionViewDidLoad() {
-    console.log(this.initialPos);
+  async ionViewDidLoad() {
+    // console.log(this.initialPos);
+    const loading = await this.loadingController.create();
+    await loading.present();
     this.loadMap();
+    loading.dismiss();
   }
 
   loadMap() {
@@ -92,14 +98,18 @@ export class SetLocationPage {
     this._location.back();
   }
 
-  updateLocation() {
+  async updateLocation() {
     console.log(this.initialPos);
+    const loading = await this.loadingController.create();
+    await loading.present();
     this.myShop.location = this.initialPos;
     this.shopService.updateShop(this.myShop).subscribe(
       (res) => {
+        loading.dismiss();
         this.router.navigateByUrl("/app");
       },
       (err) => {
+        loading.dismiss();
         this.alertService.presentToast(err.error.message);
       }
     );

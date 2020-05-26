@@ -5,6 +5,7 @@ import { SetLocationPage } from "../setting/set-location/set-location.page";
 import { ShopService } from "../setting/shop.service";
 import { Router } from "@angular/router";
 import { AlertService } from '../services/alert.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: "app-boarding",
@@ -17,7 +18,8 @@ export class BoardingPage implements OnInit {
     private modalController: ModalController,
     private shopService: ShopService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private loadingController: LoadingController
   ) {}
 
   async ngOnInit() {
@@ -28,11 +30,15 @@ export class BoardingPage implements OnInit {
   }
 
   async registerShop(form) {
+    const loading = await this.loadingController.create();
+    await loading.present();
     this.shopService.createShop(form.value).subscribe(
       (res) => {
+        loading.dismiss();
         this.router.navigateByUrl("/set-location");
       },
       (err) => {
+        loading.dismiss();
         this.alertService.presentToast(err.error.message);
       }
     );

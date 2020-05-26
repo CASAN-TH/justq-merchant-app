@@ -2217,6 +2217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _shop_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shop.service */ "./src/app/setting/shop.service.ts");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 
@@ -2226,12 +2228,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SetLocationPage = /** @class */ (function () {
-    function SetLocationPage(geolocation, _location, router, shopService, alertService) {
+    function SetLocationPage(geolocation, _location, router, shopService, alertService, loadingController) {
         this.geolocation = geolocation;
         this._location = _location;
         this.router = router;
         this.shopService = shopService;
         this.alertService = alertService;
+        this.loadingController = loadingController;
         // ngOnInit() {
         //   this.loadMap();
         // }
@@ -2269,8 +2272,22 @@ var SetLocationPage = /** @class */ (function () {
         });
     };
     SetLocationPage.prototype.ionViewDidLoad = function () {
-        console.log(this.initialPos);
-        this.loadMap();
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var loading;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.loadingController.create()];
+                    case 1:
+                        loading = _a.sent();
+                        return [4 /*yield*/, loading.present()];
+                    case 2:
+                        _a.sent();
+                        this.loadMap();
+                        loading.dismiss();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     SetLocationPage.prototype.loadMap = function () {
         var _this = this;
@@ -2298,13 +2315,30 @@ var SetLocationPage = /** @class */ (function () {
         this._location.back();
     };
     SetLocationPage.prototype.updateLocation = function () {
-        var _this = this;
-        console.log(this.initialPos);
-        this.myShop.location = this.initialPos;
-        this.shopService.updateShop(this.myShop).subscribe(function (res) {
-            _this.router.navigateByUrl("/app");
-        }, function (err) {
-            _this.alertService.presentToast(err.error.message);
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var loading;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(this.initialPos);
+                        return [4 /*yield*/, this.loadingController.create()];
+                    case 1:
+                        loading = _a.sent();
+                        return [4 /*yield*/, loading.present()];
+                    case 2:
+                        _a.sent();
+                        this.myShop.location = this.initialPos;
+                        this.shopService.updateShop(this.myShop).subscribe(function (res) {
+                            loading.dismiss();
+                            _this.router.navigateByUrl("/app");
+                        }, function (err) {
+                            loading.dismiss();
+                            _this.alertService.presentToast(err.error.message);
+                        });
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     SetLocationPage.prototype.ionViewWillLeave = function () {
@@ -2317,7 +2351,8 @@ var SetLocationPage = /** @class */ (function () {
         { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
         { type: _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"] },
-        { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] }
+        { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["LoadingController"] }
     ]; };
     SetLocationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2329,7 +2364,8 @@ var SetLocationPage = /** @class */ (function () {
             _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"],
-            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"]])
+            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["LoadingController"]])
     ], SetLocationPage);
     return SetLocationPage;
 }());

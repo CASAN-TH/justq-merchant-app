@@ -109,6 +109,9 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="OneSignalPush">
+        <param name="ios-package" value="OneSignalPush" />
+    </feature>
     <name>just-q-merchant</name>
     <description>Social distancing app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">จัดคิว.com</author>
@@ -198,4 +201,5 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAXgZ97lH6Fmyu7V9lg2wkMKsuPzuhu4Aw" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyAXgZ97lH6Fmyu7V9lg2wkMKsuPzuhu4Aw" />
+    <preference name="WKWebViewOnly" value="true" />
 </widget>

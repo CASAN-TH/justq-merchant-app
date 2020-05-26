@@ -13,23 +13,27 @@ PODS:
     - FBSDKShareKit/Share (= 5.15.0)
   - FBSDKShareKit/Share (5.15.0):
     - FBSDKCoreKit (~> 5.0)
+  - OneSignal (2.13.1)
 
 DEPENDENCIES:
   - FBSDKCoreKit (= 5.15.0)
   - FBSDKLoginKit (= 5.15.0)
   - FBSDKShareKit (= 5.15.0)
+  - OneSignal (= 2.13.1)
 
 SPEC REPOS:
   trunk:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - OneSignal
 
 SPEC CHECKSUMS:
   FBSDKCoreKit: 083ba8c8e37939c0b4c84250654c9be0aef0c2f8
   FBSDKLoginKit: bd40354a96e4718765713ef225bc368f10dc395d
   FBSDKShareKit: 23bad745329f966836f9a2493f86fc7c092b02e6
+  OneSignal: fa98eaa90372bb367b6a4a1c1622ffb9832c7600
 
-PODFILE CHECKSUM: 24ae5b1e2260774c1dcbe0271e45d8422e7c649c
+PODFILE CHECKSUM: 1d3ccead7ae282c047dba44da4258ea170b20ef5
 
 COCOAPODS: 1.8.4

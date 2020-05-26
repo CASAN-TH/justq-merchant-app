@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.casan.justq.merchant" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>just-q-merchant</name>
+<widget id="com.casan.justq.merchant" version="1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>just Q Merchant</name>
     <description>Social distancing app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">จัดคิว.com</author>
+    <author email="jigkoh3@hotmail.com" href="http://จัดคิว.com/">จัดคิว.com</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -21,6 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAXgZ97lH6Fmyu7V9lg2wkMKsuPzuhu4Aw" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyAXgZ97lH6Fmyu7V9lg2wkMKsuPzuhu4Aw" />
+    <preference name="WKWebViewOnly" value="true" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />

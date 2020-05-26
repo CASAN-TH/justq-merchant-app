@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7b42ee42-5e84-47f7-b6e3-a7cead1550d0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/gradle.xml" />
+        <option value="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aEJ2pvTCbM6kc1sYgJ5F9gEJib" />
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b42ee42-5e84-47f7-b6e3-a7cead1550d0" name="Default Changelist" comment="" />
+      <created>1578691467660</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578691467660</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Release for 2.8.3&#10;* iOS native SDK is now 2.12.5&#10;* Android native SKD is 3.12.5">
+      <created>1579298518125</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579298518125</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Mistake made, release is actually 2.8.2">
+      <created>1579298614616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579298614616</updated>
+    </task>
+    <task id="LOCAL-00003" summary="WIP - Update external user id and set and remove methods&#10;* Also updated Android native SDK version">
+      <created>1586368942426</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586368942426</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated iOS native SDK version 2.13.1">
+      <created>1586369089784</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586369089784</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated Android native SDK version 3.13.1">
+      <created>1586461034513</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586461034513</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Release commit for Cordova 2.9.0">
+      <created>1586463947982</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586463947982</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Release commit for Cordova 2.9.0">
+      <created>1586464111680</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586464111680</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Release commit for Cordova 2.9.1&#10;* Updates Android SDK from 3.13.1 to 3.13.2">
+      <created>1588117798475</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588117798475</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Release for 2.8.3&#10;* iOS native SDK is now 2.12.5&#10;* Android native SKD is 3.12.5" />
+    <MESSAGE value="Mistake made, release is actually 2.8.2" />
+    <MESSAGE value="WIP - Update external user id and set and remove methods&#10;* Also updated Android native SDK version" />
+    <MESSAGE value="Updated iOS native SDK version 2.13.1" />
+    <MESSAGE value="Updated Android native SDK version 3.13.1" />
+    <MESSAGE value="Release commit for Cordova 2.9.0" />
+    <MESSAGE value="Release commit for Cordova 2.9.1&#10;* Updates Android SDK from 3.13.1 to 3.13.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release commit for Cordova 2.9.1&#10;* Updates Android SDK from 3.13.1 to 3.13.2" />
+  </component>
+</project>

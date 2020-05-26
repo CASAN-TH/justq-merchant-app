@@ -27,7 +27,7 @@ export class PolicyPage implements OnInit {
 
   logScrollStart() {}
 
-  logScrolling() {}
+  logScrolling(e) {}
   logScrollEnd() {
     this.readed = true;
   }

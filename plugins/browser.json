@@ -46,6 +46,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.casan.justq.merchant"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.casan.justq.merchant"
     }
   },
   "dependent_plugins": {

@@ -12,6 +12,6 @@
     "libz.tbd": 1,
     "OpenGLES.framework": 1,
     "QuartzCore.framework": 1,
-    "SystemConfiguration.framework": 1,
+    "SystemConfiguration.framework": 2,
     "UIKit.framework": 1
 }

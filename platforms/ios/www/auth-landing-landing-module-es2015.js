@@ -146,7 +146,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content  fullscreen=\"true\">\n  <ion-img class=\"logo\" [src]=\"'../../../assets/icon/icon.png'\"></ion-img>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h3>เครื่องมือบริหารจัดการเวลาคุณภาพ</h3>\n    </ion-col>\n  </ion-row>\n</ion-content>\n<ion-footer>\n\n  <ion-row>\n    <ion-col padding=\"10\" >\n      <ion-button size=\"large\" expand=\"block\" color=\"success\" (click)=\"loginLine()\"> <ion-icon slot=\"start\" class=\"absolute-icon\" src=\"assets/icon/line-logo.svg\"></ion-icon> Line</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"secondary\"  (click)=\"loginFacebook()\"> <ion-icon src=\"assets/icon/facebook.svg\" slot=\"start\" class=\"absolute-icon\"></ion-icon> Facebook</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"tertiary\" (click)=\"login()\">  Login</ion-button>\n      <ion-button size=\"large\" expand=\"block\" color=\"dark\"  (click)=\"register()\">  register</ion-button>\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
+module.exports = "<ion-content  fullscreen=\"true\">\n  <ion-img class=\"logo\" [src]=\"'../../../assets/icon/icon.png'\"></ion-img>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h3>เครื่องมือบริหารจัดการเวลาคุณภาพ</h3>\n    </ion-col>\n  </ion-row>\n</ion-content>\n<ion-footer>\n\n  <ion-row>\n    <ion-col padding=\"10\" >\n      <ion-button size=\"large\" expand=\"block\" color=\"success\" (click)=\"loginLine()\"> <ion-icon slot=\"start\" class=\"absolute-icon\" src=\"assets/icon/line-logo.svg\"></ion-icon> Line</ion-button>\n      <!-- <ion-button size=\"large\" expand=\"block\" color=\"secondary\"  (click)=\"loginFacebook()\"> <ion-icon src=\"assets/icon/facebook.svg\" slot=\"start\" class=\"absolute-icon\"></ion-icon> Facebook</ion-button> -->\n      <!-- <ion-button size=\"large\" expand=\"block\" color=\"tertiary\" (click)=\"login()\">  Login</ion-button> -->\n      <!-- <ion-button size=\"large\" expand=\"block\" color=\"dark\"  (click)=\"register()\">  register</ion-button> -->\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -157,7 +157,7 @@ module.exports = "<ion-content  fullscreen=\"true\">\n  <ion-img class=\"logo\" 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon\n        slot=\"icon-only\"\n        color=\"primary\"\n        name=\"arrow-back\"\n        (click)=\"close()\"\n      ></ion-icon>\n    </ion-buttons>\n    <ion-title>ลงชื่อเข้าใช้</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen=\"true\">\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <ion-avatar>\n        <img src=\"../../../assets/icon/icon.png\" />\n      </ion-avatar>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h4>เราดีใจที่ท่านกลับมา จัดคิวออนไลน์</h4>\n    </ion-col>\n  </ion-row>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"login(form)\">\n    <ion-item>\n      <ion-label position=\"floating\">เบอร์โทรศัพท์</ion-label>\n      <ion-input\n        name=\"username\"\n        type=\"tel\"\n        mask=\"(000) 000-0000\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">รหัสผ่าน</ion-label>\n      <ion-input\n        name=\"password\"\n        [type]=\"showPassword ? 'text' : 'password'\"\n        ngModel\n        required\n      ></ion-input>\n      <ion-icon\n      [name]=\"showPassword ? 'eye'  : 'eye-off'\"\n      slot=\"end\"\n      (click)=\"togglePassword()\"\n      align-self-center\n    ></ion-icon>\n      \n    </ion-item>\n    <ion-row>\n      <ion-col size=\"12\">\n        <ion-button\n          size=\"medium\"\n          type=\"submit\"\n          [disabled]=\"form.invalid\"\n          expand=\"block\"\n          >ลงชื่อเข้าใช้</ion-button\n        >\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" text-left>\n        <ion-button fill=\"clear\" expand=\"block\" (click)=\"gotoForgot()\">\n          ลืมรหัสผ่าน คลิ๊กเลย\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </form>\n\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <p>หรือ ลงชื่อเข้าใช้ผ่าน</p>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"5\" text-right>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/facebook-icon.png\"\n        (click)=\"onFacbookLoginClick()\"\n      />\n    </ion-col>\n    <ion-col size=\"2\"> </ion-col>\n    <ion-col size=\"5\" text-left>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/line_icon.png\"\n        (click)=\"onLineLoginClick()\"\n      />\n    </ion-col>\n  </ion-row>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon\n        slot=\"icon-only\"\n        color=\"primary\"\n        name=\"arrow-back\"\n        (click)=\"close()\"\n      ></ion-icon>\n    </ion-buttons>\n    <ion-title>ลงชื่อเข้าใช้</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen=\"true\">\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <ion-avatar>\n        <img src=\"../../../assets/icon/icon.png\" />\n      </ion-avatar>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h4>เราดีใจที่ท่านกลับมา จัดคิวออนไลน์</h4>\n    </ion-col>\n  </ion-row>\n\n  <form #form=\"ngForm\" (ngSubmit)=\"login(form)\">\n    <ion-item>\n      <ion-label position=\"floating\">เบอร์โทรศัพท์</ion-label>\n      <ion-input\n        name=\"username\"\n        type=\"tel\"\n        mask=\"(000) 000-0000\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">รหัสผ่าน</ion-label>\n      <ion-input\n        name=\"password\"\n        [type]=\"showPassword ? 'text' : 'password'\"\n        ngModel\n        required\n      ></ion-input>\n      <ion-icon\n      [name]=\"showPassword ? 'eye'  : 'eye-off'\"\n      slot=\"end\"\n      (click)=\"togglePassword()\"\n      align-self-center\n    ></ion-icon>\n      \n    </ion-item>\n    <ion-row>\n      <ion-col size=\"12\">\n        <ion-button\n          size=\"medium\"\n          type=\"submit\"\n          [disabled]=\"form.invalid\"\n          expand=\"block\"\n          >ลงชื่อเข้าใช้</ion-button\n        >\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" text-left>\n        <ion-button fill=\"clear\" expand=\"block\" (click)=\"gotoForgot()\">\n          ลืมรหัสผ่าน คลิ๊กเลย\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </form>\n\n  <!-- <ion-row>\n    <ion-col size=\"12\" text-center>\n      <p>หรือ ลงชื่อเข้าใช้ผ่าน</p>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"5\" text-right>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/facebook-icon.png\"\n        (click)=\"onFacbookLoginClick()\"\n      />\n    </ion-col>\n    <ion-col size=\"2\"> </ion-col>\n    <ion-col size=\"5\" text-left>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/line_icon.png\"\n        (click)=\"onLineLoginClick()\"\n      />\n    </ion-col>\n  </ion-row> -->\n</ion-content>\n"
 
 /***/ }),
 
@@ -179,7 +179,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon\n        slot=\"icon-only\"\n        color=\"primary\"\n        name=\"arrow-back\"\n        (click)=\"close()\"\n      ></ion-icon>\n    </ion-buttons>\n    <ion-title>ลงทะเบียน</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen=\"true\">\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <ion-avatar>\n        <img src=\"../../../assets/icon/icon.png\" />\n      </ion-avatar>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h4>ลงทะเบียน จัดคิวออนไลน์</h4>\n    </ion-col>\n  </ion-row>\n  <form #form=\"ngForm\" (ngSubmit)=\"register(form)\">\n    <ion-item>\n      <ion-label position=\"floating\">ชื่อ</ion-label>\n      <ion-input\n        name=\"firstname\"\n        type=\"text\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">นามสกุล</ion-label>\n      <ion-input\n        name=\"lastname\"\n        type=\"text\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">เบอร์โทรศัพท์</ion-label>\n      <ion-input\n        name=\"username\"\n        type=\"text\"\n        mask=\"(000) 000-0000\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">รหัสผ่าน</ion-label>\n      <ion-input\n        name=\"password\"\n        [type]=\"showPassword ? 'text' : 'password'\"\n        ngModel\n        required\n      ></ion-input>\n      <ion-icon\n      [name]=\"showPassword ? 'eye'  : 'eye-off'\"\n      slot=\"end\"\n      (click)=\"togglePassword()\"\n      align-self-center\n    ></ion-icon>\n      \n    </ion-item>\n    <ion-row>\n      <ion-col size=\"12\">\n        <ion-button\n          size=\"medium\"\n          type=\"submit\"\n          [disabled]=\"form.invalid\"\n          expand=\"block\"\n          >ลงทะเบียน</ion-button\n        >\n      </ion-col>\n    </ion-row>\n  </form>\n\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <p>หรือ ลงทะเบียนผ่าน</p>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"5\" text-right>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/facebook-icon.png\"\n        (click)=\"onFacbookLoginClick()\"\n      />\n    </ion-col>\n    <ion-col size=\"2\"> </ion-col>\n    <ion-col size=\"5\" text-left>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/line_icon.png\"\n        (click)=\"onLineLoginClick()\"\n      />\n    </ion-col>\n  </ion-row>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-icon\n        slot=\"icon-only\"\n        color=\"primary\"\n        name=\"arrow-back\"\n        (click)=\"close()\"\n      ></ion-icon>\n    </ion-buttons>\n    <ion-title>ลงทะเบียน</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content fullscreen=\"true\">\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <ion-avatar>\n        <img src=\"../../../assets/icon/icon.png\" />\n      </ion-avatar>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\" text-center>\n      <h4>ลงทะเบียน จัดคิวออนไลน์</h4>\n    </ion-col>\n  </ion-row>\n  <form #form=\"ngForm\" (ngSubmit)=\"register(form)\">\n    <ion-item>\n      <ion-label position=\"floating\">ชื่อ</ion-label>\n      <ion-input\n        name=\"firstname\"\n        type=\"text\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">นามสกุล</ion-label>\n      <ion-input\n        name=\"lastname\"\n        type=\"text\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">เบอร์โทรศัพท์</ion-label>\n      <ion-input\n        name=\"username\"\n        type=\"text\"\n        mask=\"(000) 000-0000\"\n        ngModel\n        required\n      >\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">รหัสผ่าน</ion-label>\n      <ion-input\n        name=\"password\"\n        [type]=\"showPassword ? 'text' : 'password'\"\n        ngModel\n        required\n      ></ion-input>\n      <ion-icon\n      [name]=\"showPassword ? 'eye'  : 'eye-off'\"\n      slot=\"end\"\n      (click)=\"togglePassword()\"\n      align-self-center\n    ></ion-icon>\n      \n    </ion-item>\n    <ion-row>\n      <ion-col size=\"12\">\n        <ion-button\n          size=\"medium\"\n          type=\"submit\"\n          [disabled]=\"form.invalid\"\n          expand=\"block\"\n          >ลงทะเบียน</ion-button\n        >\n      </ion-col>\n    </ion-row>\n  </form>\n\n  <!-- <ion-row>\n    <ion-col size=\"12\" text-center>\n      <p>หรือ ลงทะเบียนผ่าน</p>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"5\" text-right>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/facebook-icon.png\"\n        (click)=\"onFacbookLoginClick()\"\n      />\n    </ion-col>\n    <ion-col size=\"2\"> </ion-col>\n    <ion-col size=\"5\" text-left>\n      <img\n        class=\"social\"\n        src=\"../../../assets/icon/line_icon.png\"\n        (click)=\"onLineLoginClick()\"\n      />\n    </ion-col>\n  </ion-row> -->\n</ion-content>\n"
 
 /***/ }),
 
@@ -470,7 +470,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LandingPage = class LandingPage {
-    constructor(router, modalController, lineLogin, fb, authService, alertService, shopService) {
+    constructor(router, modalController, lineLogin, fb, authService, alertService, shopService, loadingController) {
         this.router = router;
         this.modalController = modalController;
         this.lineLogin = lineLogin;
@@ -478,6 +478,7 @@ let LandingPage = class LandingPage {
         this.authService = authService;
         this.alertService = alertService;
         this.shopService = shopService;
+        this.loadingController = loadingController;
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -503,28 +504,32 @@ let LandingPage = class LandingPage {
     }
     loginLine() {
         this.lineLogin.initialize({ channel_id: "1654214807" });
-        // this.lineLogin
-        //   .login()
-        //   .then((result) => console.log(result))
-        //   .catch((error) => console.log(error));
-        this.lineLogin.login()
-            .then((user) => {
+        this.lineLogin
+            .login()
+            .then((user) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             user.shop_id = this.myShop._id;
-            this.authService.lineLogin(user).subscribe(data => {
+            const loading = yield this.loadingController.create();
+            yield loading.present();
+            this.authService.lineLogin(user).subscribe((data) => {
+                loading.dismiss();
                 this.alertService.presentToast("Logged In");
-            }, error => {
+            }, (error) => {
                 // console.log(error);
+                loading.dismiss();
                 this.alertService.presentToast(error.error.message);
             }, () => {
-                this.router.navigateByUrl('/app');
+                this.router.navigateByUrl("/app");
             });
-        })
-            .catch(error => console.log(error));
+        }))
+            .catch((error) => console.log(error));
     }
     loginFacebook() {
-        this.fb.login(['public_profile', 'email'])
+        this.fb
+            .login(["public_profile", "email"])
             .then((res) => {
-            this.fb.api('/me?fields=id,first_name,last_name,picture.width(300).height(300)', []).then((user) => {
+            this.fb
+                .api("/me?fields=id,first_name,last_name,picture.width(300).height(300)", [])
+                .then((user) => {
                 // this.auth.facebookLogin(user).then(() => {
                 //   if (this.auth.redirectUrl) {
                 //     this.router.navigateByUrl(this.auth.redirectUrl);
@@ -537,7 +542,7 @@ let LandingPage = class LandingPage {
                 // })
             });
         })
-            .catch(err => alert(JSON.stringify(err)));
+            .catch((err) => alert(JSON.stringify(err)));
     }
 };
 LandingPage.ctorParameters = () => [
@@ -547,7 +552,8 @@ LandingPage.ctorParameters = () => [
     { type: _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_6__["Facebook"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
     { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] },
-    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"] }
+    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
 LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -561,7 +567,8 @@ LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_6__["Facebook"],
         _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
         src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"],
-        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"]])
+        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
 ], LandingPage);
 
 
@@ -854,7 +861,7 @@ let PolicyPage = class PolicyPage {
         this.modalController.dismiss();
     }
     logScrollStart() { }
-    logScrolling() { }
+    logScrolling(e) { }
     logScrollEnd() {
         this.readed = true;
     }

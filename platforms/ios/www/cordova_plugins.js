@@ -368,6 +368,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "navigator.geolocation"
       ]
+    },
+    {
+      "id": "onesignal-cordova-plugin.OneSignal",
+      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+      "pluginId": "onesignal-cordova-plugin",
+      "clobbers": [
+        "OneSignal"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -385,6 +393,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-facebook4": "6.4.0",
     "com.googlemaps.ios": "3.8.0",
     "cordova-plugin-googlemaps": "2.8.0-20200521-2050",
-    "cordova-plugin-geolocation": "4.0.2"
+    "cordova-plugin-geolocation": "4.0.2",
+    "onesignal-cordova-plugin": "2.9.1"
   };
 });

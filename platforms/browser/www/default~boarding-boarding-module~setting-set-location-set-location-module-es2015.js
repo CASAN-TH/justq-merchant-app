@@ -2202,6 +2202,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _shop_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shop.service */ "./src/app/setting/shop.service.ts");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 
@@ -2211,12 +2213,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SetLocationPage = class SetLocationPage {
-    constructor(geolocation, _location, router, shopService, alertService) {
+    constructor(geolocation, _location, router, shopService, alertService, loadingController) {
         this.geolocation = geolocation;
         this._location = _location;
         this.router = router;
         this.shopService = shopService;
         this.alertService = alertService;
+        this.loadingController = loadingController;
         // ngOnInit() {
         //   this.loadMap();
         // }
@@ -2242,8 +2245,13 @@ let SetLocationPage = class SetLocationPage {
         });
     }
     ionViewDidLoad() {
-        console.log(this.initialPos);
-        this.loadMap();
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            // console.log(this.initialPos);
+            const loading = yield this.loadingController.create();
+            yield loading.present();
+            this.loadMap();
+            loading.dismiss();
+        });
     }
     loadMap() {
         let mapOptions = {
@@ -2270,13 +2278,24 @@ let SetLocationPage = class SetLocationPage {
         this._location.back();
     }
     updateLocation() {
-        console.log(this.initialPos);
-        this.myShop.location = this.initialPos;
-        this.shopService.updateShop(this.myShop).subscribe((res) => {
-            this.router.navigateByUrl("/app");
-        }, (err) => {
-            this.alertService.presentToast(err.error.message);
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log(this.initialPos);
+            const loading = yield this.loadingController.create();
+            yield loading.present();
+            this.myShop.location = this.initialPos;
+            this.shopService.updateShop(this.myShop).subscribe((res) => {
+                loading.dismiss();
+                this.router.navigateByUrl("/app");
+            }, (err) => {
+                loading.dismiss();
+                this.alertService.presentToast(err.error.message);
+            });
         });
+    }
+    ionViewWillLeave() {
+        // unset div & visibility on exit
+        this.map.setVisible(false);
+        this.map.setDiv(null);
     }
 };
 SetLocationPage.ctorParameters = () => [
@@ -2284,7 +2303,8 @@ SetLocationPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
     { type: _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"] },
-    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] }
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["LoadingController"] }
 ];
 SetLocationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2296,7 +2316,8 @@ SetLocationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"],
         _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
         _shop_service__WEBPACK_IMPORTED_MODULE_6__["ShopService"],
-        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"]])
+        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["LoadingController"]])
 ], SetLocationPage);
 
 

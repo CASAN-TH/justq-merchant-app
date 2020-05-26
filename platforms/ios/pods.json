@@ -26,6 +26,12 @@
             "name": "FBSDKShareKit",
             "spec": "5.15.0",
             "count": 1
+        },
+        "OneSignal": {
+            "name": "OneSignal",
+            "type": "podspec",
+            "spec": "2.13.1",
+            "count": 1
         }
     }
 }
