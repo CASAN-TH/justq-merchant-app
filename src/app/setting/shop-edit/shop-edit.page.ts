@@ -23,6 +23,14 @@ export class ShopEditPage implements OnInit {
     console.log(this.shop);
   }
 
+  saveShop() {
+    // console.log(this.shop);
+    this.shopService.updateShop(this.shop).subscribe((res: any) => {
+      console.log(res);
+      this._location.back();
+    });
+  }
+
   goback() {
     this._location.back();
   }

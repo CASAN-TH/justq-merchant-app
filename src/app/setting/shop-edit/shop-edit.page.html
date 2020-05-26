@@ -13,5 +13,33 @@
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <ion-col size="12">
+      <h4>ชื่อร้านค้า</h4>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <!-- <ion-label position="floating">ชื่อร้านค้า</ion-label> -->
+    <ion-input name="name" type="text" [(ngModel)]="shop.name" required>
+    </ion-input>
+  </ion-item>
+
+  
+  <ion-item>
+    <ion-label position="floating">ประเภทกิจการ</ion-label>
+    <ion-select name="shoptype" [(ngModel)]="shop.shoptype" required>
+      <ion-select-option value="1">ร้านเสริมสวย</ion-select-option>
+      <ion-select-option value="2">ร้านกาแฟ</ion-select-option>
+      <ion-select-option value="3">ฟิตเนส</ion-select-option>
+      <ion-select-option value="4">สนามกอล์ฟ</ion-select-option>
+      <ion-select-option value="5">ร้านสัตว์เลี้ยง</ion-select-option>
+    </ion-select>
+  </ion-item>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button size="medium" expand="block" (click)="saveShop()">บันทึกข้อมูลร้านค้า</ion-button>
+  </ion-toolbar>
+</ion-footer>
