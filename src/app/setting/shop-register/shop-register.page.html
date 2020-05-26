@@ -5,26 +5,26 @@
         <ion-icon slot="icon-only" mode="ios" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>ลงทะเบียนร้านค้า</ion-title>
+    <ion-title>ข้อมูลวัน-เวลาเปิดให้บริการ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-row>
+  <!-- <ion-row>
     <ion-col size="12">
       <h4>ชื่อร้านค้า</h4>
     </ion-col>
   </ion-row>
   <ion-item>
-    <!-- <ion-label position="floating">ชื่อร้านค้า</ion-label> -->
+    <ion-label position="floating">ชื่อร้านค้า</ion-label>
     <ion-input name="name" type="text" [(ngModel)]="shop.name" required>
     </ion-input>
-  </ion-item>
-  <ion-row>
+  </ion-item> -->
+  <!-- <ion-row>
     <ion-col size="12">
-      <h4>วัน-เวลา เปิดให้บริการ</h4>
+      <h4>ข้อมูล วัน-เวลา เปิดให้บริการ</h4>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
   <ion-row *ngFor="let hour of shop.openhours">
     <ion-col size="12">
       <ion-row>
@@ -55,6 +55,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button size="medium" expand="block" (click)="createShop()">ลงทะเบียนร้านค้า</ion-button>
+    <ion-button size="medium" expand="block" (click)="createShop()">บันทึกข้อมูลวันเวลาเปิด-ปิด</ion-button>
   </ion-toolbar>
 </ion-footer>
