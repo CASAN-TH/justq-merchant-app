@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ShopService } from "../shop.service";
 import { Router } from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-shop-register",
@@ -8,97 +9,114 @@ import { Router } from "@angular/router";
   styleUrls: ["./shop-register.page.scss"],
 })
 export class ShopRegisterPage implements OnInit {
-  shop: any = {
-    name: "",
-    openhours: [
-      {
-        seq: 1,
-        dayofweek: "จันทร์",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 2,
-        dayofweek: "อังคาร",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 3,
-        dayofweek: "พุธ",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 4,
-        dayofweek: "พฤหัสบดี",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 5,
-        dayofweek: "ศุกร์",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 6,
-        dayofweek: "เสาร์",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-      {
-        seq: 7,
-        dayofweek: "อาทิตย์",
-        isopen: true,
-        opentime: [
-          {
-            start: "08:30",
-            end: "18:00",
-          },
-        ],
-      },
-    ],
-  };
-  constructor(private shopService: ShopService, private router: Router) {}
 
-  ngOnInit() {}
+  shop: any = {};
+
+  constructor(
+    private shopService: ShopService,
+    private router: Router,
+    private _location: Location,
+  ) { }
+
+  async ngOnInit() {
+    this.shop = await this.shopService.getMyShop();
+    // console.log(this.shop);
+    if (!this.shop.openhours || this.shop.openhours.length === 0) {
+      // console.log("ture");
+      this.shop.openhours = [
+        {
+          seq: 1,
+          dayofweek: "จันทร์",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 2,
+          dayofweek: "อังคาร",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 3,
+          dayofweek: "พุธ",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 4,
+          dayofweek: "พฤหัสบดี",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 5,
+          dayofweek: "ศุกร์",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 6,
+          dayofweek: "เสาร์",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+        {
+          seq: 7,
+          dayofweek: "อาทิตย์",
+          isopen: true,
+          opentime: [
+            {
+              start: "08:30",
+              end: "18:00",
+            },
+          ],
+        },
+      ]
+      // console.log(this.shop);
+    }
+
+  }
 
   createShop() {
-    console.log(this.shop);
-    this.shopService.createShop(this.shop).subscribe((res: any) => {
+    // console.log(this.shop);
+    this.shopService.updateShop(this.shop).subscribe((res: any) => {
       console.log(res);
-      this.router.navigateByUrl('/set-location');
+      this._location.back();
+      // this.router.navigateByUrl('/set-location');
     });
+  }
+
+  goBackClick() {
+    this._location.back();
   }
 }

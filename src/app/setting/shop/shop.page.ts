@@ -35,6 +35,7 @@ export class ShopPage implements OnInit {
 
   async ngOnInit() {
     this.myShop = await this.shopService.getMyShop();
+    console.log(this.myShop);
     
   }
 
@@ -48,6 +49,16 @@ export class ShopPage implements OnInit {
 
   openHours() {
     console.log("openHours");
+    this.router.navigateByUrl("/shop-register");
+  }
+
+  shopEdit() {
+    console.log("shopEdit");
+    this.router.navigateByUrl("/shop-edit");
+  }
+
+  shopServiceType(){
+    this.router.navigateByUrl("/shop-servicetype");
   }
 
   gotoLocation() {
