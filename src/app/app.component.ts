@@ -35,6 +35,8 @@ export class AppComponent {
   }
 
   oneSignalConfig() {
+
+    console.log("oneSignal.startInit"); 
     this.oneSignal.startInit(
       "3be709ff-f973-4ee8-ab18-68d84b47e910",
       "justq-merchant"
@@ -52,6 +54,7 @@ export class AppComponent {
       // do something when a notification is opened
     });
 
+    console.log("oneSignal.endInit"); 
     this.oneSignal.endInit();
 
     this.oneSignal
@@ -67,6 +70,7 @@ export class AppComponent {
         //  window.localStorage.setItem(Constants.URL() + '@oneSignal', JSON.stringify(data));
       })
       .catch((error) => {
+        console.log(`oneSignal error : ${error}`); 
         throw error;
       });
   }

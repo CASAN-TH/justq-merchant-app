@@ -561,6 +561,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.oneSignalConfig = function () {
         var _this = this;
+        console.log("oneSignal.startInit");
         this.oneSignal.startInit("3be709ff-f973-4ee8-ab18-68d84b47e910", "justq-merchant");
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
         this.oneSignal.handleNotificationReceived().subscribe(function () {
@@ -569,6 +570,7 @@ var AppComponent = /** @class */ (function () {
         this.oneSignal.handleNotificationOpened().subscribe(function () {
             // do something when a notification is opened
         });
+        console.log("oneSignal.endInit");
         this.oneSignal.endInit();
         this.oneSignal
             .getIds()
@@ -580,6 +582,7 @@ var AppComponent = /** @class */ (function () {
             //  window.localStorage.setItem(Constants.URL() + '@oneSignal', JSON.stringify(data));
         })
             .catch(function (error) {
+            console.log("oneSignal error : " + error);
             throw error;
         });
     };

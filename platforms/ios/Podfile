@@ -2,8 +2,8 @@
 source 'https://cdn.cocoapods.org/'
 platform :ios, '11.0'
 use_frameworks!
-target 'just-q-merchant' do
-	project 'just-q-merchant.xcodeproj'
+target 'just Q Merchant' do
+	project 'just Q Merchant.xcodeproj'
 	pod 'FBSDKCoreKit', '5.15.0'
 	pod 'FBSDKLoginKit', '5.15.0'
 	pod 'FBSDKShareKit', '5.15.0'
