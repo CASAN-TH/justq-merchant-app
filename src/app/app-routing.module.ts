@@ -15,9 +15,14 @@ const routes: Routes = [
     loadChildren: () => import('./setting/set-location/set-location.module').then( m => m.SetLocationPageModule)
   },
   {
+    path: 'shop-edit',
+    loadChildren: () => import('./setting/shop-edit/shop-edit.module').then( m => m.ShopEditPageModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./boarding/boarding.module').then( m => m.BoardingPageModule)
   }
+
 ];
 @NgModule({
   imports: [
