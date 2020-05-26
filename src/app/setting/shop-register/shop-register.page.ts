@@ -101,9 +101,9 @@ export class ShopRegisterPage implements OnInit {
 
   async ngOnInit() {
     this.shop = await this.shopService.getMyShop();
-    console.log(this.shop);
+    // console.log(this.shop);
     if (!this.shop.openhours || this.shop.openhours.length === 0) {
-      console.log("ture");
+      // console.log("ture");
       this.shop.openhours = [
         {
           seq: 1,
@@ -183,13 +183,13 @@ export class ShopRegisterPage implements OnInit {
           ],
         },
       ]
-      console.log(this.shop);
+      // console.log(this.shop);
     }
 
   }
 
   createShop() {
-    console.log(this.shop);
+    // console.log(this.shop);
     this.shopService.updateShop(this.shop).subscribe((res: any) => {
       console.log(res);
       this._location.back();
