@@ -1,59 +1,56 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start" (click)="goBackClick()">
+      <ion-button>
+        <ion-icon slot="icon-only" mode="ios" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>ลงทะเบียนร้านค้า</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-row>
-      <ion-col size="12">
-        <h4>ชื่อร้านค้า</h4>
-      </ion-col>
-    </ion-row>
-    <ion-item>
-      <!-- <ion-label position="floating">ชื่อร้านค้า</ion-label> -->
-      <ion-input name="name" type="text" [(ngModel)]="shop.name" required>
-      </ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col size="12">
-        <h4>วัน-เวลา เปิดให้บริการ</h4>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let hour of shop.openhours">
-      <ion-col size="12">
-        <ion-row>
-          <ion-col size="12">
-            <ion-item lines="none">
-              <ion-checkbox [(ngModel)]="hour.isopen"></ion-checkbox>
-              {{hour.dayofweek}}
-            </ion-item>
-            <ion-row *ngFor="let time of hour.opentime">
-              <ion-col size="6">
-                <ion-item>
-                  <ion-label position="floating">เปิด</ion-label>
-                  <ion-datetime
-                    display-format="HH:mm"
-                    picker-format="HH:mm"
-                    [(ngModel)]="time.start"
-                  ></ion-datetime>
-                </ion-item>
-              </ion-col>
-              <ion-col size="6">
-                <ion-item>
-                  <ion-label position="floating">ปิด</ion-label>
-                  <ion-datetime
-                    display-format="HH:mm"
-                    picker-format="HH:mm"
-                    [(ngModel)]="time.end"
-                  ></ion-datetime>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <h4>ชื่อร้านค้า</h4>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <!-- <ion-label position="floating">ชื่อร้านค้า</ion-label> -->
+    <ion-input name="name" type="text" [(ngModel)]="shop.name" required>
+    </ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col size="12">
+      <h4>วัน-เวลา เปิดให้บริการ</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let hour of shop.openhours">
+    <ion-col size="12">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-checkbox [(ngModel)]="hour.isopen"></ion-checkbox>
+            {{hour.dayofweek}}
+          </ion-item>
+          <ion-row *ngFor="let time of hour.opentime">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">เปิด</ion-label>
+                <ion-datetime display-format="HH:mm" picker-format="HH:mm" [(ngModel)]="time.start"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">ปิด</ion-label>
+                <ion-datetime display-format="HH:mm" picker-format="HH:mm" [(ngModel)]="time.end"></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
 <ion-footer>
