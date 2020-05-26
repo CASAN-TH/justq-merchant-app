@@ -26,11 +26,15 @@ const routes: Routes = [
     path: 'shop-edit',
     loadChildren: () => import('./setting/shop-edit/shop-edit.module').then( m => m.ShopEditPageModule)
   },
-
+  {
+    path: 'shop-servicetype',
+    loadChildren: () => import('./setting/shop-servicetype/shop-servicetype.module').then( m => m.ShopServicetypePageModule)
+  },
   {
     path: '',
     loadChildren: () => import('./boarding/boarding.module').then( m => m.BoardingPageModule)
   }
+
 
 ];
 @NgModule({

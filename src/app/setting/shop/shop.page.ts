@@ -57,6 +57,10 @@ export class ShopPage implements OnInit {
     this.router.navigateByUrl("/shop-edit");
   }
 
+  shopServiceType(){
+    this.router.navigateByUrl("/shop-servicetype");
+  }
+
   gotoLocation() {
     this.router.navigateByUrl("/set-location");
   }
