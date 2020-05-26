@@ -15,9 +15,18 @@ const routes: Routes = [
     loadChildren: () => import('./setting/set-location/set-location.module').then( m => m.SetLocationPageModule)
   },
   {
+    path: 'shop-register',
+    loadChildren: () => import('./setting/shop-register/shop-register.module').then( m => m.ShopRegisterPageModule)
+  },
+  {
+    path: 'shop',
+    loadChildren: () => import('./setting/shop/shop.module').then( m => m.ShopPageModule)
+  },
+  {
     path: 'shop-edit',
     loadChildren: () => import('./setting/shop-edit/shop-edit.module').then( m => m.ShopEditPageModule)
   },
+
   {
     path: '',
     loadChildren: () => import('./boarding/boarding.module').then( m => m.BoardingPageModule)

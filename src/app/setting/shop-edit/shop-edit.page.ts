@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
+import { ShopService } from '../shop.service';
 
 
 @Component({
@@ -9,12 +10,17 @@ import { Location } from "@angular/common";
 })
 export class ShopEditPage implements OnInit {
 
+  shop: any = {};
+
   constructor(
     private _location: Location,
+    private shopService: ShopService,
     
     ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.shop = await this.shopService.getMyShop();
+    console.log(this.shop);
   }
 
   goback() {

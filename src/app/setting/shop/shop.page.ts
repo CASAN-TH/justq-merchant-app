@@ -48,6 +48,7 @@ export class ShopPage implements OnInit {
 
   openHours() {
     console.log("openHours");
+    this.router.navigateByUrl("/shop-register");
   }
 
   gotoLocation() {
