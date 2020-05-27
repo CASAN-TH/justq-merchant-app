@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-googlemaps.DirectionsService", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.DirectionsService", function(require, exports, module) {
+
 
 /*****************************************************************************
  * DirectionsService class

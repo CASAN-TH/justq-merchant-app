@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\"> </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-row class=\"row-header\">\n    <ion-col size=\"12\">\n      <h1 *ngIf=\"myShop\">{{myShop.name}}</h1>\n    </ion-col>\n  </ion-row>\n\n \n  <ion-card *ngIf=\"user\">\n    <ion-item button (click)=\"openHours()\" lines=\"none\">\n       {{user.displayname}}\n      <ion-avatar slot=\"start\">\n        <img [src]=\"user.profileImageURL\" />\n      </ion-avatar>\n    </ion-item>\n  </ion-card>\n\n  \n  <ion-card>\n    <ion-list lines=\"none\">\n      <ion-item button (click)=\"openHours()\">\n        ข้อมูลทั่วไป\n      </ion-item>\n      <ion-item button (click)=\"openHours()\">\n        เวลาเปิด-ปิด\n      </ion-item>\n      <ion-item button (click)=\"gotoLocation()\">\n        พิกัดร้าน\n      </ion-item>\n    </ion-list>\n  </ion-card>\n</ion-content>\n<ion-footer>\n  <ion-row>\n    <ion-col padding=\"10\">\n      <ion-button size=\"medium\" expand=\"block\" (click)=\"logout()\"\n        >ออกจากระบบ</ion-button\n      >\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
+module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\"> </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-row class=\"row-header\">\n    <ion-col size=\"12\">\n      <h1 *ngIf=\"myShop\">{{myShop.name}}</h1>\n    </ion-col>\n  </ion-row>\n\n \n  <ion-card *ngIf=\"user\">\n    <ion-item button (click)=\"openHours()\" lines=\"none\">\n       {{user.displayname}}\n      <ion-avatar slot=\"start\">\n        <img [src]=\"user.profileImageURL\" />\n      </ion-avatar>\n    </ion-item>\n  </ion-card>\n\n  \n  <ion-card>\n    <ion-list lines=\"none\">\n      <ion-item button (click)=\"shopEdit()\">\n        ข้อมูลทั่วไป\n      </ion-item>\n      <ion-item button (click)=\"openHours()\">\n        เวลาเปิด-ปิด\n      </ion-item>\n      <ion-item button (click)=\"shopServiceType()\">\n        ประเภทการให้บริการ\n      </ion-item>\n      <ion-item button (click)=\"gotoLocation()\">\n        พิกัดร้าน\n      </ion-item>\n    </ion-list>\n  </ion-card>\n</ion-content>\n<ion-footer>\n  <ion-row>\n    <ion-col padding=\"10\">\n      <ion-button size=\"medium\" expand=\"block\" (click)=\"logout()\"\n        >ออกจากระบบ</ion-button\n      >\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -330,6 +330,7 @@ var ShopPage = /** @class */ (function () {
                         return [4 /*yield*/, this.shopService.getMyShop()];
                     case 1:
                         _a.myShop = _b.sent();
+                        console.log(this.myShop);
                         return [2 /*return*/];
                 }
             });
@@ -345,6 +346,14 @@ var ShopPage = /** @class */ (function () {
     };
     ShopPage.prototype.openHours = function () {
         console.log("openHours");
+        this.router.navigateByUrl("/shop-register");
+    };
+    ShopPage.prototype.shopEdit = function () {
+        console.log("shopEdit");
+        this.router.navigateByUrl("/shop-edit");
+    };
+    ShopPage.prototype.shopServiceType = function () {
+        this.router.navigateByUrl("/shop-servicetype");
     };
     ShopPage.prototype.gotoLocation = function () {
         this.router.navigateByUrl("/set-location");

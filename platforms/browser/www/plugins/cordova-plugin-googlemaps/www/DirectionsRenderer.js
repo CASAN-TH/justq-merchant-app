@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-googlemaps.DirectionsRenderer", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.DirectionsRenderer", function(require, exports, module) {
+
 
 var utils = require('cordova/utils'),
   event = require('./event'),
