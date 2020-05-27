@@ -4,7 +4,7 @@
         {
             "_id": "que-001",
             "shop": {
-                "_id": "5ec40efebff4f7000fd30413"
+                "shopId": "5ec40efebff4f7000fd30413"
             },
             "queStatus": "available",
             "customerId": "cus-001",
@@ -20,7 +20,7 @@
         {
             "_id": "que-002",
             "shop": {
-                "_id": "5ec40efebff4f7000fd30413"
+                "shopId": "5ec40efebff4f7000fd30413"
             },
             "queStatus": "available",
             "customerId": "cus-002",
@@ -36,7 +36,7 @@
         {
             "_id": "que-003",
             "shop": {
-                "_id": "5ec40efebff4f7000fd30413"
+                "shopId": "5ec40efebff4f7000fd30413"
             },
             "queStatus": "available",
             "customerId": "cus-003",
