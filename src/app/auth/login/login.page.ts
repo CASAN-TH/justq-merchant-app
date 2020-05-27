@@ -20,11 +20,11 @@ export class LoginPage implements OnInit {
   constructor(
     private _location: Location,
     private auth: AuthService,
-    private router: Router, 
+    private router: Router,
     private alertService: AlertService,
     private shopService: ShopService,
     private modalController: ModalController
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.myShop = await this.shopService.getMyShop();
@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
   }
 
   login(form) {
-    form.value.ref1=this.myShop._id;
+    form.value.ref1 = this.myShop ? this.myShop._id : null;
     this.auth.login(form.value).subscribe(
       data => {
         this.alertService.presentToast("Logged In");

@@ -62,9 +62,8 @@ export class SetLocationPage {
 
   ionViewDidLoad() {
     // console.log(this.initialPos);
-    
+
     this.loadMap();
-   
   }
 
   async loadMap() {
@@ -77,18 +76,29 @@ export class SetLocationPage {
         tilt: 30,
       },
     };
+    try {
+      this.map = GoogleMaps.create("map_canvas", mapOptions);
 
-    this.map = GoogleMaps.create("map_canvas", mapOptions);
+      this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+        () => {
+          loading.dismiss();
+        },
+        (error) => {
+          console.log(error);
+          loading.dismiss();
+        }
+      );
 
-    this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
+      this.map
+        .on(GoogleMapsEvent.CAMERA_MOVE_END)
+        .subscribe((params: any[]) => {
+          const cameraPosition: any = params[0];
+          console.log(cameraPosition);
+          this.initialPos = cameraPosition.target;
+        });
+    } catch (error) {
       loading.dismiss();
-    })
-
-    this.map.on(GoogleMapsEvent.CAMERA_MOVE_END).subscribe((params: any[]) => {
-      const cameraPosition: any = params[0];
-      console.log(cameraPosition);
-      this.initialPos = cameraPosition.target;
-    });
+    }
   }
 
   close() {
