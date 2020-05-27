@@ -10,9 +10,6 @@ import { ShopService } from '../shop.service';
 })
 export class ShopServicetypePage implements OnInit {
 
-  shoptypeForm: FormGroup;
-  items: FormArray;
-  shoptypeData: any;
 
   constructor(
     private _location: Location,
@@ -21,34 +18,15 @@ export class ShopServicetypePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.shoptypeData = [
-    //   {
-    //     name: ""
-    //   }
-    // ];
-  }
 
-  createForm(): FormGroup {
-    return this.formBuilder.group({
-      items: this.formBuilder.array([this.createItem()]),
-    });
-  }
-
-  createItem(): FormGroup {
-    return this.formBuilder.group({
-      name: ""
-    });
-  }
-
-  addItem(): void {
-    this.items = this.shoptypeForm.get('items') as FormArray;
-    this.items.push(this.formBuilder.group({
-      name: ""
-    }));
   }
 
   goBack() {
     this._location.back();
+  }
+
+  saveSeviceType(){
+    console.log("On Save ประเภทการให้บริการ");
   }
 
 }
