@@ -63,10 +63,10 @@ export class SetLocationPage {
 
   async ionViewDidLoad() {
     // console.log(this.initialPos);
-    const loading = await this.loadingController.create();
-    await loading.present();
+    // const loading = await this.loadingController.create();
+    // await loading.present();
     this.loadMap();
-    loading.dismiss();
+    // loading.dismiss();
   }
 
   loadMap() {

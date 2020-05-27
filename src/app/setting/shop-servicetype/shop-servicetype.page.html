@@ -1,17 +1,24 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-icon
-        slot="icon-only"
-        color="primary"
-        name="arrow-back"
-        (click)="goBack()"
-      ></ion-icon>
+      <ion-icon slot="icon-only" color="primary" name="arrow-back" (click)="goBack()"></ion-icon>
     </ion-buttons>
     <ion-title>ประเภทการให้บริการ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="shoptypeForm">
+    <!-- <div class="mt-20 mb-10 pl-20 pr-20" fxLayout="row">
+      <div class="h2 pl-20" fxFlex="50" fxLayoutAlign="start center">
+        ประเภทการให้บริการ
+      </div>
+      <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <button mat-flat-button color="primary" (click)="addItem()">เพิ่ม</button>
+      </div>
+    </div> -->
+    <!-- <div formArrayName="items">
+      <input formControlName="name">
+    </div> -->
+  </form>
 </ion-content>
