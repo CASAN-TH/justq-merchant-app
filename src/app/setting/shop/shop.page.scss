@@ -2,12 +2,56 @@
 .row-header {
   background-color: #fbb03b;
   color: #ffffff;
-  height: 100px;
+  height: 120px;
   padding-left: 10px;
 }
 
 ion-avatar{
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   
+}
+
+.cover-image-content{
+  width: 100%;
+}
+
+.cover-image{
+  height: 170px;
+  overflow: hidden;
+}
+
+.upload-img{
+  height: 60px;
+  width: 65px;
+  margin-top: 35px;
+}
+
+.text-upload-top{
+  margin-top: -12px;
+}
+
+.upload-content{
+  height: 170px;
+}
+
+.logo-upload{
+  border-radius: 115px;
+  width: 65px;
+  // border: 1px solid rgb(255, 255, 255);
+  height: 73px;
+}
+
+.txt-upload{
+  margin-top: -11px;
+}
+
+.logo{
+  border-radius: 115px;
+  width: 85px;
+  height: 83px;
+}
+
+.txt-shop{
+  margin-top: 1px;
 }

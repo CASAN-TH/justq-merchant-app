@@ -39,7 +39,11 @@ export class QueuePage implements OnInit {
   }
 
   getQueueDatas() {
-    this.queueService.getQueueData().then((res) => {
+
+    const body = {
+      shopId: this.user._id
+    };
+    this.queueService.getQueueData(body).then((res) => {
       console.log(res);
       this.queueData = res;
     });
