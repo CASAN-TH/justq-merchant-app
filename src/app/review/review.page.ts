@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReviewService } from './review.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-review',
@@ -10,44 +12,24 @@ export class ReviewPage implements OnInit {
   scrollNumber: any;
   reviewData: any;
 
-  constructor() { }
+  created: any
+
+  constructor(private reviewService: ReviewService) { }
 
   ngOnInit() {
-    // console.log(rate);
-    this.reviewData = {
-      "userReview": [
-        {
-          "fullname": "กฤษตฤณ เทียนช้าง",
-          "profileimg": "https://pub.thisshop.com/shop/customer/head/A8443F8F2CE74277BFD2A0C85068674F/ec004bd3-ba5d-4f92-a660-f8d8c58d4d8e.jpg",
-          "rating": 3.5,
-          "date": "12/11/2019"
-        },
-        {
-          "name": "ธนายุต ผินสุวรรณ",
-          "profileimg": "https://pub.thisshop.com/shop/customer/head/A8443F8F2CE74277BFD2A0C85068674F/ec004bd3-ba5d-4f92-a660-f8d8c58d4d8e.jpg",
-          "rating": 2.5,
-          "date": "31/11/2019"
-        },
-        {
-          "name": "ปรพจน์ สุปัญญา",
-          "profileimg": "https://pub.thisshop.com/shop/customer/head/A8443F8F2CE74277BFD2A0C85068674F/ec004bd3-ba5d-4f92-a660-f8d8c58d4d8e.jpg",
-          "rating": 1.5,
-          "date": "10/12/2019"
-        },
-        {
-          "name": "ธีรศักดิ์ ทับฤทธิ์",
-          "profileimg": "https://pub.thisshop.com/shop/customer/head/A8443F8F2CE74277BFD2A0C85068674F/ec004bd3-ba5d-4f92-a660-f8d8c58d4d8e.jpg",
-          "rating": 4.5,
-          "date": "10/12/2019"
-        },
-        {
-          "name": "แมว จิรายุ",
-          "profileimg": "https://pub.thisshop.com/shop/customer/head/A8443F8F2CE74277BFD2A0C85068674F/ec004bd3-ba5d-4f92-a660-f8d8c58d4d8e.jpg",
-          "rating": 5,
-          "date": "10/12/2019"
-        }
-      ]
-    }
+    this.getReviewData();
+  }
+  getReviewData() {
+    this.reviewService.getReviewData(0, 10, "12").then((res: any) => {
+      this.reviewData = res.data
+      console.log(this.reviewData);
+
+      for (let i = 0; i < this.reviewData.length; i++) {
+        const date = this.reviewData[i]
+        date.created = moment(date.created).format('DD/MM/YYYY');
+      }
+
+    })
   }
 
   logRatingChange(rating) {
