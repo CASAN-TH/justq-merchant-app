@@ -11,6 +11,9 @@ import { QueueService } from '../services/queue.service';
 export class QueuePage implements OnInit {
   user: any;
   queueData: any;
+  body = {
+    shopId: ''
+  };
 
   constructor(
     private authService: AuthService,
@@ -25,6 +28,7 @@ export class QueuePage implements OnInit {
         (res: any) => {
           console.log(res);
           this.user = res.data;
+          this.body.shopId = this.user._id;
           this.getQueueDatas();
         },
         (error) => {
@@ -38,15 +42,15 @@ export class QueuePage implements OnInit {
     });
   }
 
-  getQueueDatas() {
+  async doRefresh(event) {
+    const res = await this.queueService.getQueueData(this.body);
+    this.queueData = res;
+    event.target.complete();
+  }
 
-    const body = {
-      shopId: this.user._id
-    };
-    this.queueService.getQueueData(body).then((res) => {
-      console.log(res);
-      this.queueData = res;
-    });
+  async getQueueDatas() {
+    const res = await this.queueService.getQueueData(this.body);
+    this.queueData = res;
   }
 
   onTel() {
