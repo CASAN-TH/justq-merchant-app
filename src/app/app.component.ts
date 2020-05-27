@@ -35,43 +35,21 @@ export class AppComponent {
   }
 
   oneSignalConfig() {
+    var iosSettings = {};
+    iosSettings["kOSSettingsKeyAutoPrompt"] = true;
+    iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
 
-    console.log("oneSignal.startInit"); 
-    this.oneSignal.startInit(
-      "3be709ff-f973-4ee8-ab18-68d84b47e910",
-      "justq-merchant"
-    );
+    this.oneSignal.startInit('b98f6130-5b29-4316-976e-82e013c6555a', '116012923728');
 
-    this.oneSignal.inFocusDisplaying(
-      this.oneSignal.OSInFocusDisplayOption.Notification
-    );
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
-    this.oneSignal.handleNotificationReceived().subscribe(() => {
+    this.oneSignal.handleNotificationReceived().subscribe((onReceived) => {
       // do something when notification is received
     });
-
     this.oneSignal.handleNotificationOpened().subscribe(() => {
       // do something when a notification is opened
     });
 
-    console.log("oneSignal.endInit"); 
     this.oneSignal.endInit();
-
-    this.oneSignal
-      .getIds()
-      .then((data) => {
-        console.log(`oneSignal data : ${data}`); 
-        this.storage.set(`${environment.appName}@oneSignal`, data).then(
-          () => {
-            console.log("oneSignalId Stored");
-          },
-          (error) => console.error("Error storing item", error)
-        );
-        //  window.localStorage.setItem(Constants.URL() + '@oneSignal', JSON.stringify(data));
-      })
-      .catch((error) => {
-        console.log(`oneSignal error : ${error}`); 
-        throw error;
-      });
   }
 }

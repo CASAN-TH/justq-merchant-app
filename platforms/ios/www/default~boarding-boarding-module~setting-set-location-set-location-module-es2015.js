@@ -2245,33 +2245,29 @@ let SetLocationPage = class SetLocationPage {
         });
     }
     ionViewDidLoad() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            // console.log(this.initialPos);
-            const loading = yield this.loadingController.create();
-            yield loading.present();
-            this.loadMap();
-            loading.dismiss();
-        });
+        // console.log(this.initialPos);
+        this.loadMap();
     }
     loadMap() {
-        let mapOptions = {
-            camera: {
-                target: this.initialPos,
-                zoom: 14,
-                tilt: 30,
-            },
-        };
-        this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMaps"].create("map_canvas", mapOptions);
-        // let marker: Marker = this.map.addMarkerSync({
-        //   title: "Me",
-        //   icon: "blue",
-        //   // animation: "DROP",
-        //   position: this.initialPos,
-        // });
-        this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsEvent"].CAMERA_MOVE_END).subscribe((params) => {
-            const cameraPosition = params[0];
-            console.log(cameraPosition);
-            this.initialPos = cameraPosition.target;
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const loading = yield this.loadingController.create();
+            yield loading.present();
+            let mapOptions = {
+                camera: {
+                    target: this.initialPos,
+                    zoom: 14,
+                    tilt: 30,
+                },
+            };
+            this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMaps"].create("map_canvas", mapOptions);
+            this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsEvent"].MAP_READY).subscribe(() => {
+                loading.dismiss();
+            });
+            this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_4__["GoogleMapsEvent"].CAMERA_MOVE_END).subscribe((params) => {
+                const cameraPosition = params[0];
+                console.log(cameraPosition);
+                this.initialPos = cameraPosition.target;
+            });
         });
     }
     close() {
@@ -2294,8 +2290,10 @@ let SetLocationPage = class SetLocationPage {
     }
     ionViewWillLeave() {
         // unset div & visibility on exit
-        this.map.setVisible(false);
-        this.map.setDiv(null);
+        if (this.map) {
+            this.map.setVisible(false);
+            this.map.setDiv(null);
+        }
     }
 };
 SetLocationPage.ctorParameters = () => [

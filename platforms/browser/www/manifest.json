@@ -1,8 +1,8 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "just Q Merchant",
-  "short_name": "just Q Merchant",
+  "name": "just-q-merchant",
+  "short_name": "just-q-merchant",
   "version": "com.casan.justq.merchant",
   "description": "Social distancing app.",
   "author": "จัดคิว.com",

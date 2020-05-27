@@ -481,6 +481,22 @@ var routes = [
         loadChildren: function () { return __webpack_require__.e(/*! import() | setting-set-location-set-location-module */ "default~boarding-boarding-module~setting-set-location-set-location-module").then(__webpack_require__.bind(null, /*! ./setting/set-location/set-location.module */ "./src/app/setting/set-location/set-location.module.ts")).then(function (m) { return m.SetLocationPageModule; }); }
     },
     {
+        path: 'shop-register',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | setting-shop-register-shop-register-module */ "setting-shop-register-shop-register-module").then(__webpack_require__.bind(null, /*! ./setting/shop-register/shop-register.module */ "./src/app/setting/shop-register/shop-register.module.ts")).then(function (m) { return m.ShopRegisterPageModule; }); }
+    },
+    {
+        path: 'shop',
+        loadChildren: function () { return Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; }); }
+    },
+    {
+        path: 'shop-edit',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | setting-shop-edit-shop-edit-module */ "setting-shop-edit-shop-edit-module").then(__webpack_require__.bind(null, /*! ./setting/shop-edit/shop-edit.module */ "./src/app/setting/shop-edit/shop-edit.module.ts")).then(function (m) { return m.ShopEditPageModule; }); }
+    },
+    {
+        path: 'shop-servicetype',
+        loadChildren: function () { return __webpack_require__.e(/*! import() | setting-shop-servicetype-shop-servicetype-module */ "setting-shop-servicetype-shop-servicetype-module").then(__webpack_require__.bind(null, /*! ./setting/shop-servicetype/shop-servicetype.module */ "./src/app/setting/shop-servicetype/shop-servicetype.module.ts")).then(function (m) { return m.ShopServicetypePageModule; }); }
+    },
+    {
         path: '',
         loadChildren: function () { return Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("default~boarding-boarding-module~setting-set-location-set-location-module"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(function (m) { return m.BoardingPageModule; }); }
     }
@@ -531,8 +547,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
-
 
 
 
@@ -560,31 +574,18 @@ var AppComponent = /** @class */ (function () {
         });
     };
     AppComponent.prototype.oneSignalConfig = function () {
-        var _this = this;
-        console.log("oneSignal.startInit");
-        this.oneSignal.startInit("3be709ff-f973-4ee8-ab18-68d84b47e910", "justq-merchant");
+        var iosSettings = {};
+        iosSettings["kOSSettingsKeyAutoPrompt"] = true;
+        iosSettings["kOSSettingsKeyInAppLaunchURL"] = false;
+        this.oneSignal.startInit('b98f6130-5b29-4316-976e-82e013c6555a', '116012923728');
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-        this.oneSignal.handleNotificationReceived().subscribe(function () {
+        this.oneSignal.handleNotificationReceived().subscribe(function (onReceived) {
             // do something when notification is received
         });
         this.oneSignal.handleNotificationOpened().subscribe(function () {
             // do something when a notification is opened
         });
-        console.log("oneSignal.endInit");
         this.oneSignal.endInit();
-        this.oneSignal
-            .getIds()
-            .then(function (data) {
-            console.log("oneSignal data : " + data);
-            _this.storage.set(src_environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].appName + "@oneSignal", data).then(function () {
-                console.log("oneSignalId Stored");
-            }, function (error) { return console.error("Error storing item", error); });
-            //  window.localStorage.setItem(Constants.URL() + '@oneSignal', JSON.stringify(data));
-        })
-            .catch(function (error) {
-            console.log("oneSignal error : " + error);
-            throw error;
-        });
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },

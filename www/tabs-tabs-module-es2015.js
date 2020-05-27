@@ -114,7 +114,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-shop-module */ "setting-shop-shop-module").then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule),
+                        loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule),
                         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]
