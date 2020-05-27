@@ -1,25 +1,72 @@
-<ion-header no-border>
-  <ion-toolbar color="primary"> </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 style="background-color: rgb(245, 244, 244);" class="upload-content">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img class="upload-img" src="https://image.flaticon.com/icons/svg/1837/1837526.svg">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <p class="text-upload-top">อัพโหลดรูปภาพหน้าปก</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- wait for node if cover img -->
+
+  <!-- <div col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 class="cover-image">
+    <img  class="cover-image-content" src="../../assets/cafe.jpeg">
+  </div> -->
+
   <ion-row class="row-header">
-    <ion-col size="12">
-      <h1 *ngIf="myShop">{{myShop.name}}</h1>
+    <ion-col size="8">
+      <ion-row>
+        <h1 *ngIf="myShop" class="txt-shop">{{myShop.name}}</h1>
+      </ion-row>
+
+    </ion-col>
+
+    <ion-col size="4">
+      <div>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img class="logo-upload" src="https://image.flaticon.com/icons/svg/1837/1837635.svg">
+        </ion-col>
+        
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <p class="txt-upload">อัพโหลดโลโก้</p>
+        </ion-col>
+       
+      </ion-row>
+    </div>
+
+     <!-- wait for node if logo img -->
+
+    <!-- <div>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img class="logo" src="https://assets.hongkiat.com/uploads/psd-text-svg/logo-example.jpg">
+        </ion-col>
+        
+      </ion-row>
+    </div> -->
+
     </ion-col>
   </ion-row>
 
- 
+
   <ion-card *ngIf="user">
     <ion-item button (click)="openHours()" lines="none">
-       {{user.displayname}}
+      {{user.displayname}}
       <ion-avatar slot="start">
         <img [src]="user.profileImageURL" />
       </ion-avatar>
     </ion-item>
   </ion-card>
 
-  
+
   <ion-card>
     <ion-list lines="none">
       <ion-item button (click)="shopEdit()">
@@ -37,12 +84,11 @@
     </ion-list>
   </ion-card>
 </ion-content>
+
 <ion-footer>
   <ion-row>
     <ion-col padding="10">
-      <ion-button size="medium" expand="block" (click)="logout()"
-        >ออกจากระบบ</ion-button
-      >
+      <ion-button size="medium" expand="block" (click)="logout()">ออกจากระบบ</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>

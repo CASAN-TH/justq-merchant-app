@@ -8,17 +8,23 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="shoptypeForm">
-    <!-- <div class="mt-20 mb-10 pl-20 pr-20" fxLayout="row">
-      <div class="h2 pl-20" fxFlex="50" fxLayoutAlign="start center">
-        ประเภทการให้บริการ
-      </div>
-      <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap="10px">
-        <button mat-flat-button color="primary" (click)="addItem()">เพิ่ม</button>
-      </div>
-    </div> -->
-    <!-- <div formArrayName="items">
-      <input formControlName="name">
-    </div> -->
-  </form>
+  <ion-row>
+    <ion-col size="12">
+      ประเภทการให้บริการ
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-button size="medium" expand="block" (click)="addItem()">เพิ่มประเภท +</ion-button>
+  </ion-row>
+
+
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button size="medium" expand="block" (click)="saveSeviceType()">บันทึกข้อมูลประเภทการให้บริการ</ion-button>
+  </ion-toolbar>
+</ion-footer>
