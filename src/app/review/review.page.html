@@ -64,6 +64,16 @@
 </ion-header>
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-row *ngFor="let item of reviewData">
     <ion-col size="12">
       <ion-item no-padding class="item-border-right" lines="none">
@@ -79,7 +89,7 @@
           </p>
         </ion-label>
         <ion-note text-end>
-          <ion-text class="date">{{item.created}}</ion-text>
+          <ion-text class="date">{{item.created | moment:"ago"}}</ion-text>
         </ion-note>
       </ion-item>
       <ion-item no-padding class="item-border-right">

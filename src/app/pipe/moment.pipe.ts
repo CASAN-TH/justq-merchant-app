@@ -7,7 +7,11 @@ import * as moment from 'moment';
 export class MomentPipe implements PipeTransform {
 
   transform(date, format): any {
-    return moment(date).format(format);
+    if (format === 'ago') {
+      return moment(date).fromNow();
+    } else {
+      return moment(date).format(format);
+    }
   }
 
 }

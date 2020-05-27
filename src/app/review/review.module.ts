@@ -9,6 +9,7 @@ import { ReviewPageRoutingModule } from './review-routing.module';
 import { ReviewPage } from './review.page';
 // import { IonicRatingModule } from 'ionic4-rating';
 import { StarRatingModule } from 'ionic4-star-rating';
+import { MomentPipe } from '../pipe/moment.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { StarRatingModule } from 'ionic4-star-rating';
     ReviewPageRoutingModule,
     StarRatingModule
   ],
-  declarations: [ReviewPage]
+  declarations: [ReviewPage,MomentPipe]
 })
 export class ReviewPageModule {}

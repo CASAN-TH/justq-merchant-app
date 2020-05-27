@@ -23,11 +23,7 @@ export class ReviewPage implements OnInit {
     this.reviewService.getReviewData(0, 10, "12").then((res: any) => {
       this.reviewData = res.data
       console.log(this.reviewData);
-
-      for (let i = 0; i < this.reviewData.length; i++) {
-        const date = this.reviewData[i]
-        date.created = moment(date.created).format('DD/MM/YYYY');
-      }
+      console.log("AA");
 
     })
   }
@@ -36,5 +32,14 @@ export class ReviewPage implements OnInit {
     this.scrollNumber = rating;
     console.log("changed rating: ", rating);
     // do your stuff
+  }
+
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    this.getReviewData();
+    console.log("BB");
+      event.target.complete();
   }
 }
