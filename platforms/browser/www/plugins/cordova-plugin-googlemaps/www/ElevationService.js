@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-googlemaps.ElevationService", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.ElevationService", function(require, exports, module) {
+
 /*****************************************************************************
  * ElevationService class
  *****************************************************************************/

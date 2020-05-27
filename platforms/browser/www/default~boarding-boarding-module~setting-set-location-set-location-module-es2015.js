@@ -2294,8 +2294,10 @@ let SetLocationPage = class SetLocationPage {
     }
     ionViewWillLeave() {
         // unset div & visibility on exit
-        this.map.setVisible(false);
-        this.map.setDiv(null);
+        if (this.map) {
+            this.map.setVisible(false);
+            this.map.setDiv(null);
+        }
     }
 };
 SetLocationPage.ctorParameters = () => [
