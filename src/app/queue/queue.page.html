@@ -5,43 +5,43 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="user">
-    <ion-row>
-      <ion-col size="3">
-        <ion-avatar item-start>
-          <img [src]="user.profileImageURL" />
-        </ion-avatar>
-      </ion-col>
-      <ion-col size="9" text-align="left">
-        <h6>สวัสดีครับ คุณ {{user.displayname}}</h6>
-      </ion-col>
-    </ion-row>
-  </ion-card>
 
   <ion-row>
     <ion-col size="12">
       <h2>คิวปัจจุบัน</h2>
     </ion-col>
   </ion-row>
-  <ion-card>
+  <ion-card *ngIf="queueData">
     <ion-card-header>
-      <ion-card-subtitle>kantima (1 คน)</ion-card-subtitle>
+      <ion-card-subtitle>
+        {{queueData[0].customerName}} ({{queueData[0].customerQty}} คน)
+        <span class="time-right-item">{{queueData[0].queTime}}</span>
+      </ion-card-subtitle>
       <ion-card-title>
         <ion-row>
-          <ion-col size="4">
-            <h1>A 001</h1>
+          <ion-col size="12">
+            <h1>{{queueData[0].queId}}</h1>
           </ion-col>
+        </ion-row>
+
+        <ion-row class="btn-current-queue">
           <ion-col size="4" text-align="left">
-            <ion-fab-button>
+            <ion-fab-button (click)="onTel()">
               <ion-icon name="call"></ion-icon>
             </ion-fab-button>
           </ion-col>
           <ion-col size="4">
-            <ion-fab-button color="danger">
+            <ion-fab-button color="success" (click)="onSuccess(queueData[0]._id)">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-fab-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-fab-button color="danger" (click)="onCancel(queueData[0]._id)">
               <ion-icon name="exit"></ion-icon>
             </ion-fab-button>
           </ion-col>
         </ion-row>
+
       </ion-card-title>
     </ion-card-header>
   </ion-card>
@@ -51,70 +51,23 @@
       <h2>คิวถัดไป</h2>
     </ion-col>
   </ion-row>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>July (1 คน)</ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="4">
-            <h1>A 002</h1>
-          </ion-col>
-          
-        </ion-row>
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>จิ๊กโก๋ (1 คน)</ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="4">
-            <h1>A 003</h1>
-          </ion-col>
-          
-        </ion-row>
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>บิงชู (1 คน)</ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="4">
-            <h1>A 004</h1>
-          </ion-col>
-          
-        </ion-row>
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>ปู (1 คน)</ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="4">
-            <h1>A 005</h1>
-          </ion-col>
-          
-        </ion-row>
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>จะใครล่ะ (1 คน)</ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="4">
-            <h1>A 006</h1>
-          </ion-col>
-          
-        </ion-row>
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
+
+  <div *ngFor="let item of queueData; let i = index">
+    <ion-card *ngIf="i !== 0">
+      <ion-card-header>
+        <ion-card-subtitle>
+          {{item.customerName}} ({{item.customerQty}} คน)
+          <span class="time-right-item">{{item.queTime}}</span>
+        </ion-card-subtitle>
+        <ion-card-title>
+          <ion-row>
+            <ion-col size="12">
+              <h1>{{item.queId}}</h1>
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
 
 </ion-content>

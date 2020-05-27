@@ -475,6 +475,22 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | setting-set-location-set-location-module */ "default~boarding-boarding-module~setting-set-location-set-location-module").then(__webpack_require__.bind(null, /*! ./setting/set-location/set-location.module */ "./src/app/setting/set-location/set-location.module.ts")).then(m => m.SetLocationPageModule)
     },
     {
+        path: 'shop-register',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-register-shop-register-module */ "setting-shop-register-shop-register-module").then(__webpack_require__.bind(null, /*! ./setting/shop-register/shop-register.module */ "./src/app/setting/shop-register/shop-register.module.ts")).then(m => m.ShopRegisterPageModule)
+    },
+    {
+        path: 'shop',
+        loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule)
+    },
+    {
+        path: 'shop-edit',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-edit-shop-edit-module */ "setting-shop-edit-shop-edit-module").then(__webpack_require__.bind(null, /*! ./setting/shop-edit/shop-edit.module */ "./src/app/setting/shop-edit/shop-edit.module.ts")).then(m => m.ShopEditPageModule)
+    },
+    {
+        path: 'shop-servicetype',
+        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-servicetype-shop-servicetype-module */ "setting-shop-servicetype-shop-servicetype-module").then(__webpack_require__.bind(null, /*! ./setting/shop-servicetype/shop-servicetype.module */ "./src/app/setting/shop-servicetype/shop-servicetype.module.ts")).then(m => m.ShopServicetypePageModule)
+    },
+    {
         path: '',
         loadChildren: () => Promise.all(/*! import() | boarding-boarding-module */[__webpack_require__.e("default~boarding-boarding-module~setting-set-location-set-location-module"), __webpack_require__.e("boarding-boarding-module")]).then(__webpack_require__.bind(null, /*! ./boarding/boarding.module */ "./src/app/boarding/boarding.module.ts")).then(m => m.BoardingPageModule)
     }
@@ -550,6 +566,7 @@ let AppComponent = class AppComponent {
         });
     }
     oneSignalConfig() {
+        console.log("oneSignal.startInit");
         this.oneSignal.startInit("3be709ff-f973-4ee8-ab18-68d84b47e910", "justq-merchant");
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
         this.oneSignal.handleNotificationReceived().subscribe(() => {
@@ -558,6 +575,7 @@ let AppComponent = class AppComponent {
         this.oneSignal.handleNotificationOpened().subscribe(() => {
             // do something when a notification is opened
         });
+        console.log("oneSignal.endInit");
         this.oneSignal.endInit();
         this.oneSignal
             .getIds()
@@ -569,6 +587,7 @@ let AppComponent = class AppComponent {
             //  window.localStorage.setItem(Constants.URL() + '@oneSignal', JSON.stringify(data));
         })
             .catch((error) => {
+            console.log(`oneSignal error : ${error}`);
             throw error;
         });
     }

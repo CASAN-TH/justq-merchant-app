@@ -2343,8 +2343,10 @@ var SetLocationPage = /** @class */ (function () {
     };
     SetLocationPage.prototype.ionViewWillLeave = function () {
         // unset div & visibility on exit
-        this.map.setVisible(false);
-        this.map.setDiv(null);
+        if (this.map) {
+            this.map.setVisible(false);
+            this.map.setDiv(null);
+        }
     };
     SetLocationPage.ctorParameters = function () { return [
         { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_2__["Geolocation"] },

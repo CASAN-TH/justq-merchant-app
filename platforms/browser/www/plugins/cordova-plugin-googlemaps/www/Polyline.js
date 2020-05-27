@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-googlemaps.Polyline", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.Polyline", function(require, exports, module) {
+
 var utils = require('cordova/utils'),
   common = require('./Common'),
   encoding = require('./encoding'),

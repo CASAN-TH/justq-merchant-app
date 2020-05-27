@@ -17,9 +17,8 @@ import {
 } from "@ionic-native/google-maps/ngx";
 import { Router } from "@angular/router";
 import { ShopService } from "../shop.service";
-import { AlertService } from 'src/app/services/alert.service';
-import { LoadingController } from '@ionic/angular';
-
+import { AlertService } from "src/app/services/alert.service";
+import { LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-set-location",
@@ -61,15 +60,15 @@ export class SetLocationPage {
     }
   }
 
-  async ionViewDidLoad() {
+  ionViewDidLoad() {
     // console.log(this.initialPos);
-    // const loading = await this.loadingController.create();
-    // await loading.present();
+
     this.loadMap();
-    // loading.dismiss();
   }
 
-  loadMap() {
+  async loadMap() {
+    const loading = await this.loadingController.create();
+    await loading.present();
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: this.initialPos,
@@ -77,21 +76,29 @@ export class SetLocationPage {
         tilt: 30,
       },
     };
+    try {
+      this.map = GoogleMaps.create("map_canvas", mapOptions);
 
-    this.map = GoogleMaps.create("map_canvas", mapOptions);
+      this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+        () => {
+          loading.dismiss();
+        },
+        (error) => {
+          console.log(error);
+          loading.dismiss();
+        }
+      );
 
-    // let marker: Marker = this.map.addMarkerSync({
-    //   title: "Me",
-    //   icon: "blue",
-    //   // animation: "DROP",
-    //   position: this.initialPos,
-    // });
-
-    this.map.on(GoogleMapsEvent.CAMERA_MOVE_END).subscribe((params: any[]) => {
-      const cameraPosition: any = params[0];
-      console.log(cameraPosition);
-      this.initialPos = cameraPosition.target;
-    });
+      this.map
+        .on(GoogleMapsEvent.CAMERA_MOVE_END)
+        .subscribe((params: any[]) => {
+          const cameraPosition: any = params[0];
+          console.log(cameraPosition);
+          this.initialPos = cameraPosition.target;
+        });
+    } catch (error) {
+      loading.dismiss();
+    }
   }
 
   close() {
@@ -113,12 +120,13 @@ export class SetLocationPage {
         this.alertService.presentToast(err.error.message);
       }
     );
-    
   }
 
   ionViewWillLeave() {
     // unset div & visibility on exit
-    this.map.setVisible(false);
-    this.map.setDiv(null);
+    if (this.map) {
+      this.map.setVisible(false);
+      this.map.setDiv(null);
+    }
   }
 }

@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-googlemaps.event", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.event", function(require, exports, module) {
+
 
 module.exports = {
   MAP_READY: 'map_ready',

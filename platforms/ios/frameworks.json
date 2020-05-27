@@ -1,5 +1,4 @@
 {
-    "WebKit.framework": 1,
     "Accelerate.framework": 1,
     "CoreData.framework": 1,
     "CoreLocation.framework": 2,
@@ -13,5 +12,6 @@
     "OpenGLES.framework": 1,
     "QuartzCore.framework": 1,
     "SystemConfiguration.framework": 2,
-    "UIKit.framework": 1
+    "UIKit.framework": 1,
+    "WebKit.framework": 1
 }

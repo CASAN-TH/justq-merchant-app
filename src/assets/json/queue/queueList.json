@@ -1,0 +1,53 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "_id": "que-001",
+            "shop": {
+                "_id": "5ec40efebff4f7000fd30413"
+            },
+            "queStatus": "available",
+            "customerId": "cus-001",
+            "customerName": "นายกอ",
+            "customerQty": 1,
+            "customerTel": "0992436892",
+            "queType": "ช่างนัท",
+            "queDate": "2020-05-19T16:53:18.246Z",
+            "queTime": "13:00",
+            "queId": "A-001",
+            "created": "2020-05-19T16:53:18.246Z"
+        },
+        {
+            "_id": "que-002",
+            "shop": {
+                "_id": "5ec40efebff4f7000fd30413"
+            },
+            "queStatus": "available",
+            "customerId": "cus-002",
+            "customerName": "นางขอ",
+            "customerQty": 1,
+            "customerTel": "0992436892",
+            "queType": "ช่างนัท",
+            "queDate": "2020-05-19T16:53:18.246Z",
+            "queTime": "14:00",
+            "queId": "A-002",
+            "created": "2020-05-19T16:53:18.246Z"
+        },
+        {
+            "_id": "que-003",
+            "shop": {
+                "_id": "5ec40efebff4f7000fd30413"
+            },
+            "queStatus": "available",
+            "customerId": "cus-003",
+            "customerName": "นายงอ",
+            "customerQty": 1,
+            "customerTel": "0992436892",
+            "queType": "ช่างนัท",
+            "queDate": "2020-05-19T16:53:18.246Z",
+            "queTime": "15:00",
+            "queId": "A-003",
+            "created": "2020-05-19T16:53:18.246Z"
+        }
+    ]
+}

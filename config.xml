@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.casan.justq.merchant" version="1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>just Q Merchant</name>
+    <name>just-q-merchant</name>
     <description>Social distancing app.</description>
     <author email="jigkoh3@hotmail.com" href="http://จัดคิว.com/">จัดคิว.com</author>
     <content src="index.html" />
@@ -107,8 +107,14 @@
     <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-facebook4" spec="~6.2.0">
+    <plugin name="cordova-sqlite-storage" spec="~5.0.0" />
+    <plugin name="cordova-plugin-nativestorage" spec="~2.3.2" />
+    <plugin name="cordova-plugin-googlemaps" spec="~2.8.0-20200521-2050" />
+    <plugin name="cordova-line-login-plugin" spec="~1.2.6" />
+    <plugin name="cordova-plugin-facebook4" spec="~6.4.0">
         <variable name="APP_ID" value="244176503342330" />
         <variable name="APP_NAME" value="จัดคิว" />
     </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="~4.0.2" />
+    <plugin name="onesignal-cordova-plugin" spec="~2.9.1" />
 </widget>
