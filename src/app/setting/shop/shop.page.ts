@@ -3,6 +3,7 @@ import { AuthService } from "src/app/auth/auth.service";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert.service";
 import { ShopService } from "../shop.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-shop",
@@ -12,11 +13,13 @@ import { ShopService } from "../shop.service";
 export class ShopPage implements OnInit {
   myShop: any;
   user: any;
+
   constructor(
     private authService: AuthService,
     private shopService: ShopService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private _location: Location,
   ) {
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
@@ -32,6 +35,7 @@ export class ShopPage implements OnInit {
       );
     });
   }
+  
 
   async ngOnInit() {
     this.myShop = await this.shopService.getMyShop();
