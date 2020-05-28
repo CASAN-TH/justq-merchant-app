@@ -36,7 +36,7 @@ export class ShopEditPage implements OnInit {
           // console.log(error);
           this.alertService.presentToast(error.error.message);
         },
-        () => {}
+        () => { }
       );
     });
   }

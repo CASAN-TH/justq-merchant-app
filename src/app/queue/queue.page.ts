@@ -20,10 +20,10 @@ export class QueuePage implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
-    
+
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     console.log("ionViewDidEnter");
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
@@ -41,7 +41,7 @@ export class QueuePage implements OnInit {
         }
       );
     });
-   
+
   }
 
   async doRefresh(event) {
@@ -53,18 +53,22 @@ export class QueuePage implements OnInit {
   async getQueueDatas() {
     const res = await this.queueService.getQueueData(this.user.ref1);
     this.queueData = res;
+    console.log(this.queueData);
   }
 
   onTel() {
-    console.log('tel');
+    window.location.href = `tel: ${this.queueData[0].customerTel}`;
   }
 
   onSuccess(id) {
-    this.queueService.updateQueueData(id);
-    console.log(`onSuccess ${id}`);
+    this.queueService.updateQueueData(id, 'close').then((res) => {
+      this.getQueueDatas();
+    });
   }
 
   onCancel(id) {
-    console.log(`onCancel ${id}`);
+    this.queueService.updateQueueData(id, 'cancel').then((res) => {
+      this.getQueueDatas();
+    });
   }
 }
