@@ -12,21 +12,15 @@ export class QueueService {
   constructor(private http: HttpClient, private storage: Storage) {}
 
   getQueueData(shopId): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.storage.get("token").then((val) => {
-        let token: any;
-        token = val;
-        const headers = new HttpHeaders().set(
-          "Authorization",
-          "Bearer " + token
-        );
+    return new Promise(async (resolve, reject) => {
+      const token = await this.storage.get("token");
+      const headers = new HttpHeaders().set("Authorization", "Bearer " + token);
 
-        this.http
-          .post(api_url, { shopId: shopId }, { headers: headers })
-          .subscribe((res: any) => {
-            resolve(res.data);
-          }, reject);
-      });
+      this.http
+        .post(api_url, { shopId: shopId }, { headers: headers })
+        .subscribe((res: any) => {
+          resolve(res.data);
+        }, reject);
     });
   }
 

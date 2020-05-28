@@ -29,7 +29,6 @@ export class ReviewPage implements OnInit {
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
         (res: any) => {
-          console.log(res);
           this.user = res.data;
           this.getReviewData();
         },

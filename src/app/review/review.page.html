@@ -9,10 +9,9 @@
   
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
-      pullingIcon="chevron-down-circle-outline"
-      pullingText="Pull to refresh"
+      pullingText="ดึงลง เพื่อโหลดข้อมูลใหม่"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="กำลังโหลดข้อมูล...">
     </ion-refresher-content>
   </ion-refresher>
 
@@ -43,6 +42,12 @@
           </ion-col>
         </ion-row>
       </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col text-center size="12" *ngIf="reviewData && reviewData.length === 0">
+      ยังไม่มี รีวิว ร้านของคุณ...
     </ion-col>
   </ion-row>
 </ion-content>

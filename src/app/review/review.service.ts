@@ -11,33 +11,23 @@ const api_url = environment.apiUrl + "/api/reviews";
 export class ReviewService {
   token: any;
 
-  constructor(private http: HttpClient, private storage: Storage) {
-    console.log("service");
-    this.getToken();
-  }
+  constructor(private http: HttpClient, private storage: Storage) {}
 
-  async getToken() {
-    this.token = await this.storage.get("token");
-    console.log(this.token);
-  }
-
-  
   getReviewData(pageNo, pageSize, shopId): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.storage.get("token").then((token) => {
-        const headers = new HttpHeaders({
-          Authorization: "Bearer" + " " + token,
-        });
-        const params = new HttpParams()
-          .set("pageNo", `${pageNo + 1}`)
-          .set("size", `${pageSize}`)
-          .set("shopId", `${shopId}`);
-        this.http
-          .get(api_url, { headers: headers, params: params })
-          .subscribe((res: any) => {
-            resolve(res.data);
-          }, reject);
+    return new Promise(async (resolve, reject) => {
+      this.token = await this.storage.get("token");
+      const headers = new HttpHeaders({
+        Authorization: "Bearer" + " " + this.token,
       });
+      const params = new HttpParams()
+        .set("pageNo", `${pageNo + 1}`)
+        .set("size", `${pageSize}`)
+        .set("shopId", `${shopId}`);
+      this.http
+        .get(api_url, { headers: headers, params: params })
+        .subscribe((res: any) => {
+          resolve(res.data);
+        }, reject);
     });
   }
 }
