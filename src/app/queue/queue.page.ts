@@ -11,9 +11,6 @@ import { QueueService } from '../services/queue.service';
 export class QueuePage implements OnInit {
   user: any;
   queueData: any;
-  body = {
-    shopId: ''
-  };
 
   constructor(
     private authService: AuthService,
@@ -23,13 +20,17 @@ export class QueuePage implements OnInit {
 
   ngOnInit() {
     console.log('ngOnInit');
+    
+  }
+
+  ionViewDidEnter(){
+    console.log("ionViewDidEnter");
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
         (res: any) => {
           console.log(res);
           this.user = res.data;
-          this.body.shopId = this.user._id;
-          this.getQueueDatas();
+          this.getQueueDatas()
         },
         (error) => {
           // console.log(error);
@@ -40,16 +41,17 @@ export class QueuePage implements OnInit {
         }
       );
     });
+   
   }
 
   async doRefresh(event) {
-    const res = await this.queueService.getQueueData(this.body);
+    const res = await this.queueService.getQueueData(this.user.ref1);
     this.queueData = res;
     event.target.complete();
   }
 
   async getQueueDatas() {
-    const res = await this.queueService.getQueueData(this.body);
+    const res = await this.queueService.getQueueData(this.user.ref1);
     this.queueData = res;
   }
 

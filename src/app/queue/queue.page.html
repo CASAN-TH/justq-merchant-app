@@ -14,7 +14,7 @@
       <h2>คิวปัจจุบัน</h2>
     </ion-col>
   </ion-row>
-  <ion-card *ngIf="queueData">
+  <ion-card *ngIf="queueData && queueData.length > 0">
     <ion-card-header>
       <ion-card-subtitle>
         {{queueData[0].customerName}} ({{queueData[0].customerQty}} คน)
