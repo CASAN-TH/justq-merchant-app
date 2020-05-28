@@ -19,6 +19,7 @@ import { Router } from "@angular/router";
 import { ShopService } from "../shop.service";
 import { AlertService } from "src/app/services/alert.service";
 import { LoadingController } from "@ionic/angular";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-set-location",
@@ -29,10 +30,12 @@ export class SetLocationPage {
   map: GoogleMap;
   initialPos: any;
   myShop: any;
+  user: any;
   constructor(
     private geolocation: Geolocation,
     private _location: Location,
     private router: Router,
+    private authService: AuthService,
     private shopService: ShopService,
     private alertService: AlertService,
     private loadingController: LoadingController
@@ -43,21 +46,51 @@ export class SetLocationPage {
   // }
 
   ionViewLoaded = false;
-  async ionViewDidEnter() {
-    this.myShop = await this.shopService.getMyShop();
-    let currPos = await this.geolocation.getCurrentPosition();
-    if (this.myShop && this.myShop.location) {
-      this.initialPos = this.myShop.location;
-    } else {
-      this.initialPos = {
-        lat: currPos.coords.latitude,
-        lng: currPos.coords.longitude,
-      };
-    }
-    if (!this.ionViewLoaded) {
-      this.ionViewLoaded = true;
-      this.ionViewDidLoad();
-    }
+  // async ionViewDidEnter() {
+  //   this.myShop = await this.shopService.getMyShop();
+  //   let currPos = await this.geolocation.getCurrentPosition();
+  //   if (this.myShop && this.myShop.location) {
+  //     this.initialPos = this.myShop.location;
+  //   } else {
+  //     this.initialPos = {
+  //       lat: currPos.coords.latitude,
+  //       lng: currPos.coords.longitude,
+  //     };
+  //   }
+  //   if (!this.ionViewLoaded) {
+  //     this.ionViewLoaded = true;
+  //     this.ionViewDidLoad();
+  //   }
+  // }
+
+  ionViewDidEnter() {
+    this.authService.getToken().then(() => {
+      this.authService.user().subscribe(
+        async (res: any) => {
+          console.log(res);
+          this.user = res.data;
+          this.myShop = await this.shopService.getMyShop(this.user.ref1);
+          let currPos = await this.geolocation.getCurrentPosition();
+          if (this.myShop && this.myShop.location) {
+            this.initialPos = this.myShop.location;
+          } else {
+            this.initialPos = {
+              lat: currPos.coords.latitude,
+              lng: currPos.coords.longitude,
+            };
+          }
+          if (!this.ionViewLoaded) {
+            this.ionViewLoaded = true;
+            this.ionViewDidLoad();
+          }
+        },
+        (error) => {
+          // console.log(error);
+          this.alertService.presentToast(error.error.message);
+        },
+        () => {}
+      );
+    });
   }
 
   ionViewDidLoad() {

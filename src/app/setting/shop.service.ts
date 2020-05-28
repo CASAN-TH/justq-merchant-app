@@ -13,33 +13,16 @@ export class ShopService {
   shop: any;
   SHOP_SERVER_ADDRESS: string = environment.apiUrl; // Your Node Address
   constructor(private http: HttpClient, private storage: Storage) {
-    // this.getToken();
-    // this.getMyShop();
   }
 
-  // getShop() {
-  //   return this.storage.get("shop").then(
-  //     (data) => {
-  //       if (data != null) {
-  //         this.haveShop = true;
-  //       } else {
-  //         this.haveShop = false;
-  //       }
-  //     },
-  //     (error) => {
-  //       this.haveShop = false;
-  //     }
-  //   );
-  // }
-
-  async getToken() {
-    this.token = await this.storage.get("token");
-    console.log(this.token);
-  }
-
-  async getMyShop(){
-    this.shop = await this.storage.get("shop");
-    return this.shop;
+  getMyShop(shopId): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      this.http
+        .get(`${this.SHOP_SERVER_ADDRESS}/api/shops/${shopId}`)
+        .subscribe((res: any) => {
+          resolve(res.data);
+        }, reject);
+    });
   }
 
 
