@@ -51,10 +51,11 @@ export class QueuePage implements OnInit {
   async getQueueDatas() {
     const res = await this.queueService.getQueueData(this.body);
     this.queueData = res;
+    console.log(this.queueData);
   }
 
   onTel() {
-    console.log('tel');
+    window.location.href = `tel: ${this.queueData[0].customerTel}`;
   }
 
   onSuccess(id) {

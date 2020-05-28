@@ -9,12 +9,18 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-row>
+  <ion-row class="btn-current-queue" *ngIf="queueData && queueData.length === 0">
+    <ion-col size="12">
+      <h2>ท่านไม่มีคิวในขณะนี้</h2>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="queueData && queueData[0]">
     <ion-col size="12">
       <h2>คิวปัจจุบัน</h2>
     </ion-col>
   </ion-row>
-  <ion-card *ngIf="queueData">
+  <ion-card *ngIf="queueData && queueData[0]">
     <ion-card-header>
       <ion-card-subtitle>
         {{queueData[0].customerName}} ({{queueData[0].customerQty}} คน)
@@ -49,7 +55,7 @@
     </ion-card-header>
   </ion-card>
 
-  <ion-row>
+  <ion-row *ngIf="queueData && queueData[1]">
     <ion-col size="12">
       <h2>คิวถัดไป</h2>
     </ion-col>
