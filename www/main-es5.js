@@ -470,11 +470,11 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     {
         path: 'app',
-        loadChildren: function () { return Promise.all(/*! import() | tabs-tabs-module */[__webpack_require__.e("common"), __webpack_require__.e("tabs-tabs-module")]).then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(function (m) { return m.TabsPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "./src/app/tabs/tabs.module.ts")).then(function (m) { return m.TabsPageModule; }); }
     },
     {
         path: 'landing',
-        loadChildren: function () { return Promise.all(/*! import() | auth-landing-landing-module */[__webpack_require__.e("common"), __webpack_require__.e("auth-landing-landing-module")]).then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(function (m) { return m.LandingPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | auth-landing-landing-module */ "auth-landing-landing-module").then(__webpack_require__.bind(null, /*! ./auth/landing/landing.module */ "./src/app/auth/landing/landing.module.ts")).then(function (m) { return m.LandingPageModule; }); }
     },
     {
         path: 'set-location',
@@ -486,7 +486,7 @@ var routes = [
     },
     {
         path: 'shop',
-        loadChildren: function () { return Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | setting-shop-shop-module */ "setting-shop-shop-module").then(__webpack_require__.bind(null, /*! ./setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(function (m) { return m.ShopPageModule; }); }
     },
     {
         path: 'shop-edit',

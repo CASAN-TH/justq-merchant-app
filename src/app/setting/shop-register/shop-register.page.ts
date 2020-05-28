@@ -22,6 +22,8 @@ export class ShopRegisterPage implements OnInit {
     private _location: Location
   ) {}
 
+  ngOnInit() {}
+
   ionViewDidEnter() {
     console.log("ionViewDidEnter");
     this.authService.getToken().then(() => {

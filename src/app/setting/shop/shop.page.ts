@@ -25,10 +25,9 @@ export class ShopPage implements OnInit {
   }
   
 
-  // async ngOnInit() {
-  //   this.myShop = await this.shopService.getMyShop();
-  //   console.log(this.myShop);
-  // }
+  ngOnInit() {
+    
+  }
 
   ionViewDidEnter(){
     console.log("ionViewDidEnter");

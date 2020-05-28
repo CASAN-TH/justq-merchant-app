@@ -183,6 +183,126 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 
 /***/ }),
 
+/***/ "./src/app/auth/auth.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/auth/auth.service.ts ***!
+  \**************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+let AuthService = class AuthService {
+    constructor(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.isLoggedIn = false;
+        this.AUTH_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl; // Your Node Address
+    }
+    login(user) {
+        //console.log(user);
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signin`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    lineLogin(user) {
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/line`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    register(user) {
+        user.email = `${user.firstname}.${user.lastname}@จัดคิว.com`;
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signup`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    logout() {
+        console.log("Logout");
+        // this.storage.clear();
+        this.storage.remove("token");
+        this.isLoggedIn = false;
+        delete this.token;
+        // // return new Promise<void>((resolve))
+        return Promise.resolve({ status: 200, Message: "loged out" });
+    }
+    user() {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            Authorization: "Bearer" + " " + this.token,
+        });
+        return this.http
+            .get(`${this.AUTH_SERVER_ADDRESS}/api/me`, { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((user) => {
+            return user;
+        }));
+    }
+    getToken() {
+        //return this.storage.getItem('token').then(
+        return this.storage.get("token").then((data) => {
+            this.token = data;
+            if (this.token != null) {
+                this.isLoggedIn = true;
+            }
+            else {
+                this.isLoggedIn = false;
+            }
+        }, (error) => {
+            this.token = null;
+            this.isLoggedIn = false;
+        });
+    }
+};
+AuthService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] }
+];
+AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root",
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])
+], AuthService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/auth/forgot/forgot-routing.module.ts":
 /*!******************************************************!*\
   !*** ./src/app/auth/forgot/forgot-routing.module.ts ***!
@@ -458,6 +578,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
 /* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
 
 
 
@@ -470,7 +592,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LandingPage = class LandingPage {
-    constructor(router, modalController, lineLogin, fb, authService, alertService, shopService, loadingController) {
+    constructor(router, modalController, lineLogin, fb, authService, alertService, shopService, storage, loadingController) {
         this.router = router;
         this.modalController = modalController;
         this.lineLogin = lineLogin;
@@ -478,11 +600,13 @@ let LandingPage = class LandingPage {
         this.authService = authService;
         this.alertService = alertService;
         this.shopService = shopService;
+        this.storage = storage;
         this.loadingController = loadingController;
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.myShop = yield this.shopService.getMyShop();
+            // this.myShop = await this.shopService.getMyShop();
+            this.myShop = yield this.storage.get("shop");
             console.log(this.myShop);
         });
     }
@@ -553,6 +677,7 @@ LandingPage.ctorParameters = () => [
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"] },
     { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] },
     { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["Storage"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
 LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -568,6 +693,7 @@ LandingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"],
         src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"],
         src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_10__["ShopService"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["Storage"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
 ], LandingPage);
 
@@ -650,10 +776,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _forgot_forgot_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../forgot/forgot.page */ "./src/app/auth/forgot/forgot.page.ts");
-/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
-/* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _forgot_forgot_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../forgot/forgot.page */ "./src/app/auth/forgot/forgot.page.ts");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+
 
 
 
@@ -664,18 +792,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(_location, auth, router, alertService, shopService, modalController) {
+    constructor(_location, auth, router, alertService, shopService, storage, modalController) {
         this._location = _location;
         this.auth = auth;
         this.router = router;
         this.alertService = alertService;
         this.shopService = shopService;
+        this.storage = storage;
         this.modalController = modalController;
         this.showPassword = false;
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.myShop = yield this.shopService.getMyShop();
+            // this.myShop = await this.shopService.getMyShop();
+            this.myShop = yield this.storage.get("shop");
             console.log(this.myShop);
         });
     }
@@ -684,15 +814,15 @@ let LoginPage = class LoginPage {
         this.modalController.dismiss();
     }
     login(form) {
-        form.value.ref1 = this.myShop._id;
-        this.auth.login(form.value).subscribe(data => {
+        form.value.ref1 = this.myShop ? this.myShop._id : null;
+        this.auth.login(form.value).subscribe((data) => {
             this.alertService.presentToast("Logged In");
-        }, error => {
+        }, (error) => {
             // console.log(error);
             this.alertService.presentToast(error.error.message);
         }, () => {
             this.close();
-            this.router.navigateByUrl('/app');
+            this.router.navigateByUrl("/app");
         });
     }
     gotoForgot() {
@@ -700,7 +830,7 @@ let LoginPage = class LoginPage {
             // this.router.navigateByUrl("phoneno");
             this.close();
             const forgotModal = yield this.modalController.create({
-                component: _forgot_forgot_page__WEBPACK_IMPORTED_MODULE_6__["ForgotPage"],
+                component: _forgot_forgot_page__WEBPACK_IMPORTED_MODULE_7__["ForgotPage"],
             });
             return yield forgotModal.present();
         });
@@ -713,9 +843,10 @@ LoginPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"] },
-    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__["ShopService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] }
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_8__["AlertService"] },
+    { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_9__["ShopService"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"] }
 ];
 LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -726,9 +857,10 @@ LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
         _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_7__["AlertService"],
-        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_8__["ShopService"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"]])
+        src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_8__["AlertService"],
+        src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_9__["ShopService"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"]])
 ], LoginPage);
 
 
@@ -972,6 +1104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
 /* harmony import */ var src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/setting/shop.service */ "./src/app/setting/shop.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
 
 
 
@@ -981,10 +1115,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegisterPage = class RegisterPage {
-    constructor(_location, auth, router, alertService, shopService, modalController) {
+    constructor(_location, auth, router, storage, alertService, shopService, modalController) {
         this._location = _location;
         this.auth = auth;
         this.router = router;
+        this.storage = storage;
         this.alertService = alertService;
         this.shopService = shopService;
         this.modalController = modalController;
@@ -994,7 +1129,7 @@ let RegisterPage = class RegisterPage {
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.myShop = yield this.shopService.getMyShop();
+            this.myShop = yield this.storage.get("shop");
             console.log(this.myShop);
         });
     }
@@ -1022,6 +1157,7 @@ RegisterPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"] },
     { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"] },
     { type: src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__["ShopService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] }
@@ -1035,6 +1171,7 @@ RegisterPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
         _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"],
         src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"],
         src_app_setting_shop_service__WEBPACK_IMPORTED_MODULE_7__["ShopService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"]])
@@ -1118,34 +1255,15 @@ let ShopService = class ShopService {
         this.storage = storage;
         this.haveShop = false;
         this.SHOP_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl; // Your Node Address
-        // this.getToken();
-        // this.getMyShop();
     }
-    // getShop() {
-    //   return this.storage.get("shop").then(
-    //     (data) => {
-    //       if (data != null) {
-    //         this.haveShop = true;
-    //       } else {
-    //         this.haveShop = false;
-    //       }
-    //     },
-    //     (error) => {
-    //       this.haveShop = false;
-    //     }
-    //   );
-    // }
-    getToken() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.token = yield this.storage.get("token");
-            console.log(this.token);
-        });
-    }
-    getMyShop() {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.shop = yield this.storage.get("shop");
-            return this.shop;
-        });
+    getMyShop(shopId) {
+        return new Promise((resolve, reject) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.http
+                .get(`${this.SHOP_SERVER_ADDRESS}/api/shops/${shopId}`)
+                .subscribe((res) => {
+                resolve(res.data);
+            }, reject);
+        }));
     }
     createShop(shop) {
         return this.http

@@ -126,6 +126,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../setting/shop.service */ "./src/app/setting/shop.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+
 
 
 
@@ -134,10 +136,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var BoardingPage = /** @class */ (function () {
-    function BoardingPage(modalController, shopService, router, alertService, loadingController) {
+    function BoardingPage(modalController, shopService, router, storage, alertService, loadingController) {
         this.modalController = modalController;
         this.shopService = shopService;
         this.router = router;
+        this.storage = storage;
         this.alertService = alertService;
         this.loadingController = loadingController;
     }
@@ -148,7 +151,7 @@ var BoardingPage = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.shopService.getMyShop()];
+                        return [4 /*yield*/, this.storage.get("shop")];
                     case 1:
                         _a.myShop = _b.sent();
                         if (this.myShop) {
@@ -187,6 +190,7 @@ var BoardingPage = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
         { type: _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
         { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
     ]; };
@@ -199,6 +203,7 @@ var BoardingPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
             _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
             _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
     ], BoardingPage);

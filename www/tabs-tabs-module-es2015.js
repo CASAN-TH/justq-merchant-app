@@ -63,6 +63,126 @@ AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/auth/auth.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/auth/auth.service.ts ***!
+  \**************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+let AuthService = class AuthService {
+    constructor(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.isLoggedIn = false;
+        this.AUTH_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl; // Your Node Address
+    }
+    login(user) {
+        //console.log(user);
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signin`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    lineLogin(user) {
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/line`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    register(user) {
+        user.email = `${user.firstname}.${user.lastname}@จัดคิว.com`;
+        return this.http
+            .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/signup`, user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((res) => {
+            //this.storage.setItem('token', token)
+            this.storage.set("token", res.token).then(() => {
+                console.log("Token Stored");
+            }, (error) => console.error("Error storing item", error));
+            this.token = res.token;
+            this.isLoggedIn = true;
+            return res.token;
+        }));
+    }
+    logout() {
+        console.log("Logout");
+        // this.storage.clear();
+        this.storage.remove("token");
+        this.isLoggedIn = false;
+        delete this.token;
+        // // return new Promise<void>((resolve))
+        return Promise.resolve({ status: 200, Message: "loged out" });
+    }
+    user() {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            Authorization: "Bearer" + " " + this.token,
+        });
+        return this.http
+            .get(`${this.AUTH_SERVER_ADDRESS}/api/me`, { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])((user) => {
+            return user;
+        }));
+    }
+    getToken() {
+        //return this.storage.getItem('token').then(
+        return this.storage.get("token").then((data) => {
+            this.token = data;
+            if (this.token != null) {
+                this.isLoggedIn = true;
+            }
+            else {
+                this.isLoggedIn = false;
+            }
+        }, (error) => {
+            this.token = null;
+            this.isLoggedIn = false;
+        });
+    }
+};
+AuthService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] }
+];
+AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: "root",
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])
+], AuthService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/tabs/tabs-routing.module.ts":
 /*!*********************************************!*\
   !*** ./src/app/tabs/tabs-routing.module.ts ***!
@@ -114,7 +234,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => Promise.all(/*! import() | setting-shop-shop-module */[__webpack_require__.e("common"), __webpack_require__.e("setting-shop-shop-module")]).then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule),
+                        loadChildren: () => __webpack_require__.e(/*! import() | setting-shop-shop-module */ "setting-shop-shop-module").then(__webpack_require__.bind(null, /*! ../setting/shop/shop.module */ "./src/app/setting/shop/shop.module.ts")).then(m => m.ShopPageModule),
                         canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
                     }
                 ]

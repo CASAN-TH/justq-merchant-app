@@ -7,7 +7,132 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar color=\"primary\"> </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-row class=\"row-header\">\n    <ion-col size=\"12\">\n      <h1 *ngIf=\"myShop\">{{myShop.name}}</h1>\n    </ion-col>\n  </ion-row>\n\n \n  <ion-card *ngIf=\"user\">\n    <ion-item button (click)=\"openHours()\" lines=\"none\">\n       {{user.displayname}}\n      <ion-avatar slot=\"start\">\n        <img [src]=\"user.profileImageURL\" />\n      </ion-avatar>\n    </ion-item>\n  </ion-card>\n\n  \n  <ion-card>\n    <ion-list lines=\"none\">\n      <ion-item button (click)=\"shopEdit()\">\n        ข้อมูลทั่วไป\n      </ion-item>\n      <ion-item button (click)=\"openHours()\">\n        เวลาเปิด-ปิด\n      </ion-item>\n      <ion-item button (click)=\"shopServiceType()\">\n        ประเภทการให้บริการ\n      </ion-item>\n      <ion-item button (click)=\"gotoLocation()\">\n        พิกัดร้าน\n      </ion-item>\n    </ion-list>\n  </ion-card>\n</ion-content>\n<ion-footer>\n  <ion-row>\n    <ion-col padding=\"10\">\n      <ion-button size=\"medium\" expand=\"block\" (click)=\"logout()\"\n        >ออกจากระบบ</ion-button\n      >\n    </ion-col>\n  </ion-row>\n</ion-footer>\n"
+module.exports = "<ion-content>\n  <div col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 style=\"background-color: rgb(245, 244, 244);\" class=\"upload-content\">\n    <ion-row>\n      <ion-col size=\"12\" class=\"ion-text-center\">\n        <img class=\"upload-img\" src=\"https://image.flaticon.com/icons/svg/1837/1837526.svg\">\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"12\" class=\"ion-text-center\">\n        <p class=\"text-upload-top\">อัพโหลดรูปภาพหน้าปก</p>\n      </ion-col>\n    </ion-row>\n  </div>\n\n  <!-- wait for node if cover img -->\n\n  <!-- <div col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 class=\"cover-image\">\n    <img  class=\"cover-image-content\" src=\"../../assets/cafe.jpeg\">\n  </div> -->\n\n  <ion-row class=\"row-header\">\n    <ion-col size=\"8\">\n      <ion-row>\n        <h1 *ngIf=\"myShop\" class=\"txt-shop\">{{myShop.name}}</h1>\n      </ion-row>\n\n    </ion-col>\n\n    <ion-col size=\"4\">\n      <div>\n      <ion-row>\n        <ion-col class=\"ion-text-center\">\n          <img class=\"logo-upload\" src=\"https://image.flaticon.com/icons/svg/1837/1837635.svg\">\n        </ion-col>\n        \n      </ion-row>\n      <ion-row>\n        <ion-col class=\"ion-text-center\">\n          <p class=\"txt-upload\">อัพโหลดโลโก้</p>\n        </ion-col>\n       \n      </ion-row>\n    </div>\n\n     <!-- wait for node if logo img -->\n\n    <!-- <div>\n      <ion-row>\n        <ion-col class=\"ion-text-center\">\n          <img class=\"logo\" src=\"https://assets.hongkiat.com/uploads/psd-text-svg/logo-example.jpg\">\n        </ion-col>\n        \n      </ion-row>\n    </div> -->\n\n    </ion-col>\n  </ion-row>\n\n\n  <ion-card *ngIf=\"user\">\n    <ion-item button (click)=\"openHours()\" lines=\"none\">\n      {{user.displayname}}\n      <ion-avatar slot=\"start\">\n        <img [src]=\"user.profileImageURL\" />\n      </ion-avatar>\n    </ion-item>\n  </ion-card>\n\n\n  <ion-card>\n    <ion-list lines=\"none\">\n      <ion-item button (click)=\"shopEdit()\">\n        ข้อมูลทั่วไป\n      </ion-item>\n      <ion-item button (click)=\"openHours()\">\n        เวลาเปิด-ปิด\n      </ion-item>\n      <!-- <ion-item button (click)=\"shopServiceType()\">\n        ประเภทการให้บริการ\n      </ion-item> -->\n      <ion-item button (click)=\"gotoLocation()\">\n        พิกัดร้าน\n      </ion-item>\n    </ion-list>\n  </ion-card>\n</ion-content>\n\n<ion-footer>\n  <ion-row>\n    <ion-col padding=\"10\">\n      <ion-button size=\"medium\" expand=\"block\" (click)=\"logout()\">ออกจากระบบ</ion-button>\n    </ion-col>\n  </ion-row>\n</ion-footer>"
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.service.ts":
+/*!**************************************!*\
+  !*** ./src/app/auth/auth.service.ts ***!
+  \**************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.isLoggedIn = false;
+        this.AUTH_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl; // Your Node Address
+    }
+    AuthService.prototype.login = function (user) {
+        var _this = this;
+        //console.log(user);
+        return this.http
+            .post(this.AUTH_SERVER_ADDRESS + "/api/auth/signin", user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("token", res.token).then(function () {
+                console.log("Token Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.token = res.token;
+            _this.isLoggedIn = true;
+            return res.token;
+        }));
+    };
+    AuthService.prototype.lineLogin = function (user) {
+        var _this = this;
+        return this.http
+            .post(this.AUTH_SERVER_ADDRESS + "/api/auth/line", user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("token", res.token).then(function () {
+                console.log("Token Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.token = res.token;
+            _this.isLoggedIn = true;
+            return res.token;
+        }));
+    };
+    AuthService.prototype.register = function (user) {
+        var _this = this;
+        user.email = user.firstname + "." + user.lastname + "@\u0E08\u0E31\u0E14\u0E04\u0E34\u0E27.com";
+        return this.http
+            .post(this.AUTH_SERVER_ADDRESS + "/api/auth/signup", user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            //this.storage.setItem('token', token)
+            _this.storage.set("token", res.token).then(function () {
+                console.log("Token Stored");
+            }, function (error) { return console.error("Error storing item", error); });
+            _this.token = res.token;
+            _this.isLoggedIn = true;
+            return res.token;
+        }));
+    };
+    AuthService.prototype.logout = function () {
+        console.log("Logout");
+        // this.storage.clear();
+        this.storage.remove("token");
+        this.isLoggedIn = false;
+        delete this.token;
+        // // return new Promise<void>((resolve))
+        return Promise.resolve({ status: 200, Message: "loged out" });
+    };
+    AuthService.prototype.user = function () {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            Authorization: "Bearer" + " " + this.token,
+        });
+        return this.http
+            .get(this.AUTH_SERVER_ADDRESS + "/api/me", { headers: headers })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (user) {
+            return user;
+        }));
+    };
+    AuthService.prototype.getToken = function () {
+        var _this = this;
+        //return this.storage.getItem('token').then(
+        return this.storage.get("token").then(function (data) {
+            _this.token = data;
+            if (_this.token != null) {
+                _this.isLoggedIn = true;
+            }
+            else {
+                _this.isLoggedIn = false;
+            }
+        }, function (error) {
+            _this.token = null;
+            _this.isLoggedIn = false;
+        });
+    };
+    AuthService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+        { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] }
+    ]; };
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root",
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
 
 /***/ }),
 
@@ -94,53 +219,19 @@ var ShopService = /** @class */ (function () {
         this.storage = storage;
         this.haveShop = false;
         this.SHOP_SERVER_ADDRESS = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl; // Your Node Address
-        // this.getToken();
-        // this.getMyShop();
     }
-    // getShop() {
-    //   return this.storage.get("shop").then(
-    //     (data) => {
-    //       if (data != null) {
-    //         this.haveShop = true;
-    //       } else {
-    //         this.haveShop = false;
-    //       }
-    //     },
-    //     (error) => {
-    //       this.haveShop = false;
-    //     }
-    //   );
-    // }
-    ShopService.prototype.getToken = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _a;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.storage.get("token")];
-                    case 1:
-                        _a.token = _b.sent();
-                        console.log(this.token);
-                        return [2 /*return*/];
-                }
+    ShopService.prototype.getMyShop = function (shopId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.http
+                    .get(this.SHOP_SERVER_ADDRESS + "/api/shops/" + shopId)
+                    .subscribe(function (res) {
+                    resolve(res.data);
+                }, reject);
+                return [2 /*return*/];
             });
-        });
-    };
-    ShopService.prototype.getMyShop = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _a;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.storage.get("shop")];
-                    case 1:
-                        _a.shop = _b.sent();
-                        return [2 /*return*/, this.shop];
-                }
-            });
-        });
+        }); });
     };
     ShopService.prototype.createShop = function (shop) {
         var _this = this;
@@ -277,7 +368,7 @@ var ShopPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".row-header {\n  background-color: #fbb03b;\n  color: #ffffff;\n  height: 100px;\n  padding-left: 10px;\n}\n\nion-avatar {\n  width: 50px;\n  height: 50px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90aGVlcmFzYWt0dWJyaXQvRGVza3RvcC9qdXN0LXEvanVzdHEtbWVyY2hhbnQvc3JjL2FwcC9zZXR0aW5nL3Nob3Avc2hvcC5wYWdlLnNjc3MiLCJzcmMvYXBwL3NldHRpbmcvc2hvcC9zaG9wLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLHlCQUFBO0VBQ0EsY0FBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtBQ0FGOztBREdBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNBRiIsImZpbGUiOiJzcmMvYXBwL3NldHRpbmcvc2hvcC9zaG9wLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLnJvdy1oZWFkZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmJiMDNiO1xuICBjb2xvcjogI2ZmZmZmZjtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG5pb24tYXZhdGFye1xuICB3aWR0aDogNTBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICBcbn1cbiIsIi5yb3ctaGVhZGVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZiYjAzYjtcbiAgY29sb3I6ICNmZmZmZmY7XG4gIGhlaWdodDogMTAwcHg7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLWF2YXRhciB7XG4gIHdpZHRoOiA1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG59Il19 */"
+module.exports = ".row-header {\n  background-color: #fbb03b;\n  color: #ffffff;\n  height: 120px;\n  padding-left: 10px;\n}\n\nion-avatar {\n  width: 60px;\n  height: 60px;\n}\n\n.cover-image-content {\n  width: 100%;\n}\n\n.cover-image {\n  height: 170px;\n  overflow: hidden;\n}\n\n.upload-img {\n  height: 60px;\n  width: 65px;\n  margin-top: 35px;\n}\n\n.text-upload-top {\n  margin-top: -12px;\n}\n\n.upload-content {\n  height: 170px;\n}\n\n.logo-upload {\n  border-radius: 115px;\n  width: 65px;\n  height: 73px;\n}\n\n.txt-upload {\n  margin-top: -11px;\n}\n\n.logo {\n  border-radius: 115px;\n  width: 85px;\n  height: 83px;\n}\n\n.txt-shop {\n  margin-top: 1px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90aGVlcmFzYWt0dWJyaXQvRGVza3RvcC9qdXN0LXEvanVzdHEtbWVyY2hhbnQvc3JjL2FwcC9zZXR0aW5nL3Nob3Avc2hvcC5wYWdlLnNjc3MiLCJzcmMvYXBwL3NldHRpbmcvc2hvcC9zaG9wLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLHlCQUFBO0VBQ0EsY0FBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtBQ0FGOztBREdBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNBRjs7QURJQTtFQUNFLFdBQUE7QUNERjs7QURJQTtFQUNFLGFBQUE7RUFDQSxnQkFBQTtBQ0RGOztBRElBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtBQ0RGOztBRElBO0VBQ0UsaUJBQUE7QUNERjs7QURJQTtFQUNFLGFBQUE7QUNERjs7QURJQTtFQUNFLG9CQUFBO0VBQ0EsV0FBQTtFQUVBLFlBQUE7QUNGRjs7QURLQTtFQUNFLGlCQUFBO0FDRkY7O0FES0E7RUFDRSxvQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FDRkY7O0FES0E7RUFDRSxlQUFBO0FDRkYiLCJmaWxlIjoic3JjL2FwcC9zZXR0aW5nL3Nob3Avc2hvcC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5yb3ctaGVhZGVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZiYjAzYjtcbiAgY29sb3I6ICNmZmZmZmY7XG4gIGhlaWdodDogMTIwcHg7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLWF2YXRhcntcbiAgd2lkdGg6IDYwcHg7XG4gIGhlaWdodDogNjBweDtcbiAgXG59XG5cbi5jb3Zlci1pbWFnZS1jb250ZW50e1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmNvdmVyLWltYWdle1xuICBoZWlnaHQ6IDE3MHB4O1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4udXBsb2FkLWltZ3tcbiAgaGVpZ2h0OiA2MHB4O1xuICB3aWR0aDogNjVweDtcbiAgbWFyZ2luLXRvcDogMzVweDtcbn1cblxuLnRleHQtdXBsb2FkLXRvcHtcbiAgbWFyZ2luLXRvcDogLTEycHg7XG59XG5cbi51cGxvYWQtY29udGVudHtcbiAgaGVpZ2h0OiAxNzBweDtcbn1cblxuLmxvZ28tdXBsb2Fke1xuICBib3JkZXItcmFkaXVzOiAxMTVweDtcbiAgd2lkdGg6IDY1cHg7XG4gIC8vIGJvcmRlcjogMXB4IHNvbGlkIHJnYigyNTUsIDI1NSwgMjU1KTtcbiAgaGVpZ2h0OiA3M3B4O1xufVxuXG4udHh0LXVwbG9hZHtcbiAgbWFyZ2luLXRvcDogLTExcHg7XG59XG5cbi5sb2dve1xuICBib3JkZXItcmFkaXVzOiAxMTVweDtcbiAgd2lkdGg6IDg1cHg7XG4gIGhlaWdodDogODNweDtcbn1cblxuLnR4dC1zaG9we1xuICBtYXJnaW4tdG9wOiAxcHg7XG59XG4iLCIucm93LWhlYWRlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmYmIwM2I7XG4gIGNvbG9yOiAjZmZmZmZmO1xuICBoZWlnaHQ6IDEyMHB4O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG59XG5cbmlvbi1hdmF0YXIge1xuICB3aWR0aDogNjBweDtcbiAgaGVpZ2h0OiA2MHB4O1xufVxuXG4uY292ZXItaW1hZ2UtY29udGVudCB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uY292ZXItaW1hZ2Uge1xuICBoZWlnaHQ6IDE3MHB4O1xuICBvdmVyZmxvdzogaGlkZGVuO1xufVxuXG4udXBsb2FkLWltZyB7XG4gIGhlaWdodDogNjBweDtcbiAgd2lkdGg6IDY1cHg7XG4gIG1hcmdpbi10b3A6IDM1cHg7XG59XG5cbi50ZXh0LXVwbG9hZC10b3Age1xuICBtYXJnaW4tdG9wOiAtMTJweDtcbn1cblxuLnVwbG9hZC1jb250ZW50IHtcbiAgaGVpZ2h0OiAxNzBweDtcbn1cblxuLmxvZ28tdXBsb2FkIHtcbiAgYm9yZGVyLXJhZGl1czogMTE1cHg7XG4gIHdpZHRoOiA2NXB4O1xuICBoZWlnaHQ6IDczcHg7XG59XG5cbi50eHQtdXBsb2FkIHtcbiAgbWFyZ2luLXRvcDogLTExcHg7XG59XG5cbi5sb2dvIHtcbiAgYm9yZGVyLXJhZGl1czogMTE1cHg7XG4gIHdpZHRoOiA4NXB4O1xuICBoZWlnaHQ6IDgzcHg7XG59XG5cbi50eHQtc2hvcCB7XG4gIG1hcmdpbi10b3A6IDFweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -297,6 +388,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/alert.service */ "./src/app/services/alert.service.ts");
 /* harmony import */ var _shop_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shop.service */ "./src/app/setting/shop.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
 
 
 
@@ -304,36 +397,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShopPage = /** @class */ (function () {
-    function ShopPage(authService, shopService, router, alertService) {
-        var _this = this;
+    function ShopPage(authService, shopService, router, alertService, _location) {
         this.authService = authService;
         this.shopService = shopService;
         this.router = router;
         this.alertService = alertService;
+        this._location = _location;
+    }
+    ShopPage.prototype.ngOnInit = function () {
+    };
+    ShopPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        console.log("ionViewDidEnter");
         this.authService.getToken().then(function () {
-            _this.authService.user().subscribe(function (res) {
-                console.log(res);
-                _this.user = res.data;
-            }, function (error) {
+            _this.authService.user().subscribe(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                var _a;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            console.log(res);
+                            this.user = res.data;
+                            _a = this;
+                            return [4 /*yield*/, this.shopService.getMyShop(this.user.ref1)];
+                        case 1:
+                            _a.myShop = _b.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            }); }, function (error) {
                 // console.log(error);
                 _this.alertService.presentToast(error.error.message);
             }, function () { });
-        });
-    }
-    ShopPage.prototype.ngOnInit = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var _a;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.shopService.getMyShop()];
-                    case 1:
-                        _a.myShop = _b.sent();
-                        console.log(this.myShop);
-                        return [2 /*return*/];
-                }
-            });
         });
     };
     ShopPage.prototype.logout = function () {
@@ -362,7 +456,8 @@ var ShopPage = /** @class */ (function () {
         { type: src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
         { type: _shop_service__WEBPACK_IMPORTED_MODULE_5__["ShopService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-        { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+        { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] },
+        { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }
     ]; };
     ShopPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -373,7 +468,8 @@ var ShopPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
             _shop_service__WEBPACK_IMPORTED_MODULE_5__["ShopService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
-            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"]])
+            src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]])
     ], ShopPage);
     return ShopPage;
 }());

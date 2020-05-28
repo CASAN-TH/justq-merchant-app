@@ -120,6 +120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../setting/shop.service */ "./src/app/setting/shop.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/alert.service */ "./src/app/services/alert.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
 
 
 
@@ -128,16 +130,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let BoardingPage = class BoardingPage {
-    constructor(modalController, shopService, router, alertService, loadingController) {
+    constructor(modalController, shopService, router, storage, alertService, loadingController) {
         this.modalController = modalController;
         this.shopService = shopService;
         this.router = router;
+        this.storage = storage;
         this.alertService = alertService;
         this.loadingController = loadingController;
     }
     ngOnInit() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.myShop = yield this.shopService.getMyShop();
+            this.myShop = yield this.storage.get("shop");
             if (this.myShop) {
                 this.router.navigateByUrl("/app");
             }
@@ -161,6 +164,7 @@ BoardingPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
     { type: _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
     { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
 ];
@@ -173,6 +177,7 @@ BoardingPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
         _setting_shop_service__WEBPACK_IMPORTED_MODULE_3__["ShopService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
         _services_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
 ], BoardingPage);
