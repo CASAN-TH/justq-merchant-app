@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { QueuePageRoutingModule } from './queue-routing.module';
 
 import { QueuePage } from './queue.page';
-import { MomentPipe } from '../pipe/moment.pipe';
+
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import { MomentPipe } from '../pipe/moment.pipe';
     IonicModule,
     QueuePageRoutingModule
   ],
-  declarations: [QueuePage, MomentPipe]
+  declarations: [QueuePage]
 })
 export class QueuePageModule {}

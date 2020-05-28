@@ -21,11 +21,23 @@ export class ShopPage implements OnInit {
     private alertService: AlertService,
     private _location: Location,
   ) {
+    
+  }
+  
+
+  // async ngOnInit() {
+  //   this.myShop = await this.shopService.getMyShop();
+  //   console.log(this.myShop);
+  // }
+
+  ionViewDidEnter(){
+    console.log("ionViewDidEnter");
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
-        (res: any) => {
+        async (res: any) => {
           console.log(res);
           this.user = res.data;
+          this.myShop = await this.shopService.getMyShop(this.user.ref1);
         },
         (error) => {
           // console.log(error);
@@ -34,12 +46,6 @@ export class ShopPage implements OnInit {
         () => {}
       );
     });
-  }
-  
-
-  async ngOnInit() {
-    this.myShop = await this.shopService.getMyShop();
-    console.log(this.myShop);
   }
 
   logout() {

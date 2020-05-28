@@ -85,7 +85,6 @@ export class AuthService {
   }
 
   user() {
-    console.log("GET User Data");
     const headers = new HttpHeaders({
       Authorization: "Bearer" + " " + this.token,
     });

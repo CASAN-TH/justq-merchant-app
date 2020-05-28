@@ -6,6 +6,7 @@ import { ShopService } from "../setting/shop.service";
 import { Router } from "@angular/router";
 import { AlertService } from '../services/alert.service';
 import { LoadingController } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-boarding",
@@ -18,12 +19,13 @@ export class BoardingPage implements OnInit {
     private modalController: ModalController,
     private shopService: ShopService,
     private router: Router,
+    private storage: Storage,
     private alertService: AlertService,
     private loadingController: LoadingController
   ) {}
 
   async ngOnInit() {
-    this.myShop = await this.shopService.getMyShop();
+    this.myShop = await this.storage.get("shop");
     if (this.myShop) {
       this.router.navigateByUrl("/app");
     }

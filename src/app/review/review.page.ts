@@ -1,40 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { ReviewService } from './review.service';
-import * as moment from 'moment';
+import { Component, OnInit } from "@angular/core";
+import { ReviewService } from "./review.service";
+import { AlertService } from "../services/alert.service";
+import { AuthService } from "../auth/auth.service";
+import { LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-review',
-  templateUrl: './review.page.html',
-  styleUrls: ['./review.page.scss'],
+  selector: "app-review",
+  templateUrl: "./review.page.html",
+  styleUrls: ["./review.page.scss"],
 })
 export class ReviewPage implements OnInit {
-  rate: Number = 1;
-  scrollNumber: any;
   reviewData: any;
+  myShop: any;
+  user: any;
 
-  created: any
-
-  constructor(private reviewService: ReviewService) { }
+  constructor(
+    private reviewService: ReviewService,
+    private authService: AuthService,
+    private alertService: AlertService,
+    private loading: LoadingController,
+  ) {}
 
   ngOnInit() {
-    this.getReviewData();
-  }
-  getReviewData() {
-    this.reviewService.getReviewData(0, 10, "12").then((res: any) => {
-      this.reviewData = res.data
-      console.log(this.reviewData);
-
-      for (let i = 0; i < this.reviewData.length; i++) {
-        const date = this.reviewData[i]
-        date.created = moment(date.created).format('DD/MM/YYYY');
-      }
-
-    })
+    console.log("ngOnInit");
+    
   }
 
-  logRatingChange(rating) {
-    this.scrollNumber = rating;
-    console.log("changed rating: ", rating);
-    // do your stuff
+  ionViewDidEnter() {
+    console.log("ionViewDidEnter");
+    // this.loading = new LoadingController();
+    // this.loading.present();
+    this.authService.getToken().then(() => {
+      this.authService.user().subscribe(
+        (res: any) => {
+          this.user = res.data;
+          this.getReviewData();
+        },
+        (error) => {
+          // console.log(error);
+          this.alertService.presentToast(error.error.message);
+        },
+        () => {}
+      );
+    });
+    
+  }
+
+  async getReviewData() {
+    this.reviewData = await this.reviewService.getReviewData(0, 10, this.user.ref1);
+  }
+
+  async doRefresh(event) {
+    this.reviewData = await this.reviewService.getReviewData(0, 10, "");
+    event.target.complete();
   }
 }

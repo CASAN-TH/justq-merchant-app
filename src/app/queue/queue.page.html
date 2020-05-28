@@ -6,77 +6,89 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
+    <ion-refresher-content
+      pullingText="ดึงลง เพื่อโหลดข้อมูลใหม่"
+      refreshingSpinner="circles"
+      refreshingText="กำลังโหลดข้อมูล..."
+    >
+    </ion-refresher-content>
   </ion-refresher>
 
-  <ion-row class="btn-current-queue" *ngIf="queueData && queueData.length === 0">
-    <ion-col size="12">
-      <h2>ท่านไม่มีคิวในขณะนี้</h2>
-    </ion-col>
-  </ion-row>
-
-  <ion-row *ngIf="queueData && queueData[0]">
-    <ion-col size="12">
-      <h2>คิวปัจจุบัน</h2>
-    </ion-col>
-  </ion-row>
-  <ion-card *ngIf="queueData && queueData[0]">
-    <ion-card-header>
-      <ion-card-subtitle>
-        {{queueData[0].customerName}} ({{queueData[0].customerQty}} คน)
-        <span class="time-right-item">{{queueData[0].queTime}}</span>
-      </ion-card-subtitle>
-      <ion-card-title>
-        <ion-row>
-          <ion-col size="12">
-            <h1>{{queueData[0].queId}}</h1>
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="btn-current-queue">
-          <ion-col size="4" text-align="left">
-            <ion-fab-button (click)="onTel()">
-              <ion-icon name="call"></ion-icon>
-            </ion-fab-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-fab-button class="big-btn" color="success" (click)="onSuccess(queueData[0]._id)">
-              <ion-icon name="checkmark"></ion-icon>
-            </ion-fab-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-fab-button color="danger" (click)="onCancel(queueData[0]._id)">
-              <ion-icon name="exit"></ion-icon>
-            </ion-fab-button>
-          </ion-col>
-        </ion-row>
-
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-
-  <ion-row *ngIf="queueData && queueData[1]">
-    <ion-col size="12">
-      <h2>คิวถัดไป</h2>
-    </ion-col>
-  </ion-row>
-
-  <div *ngFor="let item of queueData; let i = index">
-    <ion-card *ngIf="i !== 0">
+  <div *ngIf="queueData && queueData.length > 0">
+    <ion-row>
+      <ion-col size="12">
+        <h2>คิวปัจจุบัน</h2>
+      </ion-col>
+    </ion-row>
+    <ion-card>
       <ion-card-header>
         <ion-card-subtitle>
-          {{item.customerName}} ({{item.customerQty}} คน)
-          <span class="time-right-item">{{item.queTime}}</span>
+          {{queueData[0].customerName}} ({{queueData[0].customerQty}} คน)
+          <span class="time-right-item">{{queueData[0].queTime}}</span>
         </ion-card-subtitle>
         <ion-card-title>
           <ion-row>
             <ion-col size="12">
-              <h1>{{item.queId}}</h1>
+              <h1>{{queueData[0].queId}}</h1>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="btn-current-queue">
+            <ion-col size="4" text-align="left">
+              <ion-fab-button (click)="onTel()">
+                <ion-icon name="call"></ion-icon>
+              </ion-fab-button>
+            </ion-col>
+            <ion-col size="4">
+              <ion-fab-button
+                class="big-btn"
+                color="success"
+                (click)="onSuccess(queueData[0]._id)"
+              >
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-fab-button>
+            </ion-col>
+            <ion-col size="4">
+              <ion-fab-button
+                color="danger"
+                (click)="onCancel(queueData[0]._id)"
+              >
+                <ion-icon name="exit"></ion-icon>
+              </ion-fab-button>
             </ion-col>
           </ion-row>
         </ion-card-title>
       </ion-card-header>
     </ion-card>
+
+    <ion-row>
+      <ion-col size="12">
+        <h2>คิวถัดไป</h2>
+      </ion-col>
+    </ion-row>
+
+    <div *ngFor="let item of queueData; let i = index">
+      <ion-card *ngIf="i !== 0">
+        <ion-card-header>
+          <ion-card-subtitle>
+            {{item.customerName}} ({{item.customerQty}} คน)
+            <span class="time-right-item">{{item.queTime}}</span>
+          </ion-card-subtitle>
+          <ion-card-title>
+            <ion-row>
+              <ion-col size="12">
+                <h1>{{item.queId}}</h1>
+              </ion-col>
+            </ion-row>
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
   </div>
 
+  <ion-row>
+    <ion-col text-center size="12" *ngIf="queueData && queueData.length === 0">
+      วันนี้ยังไม่มี จองคิว ร้านของคุณ...
+    </ion-col>
+  </ion-row>
 </ion-content>

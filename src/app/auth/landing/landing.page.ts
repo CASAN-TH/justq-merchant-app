@@ -9,6 +9,7 @@ import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
 import { AlertService } from "src/app/services/alert.service";
 import { ShopService } from "src/app/setting/shop.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-landing",
@@ -25,12 +26,13 @@ export class LandingPage implements OnInit {
     private authService: AuthService,
     private alertService: AlertService,
     private shopService: ShopService,
+    private storage: Storage,
     private loadingController: LoadingController
   ) {}
 
   async ngOnInit() {
-    this.myShop = await this.shopService.getMyShop();
-
+    // this.myShop = await this.shopService.getMyShop();
+    this.myShop = await this.storage.get("shop");
     console.log(this.myShop);
   }
 

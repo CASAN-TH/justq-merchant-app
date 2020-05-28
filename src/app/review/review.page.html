@@ -1,69 +1,20 @@
-<!-- <ion-content color="light">
-  <div col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 class="review-image">
-    <img class="review-image-content" src="../../assets/cafe.jpeg">
-  </div>
-  <ion-grid style="background-color: white;">
-    <ion-row>
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <h4>Star Patinum</h4>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 te>
-        <span>3.5</span>
-        <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="orange"
-          defaultColor="#f4f4f4" readonly="false" rating="3.5" fontSize="20px" halfStar="true"
-          (ratingChanged)="logRatingChange($event)">
-        </ionic4-star-rating>
-      </ion-col>
 
-    </ion-row>
-  </ion-grid>
-
-  <ion-list class="review-comment" ion-no-border>
-    <ion-list-header>
-      Comment Shop
-    </ion-list-header>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/cafe.jpeg">
-      </ion-avatar>
-      <ion-input type="text" value=""></ion-input>
-
-    </ion-item>
-    <ion-list-header>
-      Recent Conversations
-    </ion-list-header>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/cafe.jpeg">
-      </ion-avatar>
-      <h4>{{ scrollNumber }}</h4>
-      <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="orange"
-        defaultColor="#f4f4f4" readonly="false" rating="3.5" fontSize="15px" halfStar="true"
-        (ratingChanged)="logRatingChange($event)">
-      </ionic4-star-rating>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/cafe.jpeg">
-      </ion-avatar>
-      <h2>Finn</h2>
-
-    </ion-item>
-
-
-  </ion-list>
-
-</ion-content> -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>review</ion-title>
+    <ion-title>รีวิว</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="ดึงลง เพื่อโหลดข้อมูลใหม่"
+      refreshingSpinner="circles"
+      refreshingText="กำลังโหลดข้อมูล...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-row *ngFor="let item of reviewData">
     <ion-col size="12">
       <ion-item no-padding class="item-border-right" lines="none">
@@ -79,7 +30,7 @@
           </p>
         </ion-label>
         <ion-note text-end>
-          <ion-text class="date">{{item.created}}</ion-text>
+          <ion-text class="date">{{item.created | moment:"ago"}}</ion-text>
         </ion-note>
       </ion-item>
       <ion-item no-padding class="item-border-right">
@@ -91,6 +42,12 @@
           </ion-col>
         </ion-row>
       </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col text-center size="12" *ngIf="reviewData && reviewData.length === 0">
+      ยังไม่มี รีวิว ร้านของคุณ...
     </ion-col>
   </ion-row>
 </ion-content>
