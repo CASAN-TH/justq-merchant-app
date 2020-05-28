@@ -5,6 +5,7 @@ import { Location } from "@angular/common";
 import { ModalController } from "@ionic/angular";
 import { AlertService } from 'src/app/services/alert.service';
 import { ShopService } from 'src/app/setting/shop.service';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-register",
@@ -20,13 +21,14 @@ export class RegisterPage implements OnInit {
     private _location: Location,
     private auth: AuthService,
     private router: Router,
+    private storage: Storage,
     private alertService: AlertService,
     private shopService: ShopService,
     private modalController: ModalController
   ) {}
 
   async ngOnInit() {
-    this.myShop = await this.shopService.getMyShop();
+    this.myShop = await this.storage.get("shop");
 
     console.log(this.myShop);
   }

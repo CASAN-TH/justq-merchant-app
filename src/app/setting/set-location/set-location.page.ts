@@ -20,6 +20,7 @@ import { ShopService } from "../shop.service";
 import { AlertService } from "src/app/services/alert.service";
 import { LoadingController } from "@ionic/angular";
 import { AuthService } from "src/app/auth/auth.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-set-location",
@@ -35,6 +36,7 @@ export class SetLocationPage {
     private geolocation: Geolocation,
     private _location: Location,
     private router: Router,
+    private storage: Storage,
     private authService: AuthService,
     private shopService: ShopService,
     private alertService: AlertService,
@@ -70,6 +72,13 @@ export class SetLocationPage {
           console.log(res);
           this.user = res.data;
           this.myShop = await this.shopService.getMyShop(this.user.ref1);
+        },
+        async (error) => {
+          // console.log(error);
+          this.myShop = await this.storage.get("shop");
+
+        },
+        async () => {
           let currPos = await this.geolocation.getCurrentPosition();
           if (this.myShop && this.myShop.location) {
             this.initialPos = this.myShop.location;
@@ -83,12 +92,7 @@ export class SetLocationPage {
             this.ionViewLoaded = true;
             this.ionViewDidLoad();
           }
-        },
-        (error) => {
-          // console.log(error);
-          this.alertService.presentToast(error.error.message);
-        },
-        () => {}
+        }
       );
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ReviewService } from "./review.service";
 import { AlertService } from "../services/alert.service";
 import { AuthService } from "../auth/auth.service";
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: "app-review",
@@ -16,7 +17,8 @@ export class ReviewPage implements OnInit {
   constructor(
     private reviewService: ReviewService,
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private loading: LoadingController,
   ) {}
 
   ngOnInit() {
@@ -26,6 +28,8 @@ export class ReviewPage implements OnInit {
 
   ionViewDidEnter() {
     console.log("ionViewDidEnter");
+    // this.loading = new LoadingController();
+    // this.loading.present();
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
         (res: any) => {

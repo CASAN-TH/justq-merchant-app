@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import MaskedInput from "@msafi/angular2-text-mask";
-import { ModalController } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
-import { ForgotPage } from '../forgot/forgot.page';
-import { AlertService } from 'src/app/services/alert.service';
-import { ShopService } from 'src/app/setting/shop.service';
+import { Storage } from "@ionic/storage";
+import { ModalController } from "@ionic/angular";
+import { RegisterPage } from "../register/register.page";
+import { ForgotPage } from "../forgot/forgot.page";
+import { AlertService } from "src/app/services/alert.service";
+import { ShopService } from "src/app/setting/shop.service";
 
 @Component({
   selector: "app-login",
@@ -23,12 +23,13 @@ export class LoginPage implements OnInit {
     private router: Router,
     private alertService: AlertService,
     private shopService: ShopService,
+    private storage: Storage,
     private modalController: ModalController
-  ) { }
+  ) {}
 
   async ngOnInit() {
-    this.myShop = await this.shopService.getMyShop();
-
+    // this.myShop = await this.shopService.getMyShop();
+    this.myShop = await this.storage.get("shop");
     console.log(this.myShop);
   }
 
@@ -40,16 +41,16 @@ export class LoginPage implements OnInit {
   login(form) {
     form.value.ref1 = this.myShop ? this.myShop._id : null;
     this.auth.login(form.value).subscribe(
-      data => {
+      (data) => {
         this.alertService.presentToast("Logged In");
       },
-      error => {
+      (error) => {
         // console.log(error);
         this.alertService.presentToast(error.error.message);
       },
       () => {
         this.close();
-        this.router.navigateByUrl('/app');
+        this.router.navigateByUrl("/app");
       }
     );
   }
