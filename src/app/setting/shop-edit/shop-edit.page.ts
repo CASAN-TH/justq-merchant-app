@@ -22,9 +22,12 @@ export class ShopEditPage implements OnInit {
     private shopService: ShopService,
     private authService: AuthService,
     private alertService: AlertService
-    ) { }
+  ) { }
 
-  
+  ngOnInit() {
+
+  }
+
   ionViewDidEnter() {
     this.authService.getToken().then(() => {
       this.authService.user().subscribe(
@@ -37,7 +40,7 @@ export class ShopEditPage implements OnInit {
           // console.log(error);
           this.alertService.presentToast(error.error.message);
         },
-        () => {}
+        () => { }
       );
     });
   }
