@@ -50,7 +50,7 @@
     "ionic-input-mask": "^1.0.1",
     "ionic4-rating": "^1.0.9",
     "ionic4-star-rating": "^1.1.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "ngx-mask": "^9.0.2",
     "ngx-mask-ionic": "^1.1.2",
     "onesignal-cordova-plugin": "^2.9.1",
